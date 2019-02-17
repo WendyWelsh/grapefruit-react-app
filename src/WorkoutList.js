@@ -21,24 +21,45 @@ const styles = theme => ({
     },
 });
 
-const ranges = [
+const muscleGroup = [
     {
-        value: '0-20',
-        label: '0 to 20',
+        value: 'Chest',
+        label: 'Chest',
     },
     {
-        value: '21-50',
-        label: '21 to 50',
+        value: 'Back',
+        label: 'Back',
     },
     {
-        value: '51-100',
-        label: '51 to 100',
+        value: 'Legs',
+        label: 'Legs',
+    },
+    {
+        value: 'Shoulders',
+        label: 'Shoulders',
+    },
+    {
+        value: 'Calves',
+        label: 'Calves',
+    },
+    {
+        value: 'Biceps',
+        label: 'Biceps',
+        
+    },
+    {
+        value: 'Cardio',
+        label: 'Cardio',
+    },
+    {
+        value: 'Glutes',
+        label: 'Glutes',
     },
 ];
 
 class WorkoutList extends React.Component {
     state = {
-        weight: '',
+        muscleGroup: '',
     };
 
     handleChange = prop => event => {
@@ -56,13 +77,13 @@ class WorkoutList extends React.Component {
                     select
                     className={classNames(classes.margin, classes.textField)}
                     variant="outlined"
-                    value={this.state.weightRange}
-                    onChange={this.handleChange('weightRange')}
+                    value={this.state.muscleGroup}
+                    onChange={this.handleChange('muscleGroup')}
                     InputProps={{
                         startAdornment: <InputAdornment position="start">Muscle Group</InputAdornment>,
                     }}
                 >
-                    {ranges.map(option => (
+                    {muscleGroup.map(option => (
                         <MenuItem key={option.value} value={option.value}>
                             {option.label}
                         </MenuItem>
@@ -72,13 +93,13 @@ class WorkoutList extends React.Component {
                     select
                     className={classNames(classes.margin, classes.textField)}
                     variant="outlined"
-                    value={this.state.weightRange}
-                    onChange={this.handleChange('weightRange')}
+                    value={this.state.muscleGroup}
+                    onChange={this.handleChange('muscleGroup')}
                     InputProps={{
                         startAdornment: <InputAdornment position="start">Workout</InputAdornment>,
                     }}
                 >
-                    {ranges.map(option => (
+                    {muscleGroup.map(option => (
                         <MenuItem key={option.value} value={option.value}>
                             {option.label}
                         </MenuItem>
@@ -88,13 +109,13 @@ class WorkoutList extends React.Component {
                     select
                     className={classNames(classes.margin, classes.textField)}
                     variant="outlined"
-                    value={this.state.weightRange}
-                    onChange={this.handleChange('weightRange')}
+                    value={this.state.muscleGroup}
+                    onChange={this.handleChange('muscleGroup')}
                     InputProps={{
                         startAdornment: <InputAdornment position="start">Sets</InputAdornment>,
                     }}
                 >
-                    {ranges.map(option => (
+                    {muscleGroup.map(option => (
                         <MenuItem key={option.value} value={option.value}>
                             {option.label}
                         </MenuItem>
@@ -104,13 +125,13 @@ class WorkoutList extends React.Component {
                     select
                     className={classNames(classes.margin, classes.textField)}
                     variant="outlined"
-                    value={this.state.weightRange}
-                    onChange={this.handleChange('weightRange')}
+                    value={this.state.muscleGroup}
+                    onChange={this.handleChange('muscleGroup')}
                     InputProps={{
                         startAdornment: <InputAdornment position="start">Reps</InputAdornment>,
                     }}
                 >
-                    {ranges.map(option => (
+                    {muscleGroup.map(option => (
                         <MenuItem key={option.value} value={option.value}>
                             {option.label}
                         </MenuItem>
@@ -120,13 +141,13 @@ class WorkoutList extends React.Component {
                     select
                     className={classNames(classes.margin, classes.textField)}
                     variant="outlined"
-                    value={this.state.weightRange}
-                    onChange={this.handleChange('weightRange')}
+                    value={this.state.muscleGroup}
+                    onChange={this.handleChange('muscleGroup')}
                     InputProps={{
                         startAdornment: <InputAdornment position="start">RPE</InputAdornment>,
                     }}
                 >
-                    {ranges.map(option => (
+                    {muscleGroup.map(option => (
                         <MenuItem key={option.value} value={option.value}>
                             {option.label}
                         </MenuItem>

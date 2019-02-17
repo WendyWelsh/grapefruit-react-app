@@ -50,41 +50,49 @@ const rows = [
   createData('Dips', 5, 10, 9),
 ];
 
-function WorkoutForm(props) {
-  const { classes } = props;
+class WorkoutForm extends React.Component {
+  constructor(){
+  super()
+  this.state = {
+    
+  }
+  //const { classes } = props;
+  }
 
-  return (
+  render() {
+    return (
       <div>
-      <NavBar />
-      <WorkoutList />
-    <Paper className={classes.root}>
-      <Table className={classes.table}>
-        <TableHead>
-          <TableRow>
-            <CustomTableCell>Workout (Chest)</CustomTableCell>
-            <CustomTableCell align="right">Sets</CustomTableCell>
-            <CustomTableCell align="right">Reps</CustomTableCell>
-            <CustomTableCell align="right">RPE(1-10)</CustomTableCell>
-            
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map(row => (
-            <TableRow className={classes.row} key={row.id}>
-              <CustomTableCell component="th" scope="row">
-                {row.name}
-              </CustomTableCell>
-              <CustomTableCell align="right">{row.calories}</CustomTableCell>
-              <CustomTableCell align="right">{row.fat}</CustomTableCell>
-              <CustomTableCell align="right">{row.carbs}</CustomTableCell>
-              
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </Paper>
-    </div>
-  );
+        <NavBar />
+        <WorkoutList />
+        <Paper className={classes.root}>
+          <Table className={classes.table}>
+            <TableHead>
+              <TableRow>
+                <CustomTableCell>Workout (Chest)</CustomTableCell>
+                <CustomTableCell align="right">Sets</CustomTableCell>
+                <CustomTableCell align="right">Reps</CustomTableCell>
+                <CustomTableCell align="right">RPE(1-10)</CustomTableCell>
+
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map(row => (
+                <TableRow className={classes.row} key={row.id}>
+                  <CustomTableCell component="th" scope="row">
+                    {row.name}
+                  </CustomTableCell>
+                  <CustomTableCell align="right">{row.calories}</CustomTableCell>
+                  <CustomTableCell align="right">{row.fat}</CustomTableCell>
+                  <CustomTableCell align="right">{row.carbs}</CustomTableCell>
+
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </Paper>
+      </div>
+    );
+  }
 }
 
 WorkoutForm.propTypes = {
