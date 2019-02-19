@@ -12,11 +12,13 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
+import Image from 'material-ui-image'
+
 
 const styles = theme => ({
   main: {
     width: 'auto',
-    display: 'block', // Fix IE 11 issue.
+    display: 'block', 
     marginLeft: theme.spacing.unit * 3,
     marginRight: theme.spacing.unit * 3,
     [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
@@ -32,12 +34,16 @@ const styles = theme => ({
     alignItems: 'center',
     padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
   },
+    paperContainer: {
+        height: 1356,
+        backgroundImage: `url(${"Photos/ropeclimb.jpg"})`
+    },
   avatar: {
     margin: theme.spacing.unit,
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%', 
     marginTop: theme.spacing.unit,
   },
   submit: {
@@ -50,6 +56,9 @@ function SignIn(props) {
 
   return (
     <main className={classes.main}>
+    <Image
+        src="https://d1s2fu91rxnpt4.cloudfront.net/mainsite/w20180119/raw/09b49917ca145b7_712604.jpg"
+      />
       <CssBaseline />
       <Paper className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -78,7 +87,7 @@ function SignIn(props) {
             color="primary"
             className={classes.submit}
           >
-            Sign in
+            Get Healthy!
           </Button>
         </form>
       </Paper>
@@ -91,3 +100,7 @@ SignIn.propTypes = {
 };
 
 export default withStyles(styles)(SignIn);
+
+// // url(grapefruitlinewor.jpg), linear-gradient(180deg, #A5CE3B 0%, rgba(255, 255, 255, 0) 34.81%), #A5CE3B;
+// border: 5px solid #443BAD;
+// box-sizing: border-box;
