@@ -45,7 +45,7 @@ const muscleGroup = [
     {
         value: 'Biceps',
         label: 'Biceps',
-        
+
     },
     {
         value: 'Cardio',
@@ -56,113 +56,183 @@ const muscleGroup = [
         label: 'Glutes',
     },
 ];
+const workout = [
+    {
+        value: 'Bench press',
+        label: 'Bench press',
+    },
+    {
+        value: 'Incline Press',
+        label: 'Incline Press',
+    },
+    {
+        value: 'Flys',
+        label: 'Flys',
+    },
+    {
+        value: 'Pushups',
+        label: 'Pushups',
+    },
+    {
+        value: 'Dips',
+        label: 'Dips',
+    },
+    {
+        value: 'Decline Press',
+        label: 'Decline Press',
+    },
+];
+
+const sets = [
+    {value: '1',label: '1',},
+    {value: '2',label: '2',},
+    {value: '3',label: '3',},
+    {value: '4',label: '4',},
+    {value: '5',label: '5',},
+    {value: '6',label: '6',},
+    {value: '7',label: '7',},
+    {value: '8',label: '8',},
+    {value: '9',label: '9',},
+    {value: '10',label: '10',},
+]
+const reps = [
+    {value: '1',label: '1',},
+    {value: '2',label: '2',},
+    {value: '3',label: '3',},
+    {value: '4',label: '4',},
+    {value: '5',label: '5',},
+    {value: '6',label: '6',},
+    {value: '7',label: '7',},
+    {value: '8',label: '8',},
+    {value: '9',label: '9',},
+    {value: '10',label: '10',},
+]
+const rpe = [
+    {value: '1',label: '1',},
+    {value: '2',label: '2',},
+    {value: '3',label: '3',},
+    {value: '4',label: '4',},
+    {value: '5',label: '5',},
+    {value: '6',label: '6',},
+    {value: '7',label: '7',},
+    {value: '8',label: '8',},
+    {value: '9',label: '9',},
+    {value: '10',label: '10',},
+]
 
 class WorkoutList extends React.Component {
-    state = {
-        muscleGroup: '',
+    constructor(prop) {
+        super(prop)
+        this.state = {
+            muscleGroup: '',
+            workout: '',
+            sets: '',
+            reps: '',
+            rpe: '',
+        };
+
     };
 
     handleChange = prop => event => {
         this.setState({ [prop]: event.target.value });
+    }
+
+        render() {
+            const { classes } = this.props;
+
+            return (
+                <div className={classes.root}>
+                    <TextField
+                        select
+                        className={classNames(classes.margin, classes.textField)}
+                        variant="outlined"
+                        value={this.state.muscleGroup}
+                        onChange={this.handleChange('muscleGroup')}
+                        InputProps={{
+                            startAdornment: <InputAdornment position="start">Muscle Group</InputAdornment>,
+                        }}
+                    >
+                        {muscleGroup.map(option => (
+                            <MenuItem key={option.value} value={option.value}>
+                                {option.label}
+                            </MenuItem>
+                        ))}
+                    </TextField>
+                    <TextField
+                        select
+                        className={classNames(classes.margin, classes.textField)}
+                        variant="outlined"
+                        value={this.state.workout}
+                        onChange={this.handleChange('workout')}
+                        InputProps={{
+                            startAdornment: <InputAdornment position="start">Workout</InputAdornment>,
+                        }}
+                    >
+                        {workout.map(option => (
+                            <MenuItem key={option.value} value={option.value}>
+                                {option.label}
+                            </MenuItem>
+                        ))}
+                    </TextField>
+                    <TextField
+                        select
+                        className={classNames(classes.margin, classes.textField)}
+                        variant="outlined"
+                        value={this.state.sets}
+                        onChange={this.handleChange('sets')}
+                        InputProps={{
+                            startAdornment: <InputAdornment position="start">Sets</InputAdornment>,
+                        }}
+                    >
+                        {sets.map(option => (
+                            <MenuItem key={option.value} value={option.value}>
+                                {option.label}
+                            </MenuItem>
+                        ))}
+                    </TextField>
+                    <TextField
+                        select
+                        className={classNames(classes.margin, classes.textField)}
+                        variant="outlined"
+                        value={this.state.reps}
+                        onChange={this.handleChange('reps')}
+                        InputProps={{
+                            startAdornment: <InputAdornment position="start">Reps</InputAdornment>,
+                        }}
+                    >
+                        {reps.map(option => (
+                            <MenuItem key={option.value} value={option.value}>
+                                {option.label}
+                            </MenuItem>
+                        ))}
+                    </TextField>
+                    <TextField
+                        select
+                        className={classNames(classes.margin, classes.textField)}
+                        variant="outlined"
+                        value={this.state.rpe}
+                        onChange={this.handleChange('rpe')}
+                        InputProps={{
+                            startAdornment: <InputAdornment position="start">RPE</InputAdornment>,
+                        }}
+                    >
+                        {rpe.map(option => (
+                            <MenuItem key={option.value} value={option.value}>
+                                {option.label}
+                            </MenuItem>
+                        ))}
+                    </TextField>
+                    <Button variant="outlined" size="large" color="primary" className={classes.margin}>
+                        SUBMIT
+                </Button>
+                </div>
+            );
+        }
+    }
+
+    WorkoutList.propTypes = {
+        classes: PropTypes.object.isRequired,
     };
 
-
-
-    render() {
-        const { classes } = this.props;
-
-        return (
-            <div className={classes.root}>
-                <TextField
-                    select
-                    className={classNames(classes.margin, classes.textField)}
-                    variant="outlined"
-                    value={this.state.muscleGroup}
-                    onChange={this.handleChange('muscleGroup')}
-                    InputProps={{
-                        startAdornment: <InputAdornment position="start">Muscle Group</InputAdornment>,
-                    }}
-                >
-                    {muscleGroup.map(option => (
-                        <MenuItem key={option.value} value={option.value}>
-                            {option.label}
-                        </MenuItem>
-                    ))}
-                </TextField>
-                <TextField
-                    select
-                    className={classNames(classes.margin, classes.textField)}
-                    variant="outlined"
-                    value={this.state.muscleGroup}
-                    onChange={this.handleChange('muscleGroup')}
-                    InputProps={{
-                        startAdornment: <InputAdornment position="start">Workout</InputAdornment>,
-                    }}
-                >
-                    {muscleGroup.map(option => (
-                        <MenuItem key={option.value} value={option.value}>
-                            {option.label}
-                        </MenuItem>
-                    ))}
-                </TextField>
-                <TextField
-                    select
-                    className={classNames(classes.margin, classes.textField)}
-                    variant="outlined"
-                    value={this.state.muscleGroup}
-                    onChange={this.handleChange('muscleGroup')}
-                    InputProps={{
-                        startAdornment: <InputAdornment position="start">Sets</InputAdornment>,
-                    }}
-                >
-                    {muscleGroup.map(option => (
-                        <MenuItem key={option.value} value={option.value}>
-                            {option.label}
-                        </MenuItem>
-                    ))}
-                </TextField>
-                <TextField
-                    select
-                    className={classNames(classes.margin, classes.textField)}
-                    variant="outlined"
-                    value={this.state.muscleGroup}
-                    onChange={this.handleChange('muscleGroup')}
-                    InputProps={{
-                        startAdornment: <InputAdornment position="start">Reps</InputAdornment>,
-                    }}
-                >
-                    {muscleGroup.map(option => (
-                        <MenuItem key={option.value} value={option.value}>
-                            {option.label}
-                        </MenuItem>
-                    ))}
-                </TextField>
-                <TextField
-                    select
-                    className={classNames(classes.margin, classes.textField)}
-                    variant="outlined"
-                    value={this.state.muscleGroup}
-                    onChange={this.handleChange('muscleGroup')}
-                    InputProps={{
-                        startAdornment: <InputAdornment position="start">RPE</InputAdornment>,
-                    }}
-                >
-                    {muscleGroup.map(option => (
-                        <MenuItem key={option.value} value={option.value}>
-                            {option.label}
-                        </MenuItem>
-                    ))}
-                </TextField>
-                <Button variant="outlined" size="large" color="primary" className={classes.margin}>
-                    SUBMIT
-                </Button>
-            </div>
-        );
-    }
-}
-
-WorkoutList.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
 
 export default withStyles(styles)(WorkoutList);
