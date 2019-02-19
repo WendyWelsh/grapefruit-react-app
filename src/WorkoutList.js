@@ -129,9 +129,14 @@ class WorkoutList extends React.Component {
             sets: '',
             reps: '',
             rpe: '',
+            
         };
+      
 
     };
+    handleClick = () => {
+       console.log("you clicked the FN button!!")
+    }
 
     handleChange = prop => event => {
         this.setState({ [prop]: event.target.value });
@@ -222,7 +227,7 @@ class WorkoutList extends React.Component {
                             </MenuItem>
                         ))}
                     </TextField>
-                    <Button variant="outlined" size="large" color="primary" className={classes.margin}>
+                    <Button onClick={this.handleClick} variant="outlined" size="large" color="primary" className={classes.margin}>
                         SUBMIT
                 </Button>
                 </div>
