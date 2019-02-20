@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import UserLandingPage from 'UserLandingPage.js';
+// import UserLandingPage from 'UserLandingPage.js';
 import {
   Route,
   NavLink,
@@ -52,11 +52,15 @@ class App extends Component {
               <li><NavLink to="/">Login</NavLink></li>
               <li><NavLink to="/clientlist">ClientList</NavLink></li>
               <li><NavLink to="/coachlist">CoachList</NavLink></li>
+              <li><NavLink to="/workoutform">WorkoutForm</NavLink></li>
+
             </ul>
             <div className="content">
               <Route exact path="/" component={Login} />
               <Route path="/clientlist" component={ClientList} />
               <Route path="/coachlist" component={CoachList} />
+              <Route path="/workoutform" component={WorkoutForm} />
+
             </div>
           </MuiThemeProvider>
         </div>

@@ -39,7 +39,7 @@ const styles = theme => ({
  *     author: 'author',
  *   },
  *   {
- *     [etc...]
+//  *     [etc...]
  *   },
  * ];
  */
