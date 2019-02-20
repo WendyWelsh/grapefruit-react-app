@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import UserLandingPage from 'UserLandingPage.js';
+// import UserLandingPage from 'UserLandingPage.js';
 import {
   Route,
   NavLink,
@@ -11,7 +11,7 @@ import ClientList from './ClientList';
 import Login from './Login';
 import './index.css';
 //import AccountForm from './AccountForm';
-import WorkoutForm from "./WorkoutForm";
+// import WorkoutForm from "./WorkoutForm";
 //import MacroForm from './MacroForm';
 // import WorkoutList from './WorkoutList'
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
