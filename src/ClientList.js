@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 
+
 const styles = theme => ({
   root: {
     display: 'flex',
@@ -132,7 +133,7 @@ class ButtonBases extends React.Component {
     return (
       <div className="ClientList">
 
-      {/* <div className={classes.root}> */}
+      <div className={classes.root}>
         {images.map(image => (
           <ButtonBase
             focusRipple
@@ -165,7 +166,7 @@ class ButtonBases extends React.Component {
         ))}
      
       </div>
-      // </div>
+      </div>
     );
   }
 }

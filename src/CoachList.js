@@ -130,9 +130,9 @@ class ButtonBases extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className="ClientList">
+      <div className="CoachList">
 
-      {/* <div className={classes.root}> */}
+      <div className={classes.root}>
         {images.map(image => (
           <ButtonBase
             focusRipple
@@ -165,7 +165,7 @@ class ButtonBases extends React.Component {
         ))}
      
       </div>
-      // </div>
+      </div>
     );
   }
 }

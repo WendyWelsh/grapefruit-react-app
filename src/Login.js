@@ -28,7 +28,7 @@ const styles = theme => ({
     },
   },
   paper: {
-    marginTop: theme.spacing.unit * 8,
+    // marginTop: theme.spacing.unit * 8,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -55,10 +55,11 @@ function SignIn(props) {
   const { classes } = props;
 
   return (
+    <div className="Login">
     <main className={classes.main}>
-    <Image
+    {/* <Image
         src="https://d1s2fu91rxnpt4.cloudfront.net/mainsite/w20180119/raw/09b49917ca145b7_712604.jpg"
-      />
+      /> */}
       <CssBaseline />
       <Paper className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -92,6 +93,7 @@ function SignIn(props) {
         </form>
       </Paper>
     </main>
+ </div>
   );
 }
 

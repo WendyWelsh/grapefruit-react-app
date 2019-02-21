@@ -5,7 +5,13 @@
   padding: 0;
   min-width: 100%;
   min-height: 100%;
-}
+  /* position: fixed; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0;  */
+ 
+} 
 .ClientList{
   background: url(images/deadlift.jpeg) no-repeat center center fixed; 
   background-size: cover;
@@ -14,8 +20,25 @@
   min-width: 100%;
   min-height: 100%;
 }
+/* .Login{
+  background: url("https://d1s2fu91rxnpt4.cloudfront.net/mainsite/w20180119/raw/09b49917ca145b7_712604.jpg") no-repeat center center fixed; 
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  min-width: 100%;
+  min-height: 100%;
+} */
+.Login{
+  background: url(images/ropeclimbresize.jpg) no-repeat center center fixed; 
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  min-width: 100%;
+  min-height: 100%;
 
-/* body {
+}
+
+body {
  
   -o-background-size: cover;
 	background-size: cover;
@@ -26,7 +49,7 @@
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-} */
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -57,10 +80,10 @@ ul.header li a {
   padding: 20px;
   display: inline-block;
 }
-/* .content {
+.content {
   background-color: #FFF;
   padding: 20px;
-} */
+}
 .content h2 {
   padding: 0;
   margin: 0;
