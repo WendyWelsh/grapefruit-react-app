@@ -286,7 +286,7 @@ class EnhancedTable extends React.Component {
 
     return (
       <div>
-      <NavBar />
+      {/* <NavBar /> */}
       <WorkoutList />
       <Paper className={classes.root}>
         <EnhancedTableToolbar numSelected={selected.length} />
