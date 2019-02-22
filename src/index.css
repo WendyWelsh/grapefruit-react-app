@@ -38,7 +38,16 @@
 
 }
 
-body {
+.Login{
+  background-image: url(images/ropeclimb.jpg)  no-repeat center center fixed !important; 
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+/* body {
  
   -o-background-size: cover;
 	background-size: cover;
