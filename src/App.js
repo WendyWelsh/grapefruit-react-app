@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
 // import UserLandingPage from 'UserLandingPage.js';
-import { Route, NavLink, HashRouter } from "react-router-dom";
 import CoachList from "./CoachList";
 import ClientList from "./ClientList";
 import Login from "./Login";
@@ -12,6 +11,7 @@ import WorkoutForm from "./WorkoutForm";
 // import WorkoutList from './WorkoutList'
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import NavBar from "./NavBar";
+import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 
 const theme = createMuiTheme({
   palette: {
@@ -41,27 +41,19 @@ const theme = createMuiTheme({
 class App extends Component {
   render() {
     return (
-      <HashRouter>
+      <Router>
         <div>
           <MuiThemeProvider theme={theme}>
             <NavBar />
-            {/* <h1>Home</h1>
-            <ul className="header">
-              <li><NavLink to="/">Login</NavLink></li>
-              <li><NavLink to="/clientlist">ClientList</NavLink></li>
-              <li><NavLink to="/coachlist">CoachList</NavLink></li>
-              <li><NavLink to="/workoutform">WorkoutForm</NavLink></li>
-
-            </ul> */}
             <div className="content">
-              <Route exact path="/" component={Login} />
+              <Route exact path="/Login" component={Login} />
               <Route path="/clientlist" component={ClientList} />
               <Route path="/coachlist" component={CoachList} />
               <Route path="/workoutform" component={WorkoutForm} />
             </div>
           </MuiThemeProvider>
         </div>
-       </HashRouter>
+        </Router>
     );
   }
 }
