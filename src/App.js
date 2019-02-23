@@ -1,15 +1,10 @@
-import React, { Component } from 'react';
-import './App.css';
-import {
-  Route,
-  NavLink,
-  HashRouter
-} from "react-router-dom";
-import CoachList from './CoachList';
-import ClientList from './ClientList';
-import Login from './Login';
-import UserLandingPage from './UserLandingPage';
-import './index.css';
+import React, { Component } from "react";
+import "./App.css";
+// import UserLandingPage from 'UserLandingPage.js';
+import CoachList from "./CoachList";
+import ClientList from "./ClientList";
+import Login from "./Login";
+import "./index.css";
 //import AccountForm from './AccountForm';
 import WorkoutForm from "./WorkoutForm";
 //import MacroForm from './MacroForm';
@@ -49,18 +44,11 @@ class App extends Component {
       <Router>
         <div>
           <MuiThemeProvider theme={theme}>
-            <h1>Home</h1>
-            <ul className="header">
-              <li><NavLink to="/">Login</NavLink></li>
-              <li><NavLink to="/clientlist">ClientList</NavLink></li>
-              <li><NavLink to="/coachlist">CoachList</NavLink></li>
-              <li><NavLink to="/userlandingpage">UserLandingPage</NavLink></li>
-            </ul>
+            <NavBar />
             <div className="content">
               <Route exact path="/Login" component={Login} />
               <Route path="/clientlist" component={ClientList} />
               <Route path="/coachlist" component={CoachList} />
-              <Route path="/userlandingpage" component={UserLandingPage} />
               <Route path="/workoutform" component={WorkoutForm} />
               
             </div>
