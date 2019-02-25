@@ -10,6 +10,7 @@ import InfoIcon from '@material-ui/icons/Info';
 import tileData from './tileData';
 
 const styles = theme => ({
+  
   root: {
     display: 'flex',
     flexWrap: 'wrap',

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-// import UserLandingPage from 'UserLandingPage.js';
+import UserLandingPage from './UserLandingPage';
 import CoachList from "./CoachList";
 import ClientList from "./ClientList";
 import Login from "./Login";
@@ -50,6 +50,7 @@ class App extends Component {
               <Route path="/clientlist" component={ClientList} />
               <Route path="/coachlist" component={CoachList} />
               <Route path="/workoutform" component={WorkoutForm} />
+              <Route path="/userlandingpage" component={UserLandingPage} />
             </div>
           </MuiThemeProvider>
         </div>
