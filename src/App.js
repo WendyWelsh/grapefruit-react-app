@@ -4,6 +4,7 @@ import UserLandingPage from './UserLandingPage';
 import CoachList from "./CoachList";
 import ClientList from "./ClientList";
 import Login from "./Login";
+import Register from "./Register";
 import "./index.css";
 //import AccountForm from './AccountForm';
 import WorkoutForm from "./WorkoutForm";
@@ -46,7 +47,8 @@ class App extends Component {
           <MuiThemeProvider theme={theme}>
             <NavBar />
             <div className="content">
-              <Route exact path="/login" component={Login} />
+              <Route exact path="/" component={Login} />
+              <Route path="/register" component={Register} />
               <Route path="/clientlist" component={ClientList} />
               <Route path="/coachlist" component={CoachList} />
               <Route path="/workoutform" component={WorkoutForm} />

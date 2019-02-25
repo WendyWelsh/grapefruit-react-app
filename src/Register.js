@@ -62,7 +62,7 @@ class Register extends React.Component {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Register
+          Register page
         </Typography>
         <form className={classes.form}>
           <FormControl margin="normal" required fullWidth>

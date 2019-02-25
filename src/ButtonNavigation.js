@@ -6,9 +6,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 // import NoSsr from '@material-ui/core/NoSsr';
 import Tab from '@material-ui/core/Tab';
-// import Login from "./Login"
-// import Register from "./Register"
-import { withRouter, Router} from "react-router-dom"
+import {withRouter} from "react-router-dom"
 
 
 function TabContainer(props) {
@@ -39,51 +37,53 @@ const styles = theme => ({
 });
 
 class ButtonNavigation extends React.Component {
+    constructor(props){
+        super(props)
+
+        this.directToLogin =this.directToLogin.bind(this)
+        this.directToRegister = this.directToRegister.bind(this)
+    }
     state = {
         value: 0,
 
     };
+
 
     handleChange = (event, value) => {
         this.setState({ value });
     };
     
     directToRegister(){
-        this.props.history.push("/Register")
+        this.props.history.push("/register")
     }
-
+    directToLogin(){
+        this.props.history.push("/")
+    }
     render() {
         const { classes } = this.props;
         const { value } = this.state;
 
 
         return (
-            <Router>
                 <div className={classes.root}>
                     <AppBar position="static">
                         <Tabs variant="fullWidth" value={value} onChange={this.handleChange}>
-                            <LinkTab
+                            {/*<LinkTab
                                 label="LOGIN"
                                 // Route path={"/Login"}
-
-
                             />
 
                             <LinkTab
                                 label="Register"
                                 // onClick={this.directToRegister}
-                                
-
-
-
-
-                            />
+                            />*/}
+                            <button onClick={this.directToLogin}>Login</button>
+                            <button onClick={this.directToRegister}>Register</button>
 
                         </Tabs>
                     </AppBar>
 
                 </div>
-            </Router>
 
         );
     }

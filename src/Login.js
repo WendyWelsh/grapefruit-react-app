@@ -54,7 +54,7 @@ class Login extends React.Component {
     const { classes } = this.props;
     return (
       <div>
-     {/*<ButtonNavigation />*/}
+     <ButtonNavigation />
       <main className={this.props.classes.main}>
         <CssBaseline />
         <Paper className={this.props.classes.paper}>
