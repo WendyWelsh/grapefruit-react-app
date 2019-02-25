@@ -50,7 +50,7 @@ class App extends Component {
               <Route path="/clientlist" component={ClientList} />
               <Route path="/coachlist" component={CoachList} />
               <Route path="/workoutform" component={WorkoutForm} />
-              <Route path="/userlandingpage" component={UserLandingPage} />
+              {/*<Route path="/userlandingpage" component={UserLandingPage} />*/}
             </div>
           </MuiThemeProvider>
         </div>
