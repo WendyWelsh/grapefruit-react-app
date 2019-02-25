@@ -64,14 +64,14 @@ class ButtonNavigation extends React.Component {
                         <Tabs variant="fullWidth" value={value} onChange={this.handleChange}>
                             <LinkTab
                                 label="LOGIN"
-                                Route path={"/Login"}
+                                // Route path={"/Login"}
 
 
                             />
 
                             <LinkTab
                                 label="Register"
-                                onClick={this.directToRegister}
+                                // onClick={this.directToRegister}
                                 
 
 

@@ -46,7 +46,7 @@ class App extends Component {
           <MuiThemeProvider theme={theme}>
             <NavBar />
             <div className="content">
-              <Route exact path="/Login" component={Login} />
+              <Route exact path="/login" component={Login} />
               <Route path="/clientlist" component={ClientList} />
               <Route path="/coachlist" component={CoachList} />
               <Route path="/workoutform" component={WorkoutForm} />
