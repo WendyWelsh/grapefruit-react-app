@@ -1,152 +1,60 @@
-import React from 'react';
+import React, { Component } from "react";
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import ButtonBase from '@material-ui/core/ButtonBase';
-import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    minWidth: 300,
-    width: '100%',
+  button: {
+    margin: theme.spacing.unit,
   },
-  image: {
-    position: 'relative',
-    height: 200,
-    [theme.breakpoints.down('xs')]: {
-      width: '100% !important', // Overrides inline-style
-      height: 100,
-    },
-    '&:hover, &$focusVisible': {
-      zIndex: 1,
-      '& $imageBackdrop': {
-        opacity: 0.15,
-      },
-      '& $imageMarked': {
-        opacity: 0,
-      },
-      '& $imageTitle': {
-        border: '4px solid currentColor',
-      },
-    },
-  },
-  focusVisible: {},
-  imageButton: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: theme.palette.common.white,
-  },
-  imageSrc: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center 40%',
-  },
-  imageBackdrop: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    backgroundColor: theme.palette.common.black,
-    opacity: 0.4,
-    transition: theme.transitions.create('opacity'),
-  },
-  imageTitle: {
-    position: 'relative',
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 4}px ${theme.spacing.unit + 6}px`,
-  },
-  imageMarked: {
-    height: 3,
-    width: 18,
-    backgroundColor: theme.palette.common.white,
-    position: 'absolute',
-    bottom: -2,
-    left: 'calc(50% - 9px)',
-    transition: theme.transitions.create('opacity'),
+  input: {
+    display: 'none',
   },
 });
 
-const images = [
-  {
-    url: '/static/images/grid-list/breakfast.jpg',
-    title: 'Messages',
-    width: '40%',
-  },
-  {
-    url: '/static/images/grid-list/burgers.jpg',
-    title: 'Macro Track',
-    width: '30%',
-  },
-  {
-    url: '/static/images/grid-list/camera.jpg',
-    title: 'Workout',
-    width: '30%',
-  },
-  {
-    url: '/static/images/grid-list/breakfast.jpg',
-    title: 'Motivation',
-    width: '40%',
-  },
-];
 
-
-class UserLandingPage extends React.Component {
+class UserLandingPage extends Component {
   render() {
-    const { classes } = this.props;
     return (
-      <div className="ClientList">
-
-      {/* <div className={classes.root}> */}
-        {images.map(image => (
-          <ButtonBase
-            focusRipple
-            key={image.title}
-            className={classes.image}
-            focusVisibleClassName={classes.focusVisible}
-            style={{
-              width: image.width,
-            }}
-          >
-            <span
-              className={classes.imageSrc}
-              style={{
-                backgroundImage: `url(${image.url})`,
-              }}
-            />
-            <span className={classes.imageBackdrop} />
-            <span className={classes.imageButton}>
-              <Typography
-                component="span"
-                variant="subtitle1"
-                color="inherit"
-                className={classes.imageTitle}
-              >
-                {image.title}
-                <span className={classes.imageMarked} />
-              </Typography>
-            </span>
-          </ButtonBase>
-        ))}
-     
+      <div>
+        <Grid container>
+          <Grid sm></Grid>
+          <Grid item sm={6}>
+            <Paper style={{ padding: 20, margin: 20, textAlign: 'center' }}>
+              <Button variant="outlined" color="inherit">
+                Messages
+              </Button>
+            </Paper>
+          </Grid>
+          <Grid sm></Grid>
+        </Grid>
+        <Grid container>
+          <Grid sm></Grid>
+          <Grid item sm={6}>
+            <Paper style={{ padding: 20, margin: 20, textAlign: 'center' }}>
+              <Button variant="outlined" color="inherit">
+                Workouts
+              </Button>
+            </Paper>
+          </Grid>
+          <Grid sm></Grid>
+        </Grid>
+        <Grid container>
+          <Grid sm></Grid>
+          <Grid item sm={6}>
+            <Paper style={{ padding: 20, margin: 20, textAlign: 'center' }}>
+              <Button variant="outlined" color="inherit">
+                Macro Track
+              </Button>
+            </Paper>
+          </Grid>
+          <Grid sm></Grid>
+        </Grid>
       </div>
-      // </div>
-    );
+    )
   }
 }
 
-UserLandingPage.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(UserLandingPage);
+export default UserLandingPage;
