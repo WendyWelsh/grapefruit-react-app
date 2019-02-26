@@ -155,6 +155,27 @@ const images = [
 
 
 class ButtonBases extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.directToClientList = this.directToClientList.bind(this)
+  }
+    state = {
+      anchorEl: null,
+    };
+    
+    
+    handleClick = event => {
+      this.setState({ anchorEl: event.currentTarget });
+    };
+  
+    handleClose = () => {
+      this.setState({ anchorEl: null });
+    };
+
+    directToClientList() {
+      this.props.history.push("/clientlist");
+    }
   render() {
     const { classes } = this.props;
     return (
@@ -163,6 +184,7 @@ class ButtonBases extends React.Component {
         <div className={classes.root}>
           {images.map(image => (
             <ButtonBase
+              onClick={this.directToClientList}
               focusRipple
               key={image.title}
               className={classes.image}
