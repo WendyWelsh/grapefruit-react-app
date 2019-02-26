@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
+import {withRouter} from 'react-router-dom';
 
 
 const styles = theme => ({
@@ -175,4 +176,4 @@ ButtonBases.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ButtonBases);
+export default withRouter(withStyles(styles)(ButtonBases));
