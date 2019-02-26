@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-
+import {withRouter} from "react-router-dom"
 import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
@@ -240,4 +240,4 @@ class WorkoutList extends React.Component {
     };
 
 
-export default withStyles(styles)(WorkoutList);
+export default withRouter(withStyles(styles)(WorkoutList));
