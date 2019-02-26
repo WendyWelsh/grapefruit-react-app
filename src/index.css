@@ -28,7 +28,7 @@
   min-width: 100%;
   min-height: 100%;
 } */
-.Login{
+/* .Login{
   background: url(images/ropeclimbresize.jpg) no-repeat center center fixed; 
   background-size: cover;
   margin: 0;
@@ -36,16 +36,16 @@
   min-width: 100%;
   min-height: 100%;
 
-}
+} */
 
-.Login{
+/* .Login{
   background-image: url(images/ropeclimb.jpg)  no-repeat center center fixed !important; 
   background-size: cover;
   margin: 0;
   padding: 0;
   min-width: 100%;
   min-height: 100%;
-}
+} */
 
 /* body {
  
@@ -100,3 +100,4 @@ ul.header li a {
 .content li {
   margin-bottom: 10px;
 }
+*/
