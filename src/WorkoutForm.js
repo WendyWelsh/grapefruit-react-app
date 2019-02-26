@@ -18,7 +18,6 @@ import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
-// import NavBar from './NavBar'
 import WorkoutList from './WorkoutList'
 import {withRouter} from 'react-router-dom';
 
@@ -276,7 +275,7 @@ class EnhancedTable extends React.Component {
 
     return (
       <div>
-      {/* <NavBar /> */}
+      
       <WorkoutList />
       <Paper className={classes.root}>
         <EnhancedTableToolbar numSelected={selected.length} />

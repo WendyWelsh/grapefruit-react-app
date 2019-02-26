@@ -8,7 +8,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
+import {withRouter} from "react-router-dom"
 const styles = theme => ({
     root: {
         width: '100%',
@@ -39,7 +39,6 @@ function MacroForm(props) {
 
     return (
         <div>
-            <NavBar />
             <Paper className={classes.root}>
                 <Table className={classes.table}>
                     <TableHead>
@@ -74,4 +73,4 @@ MacroForm.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(MacroForm);
+export default withRouter(withStyles(styles)(MacroForm));
