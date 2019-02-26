@@ -4,10 +4,12 @@ import Paper from '@material-ui/core/Paper';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
+
   },
   input: {
     display: 'none',
@@ -18,41 +20,30 @@ const styles = theme => ({
 class UserLandingPage extends Component {
   render() {
     return (
-      <div>
-        <Grid container>
-          <Grid sm></Grid>
-          <Grid item sm={6}>
-            <Paper style={{ padding: 20, margin: 20, textAlign: 'center' }}>
-              <Button variant="outlined" color="inherit">
-                Messages
+      <Grid container>
+        <Grid item sm>
+          
+          <Paper style={{ padding: 20, margin: 20, textAlign: 'center' }}>
+            <Button variant="outlined" color="inherit">
+              Messages
               </Button>
-            </Paper>
-          </Grid>
-          <Grid sm></Grid>
+          </Paper>
         </Grid>
-        <Grid container>
-          <Grid sm></Grid>
-          <Grid item sm={6}>
-            <Paper style={{ padding: 20, margin: 20, textAlign: 'center' }}>
-              <Button variant="outlined" color="inherit">
-                Workouts
+        <Grid item sm>
+          <Paper style={{ padding: 20, margin: 20, textAlign: 'center'  }}>
+            <Button variant="outlined" color="inherit" component={Link} to="/workoutform" >
+              Workouts
               </Button>
-            </Paper>
-          </Grid>
-          <Grid sm></Grid>
+          </Paper>
         </Grid>
-        <Grid container>
-          <Grid sm></Grid>
-          <Grid item sm={6}>
-            <Paper style={{ padding: 20, margin: 20, textAlign: 'center' }}>
-              <Button variant="outlined" color="inherit">
-                Macro Track
+        <Grid item sm>
+          <Paper style={{ padding: 20, margin: 20, textAlign: 'center'  }}>
+            <Button variant="outlined" color="inherit">
+              Macro Track
               </Button>
-            </Paper>
-          </Grid>
-          <Grid sm></Grid>
+          </Paper>
         </Grid>
-      </div>
+      </Grid>
     )
   }
 }
