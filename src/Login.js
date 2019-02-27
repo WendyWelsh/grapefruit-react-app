@@ -52,7 +52,7 @@ class Login extends React.Component {
 
     const { classes } = this.props;
     return (
-      <div>
+      <div className = "Login">
      <ButtonNavigation />
       <main className={this.props.classes.main}>
         <CssBaseline />
