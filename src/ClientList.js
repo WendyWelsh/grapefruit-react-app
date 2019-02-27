@@ -83,31 +83,37 @@ const images = [
     url: '/static/images/grid-list/breakfast.jpg',
     title: 'Client 1',
     width: '40%',
+    id: null,
   },
   {
     url: '/static/images/grid-list/burgers.jpg',
     title: 'Client 2',
     width: '30%',
+    id: null,
   },
   {
     url: '/static/images/grid-list/camera.jpg',
     title: 'Client 3',
     width: '30%',
+    id: null,
   },
   {
     url: '/static/images/grid-list/breakfast.jpg',
     title: 'Client 4',
     width: '40%',
+    id: null,
   },
   {
     url: '/static/images/grid-list/burgers.jpg',
     title: 'Client 5',
     width: '30%',
+    id: null,
   },
   {
     url: '/static/images/grid-list/camera.jpg',
     title: 'Client 6',
     width: '30%',
+    id: null,
   },
   {
     url: '/static/images/grid-list/breakfast.jpg',
@@ -118,24 +124,50 @@ const images = [
     url: '/static/images/grid-list/burgers.jpg',
     title: 'Client 8',
     width: '30%',
+    id: null,
   },
   {
     url: '/static/images/grid-list/camera.jpg',
     title: 'Client 9',
     width: '30%',
+    id: null,
   },
 ];
 
 
 class ButtonBases extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.directToCoachList = this.directToCoachList.bind(this)
+  }
+    state = {
+      anchorEl: null,
+    };
+    
+    
+    handleClick = event => {
+      this.setState({ anchorEl: event.currentTarget });
+    };
+  
+    handleClose = () => {
+      this.setState({ anchorEl: null });
+    };
+
+    directToCoachList() {
+      this.props.history.push("/coachlist");
+    }
+  
   render() {
+    const { anchorEl } = this.state;
     const { classes } = this.props;
     return (
       <div className="ClientList">
 
-      {/* <div className={classes.root}> */}
+      <div className={classes.root}>
         {images.map(image => (
           <ButtonBase
+            onClick={this.directToCoachList}
             focusRipple
             key={image.title}
             className={classes.image}
@@ -166,7 +198,7 @@ class ButtonBases extends React.Component {
         ))}
      
       </div>
-      // </div>
+      </div>
     );
   }
 }
