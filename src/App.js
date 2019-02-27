@@ -9,6 +9,7 @@ import "./index.css";
 import AccountForm from './AccountForm';
 import WorkoutForm from "./WorkoutForm";
 import MacroForm from './MacroForm';
+import CoachWorkoutSelector from './CoachWorkoutSelector';
 import WorkoutList from './WorkoutList'
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import NavBar from "./NavBar";
@@ -59,6 +60,7 @@ class App extends Component {
               <Route path="/coachlist" component={CoachList} />
               <Route path="/workoutform" component={WorkoutForm} />
               <Route path="/macroform" component={MacroForm} />
+              <Route path="/coachworkoutselector" component={CoachWorkoutSelector} />
               {/*<Route path="/userlandingpage" component={UserLandingPage} />*/}
             </div>
           </MuiThemeProvider>

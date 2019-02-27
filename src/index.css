@@ -3,22 +3,14 @@
   background-size: cover;
   margin: 0;
   padding: 0;
-  min-width: 100%;
-  min-height: 100%;
-  /* position: fixed; 
-  top: 0; 
-  left: 0; 
-  right: 0; 
-  bottom: 0;  */
- 
+  height: 100vh;
 } 
 .ClientList{
   background: url(images/deadlift.jpeg) no-repeat center center fixed; 
   background-size: cover;
   margin: 0;
   padding: 0;
-  min-width: 100%;
-  min-height: 100%;
+  height: 100vh;
 }
 .Login{
   background: url(images/athletebeach.jpg) no-repeat center center fixed; 
@@ -37,16 +29,7 @@
   min-width: 100%;
   min-height: 100%;
 
-} */
 
-/* .Login{
-  background-image: url(images/ropeclimb.jpg)  no-repeat center center fixed !important; 
-  background-size: cover;
-  margin: 0;
-  padding: 0;
-  min-width: 100%;
-  min-height: 100%;
-} */
 
 /* body {
  
