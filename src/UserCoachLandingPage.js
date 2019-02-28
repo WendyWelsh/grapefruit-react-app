@@ -36,37 +36,37 @@ const styles = theme => ({
 // function UserLandingPage(props) {
 //   const { classes } = props;
 
-class UserLandingPage extends Component {
+class UserCoachLandingPage extends React.Component {
   render() {
     return (
-      <div className="UserLandingPage">
-      <Grid container>
-        <Grid item sm>
-          
-          <Paper style={{ padding: 20, margin: 20, textAlign: 'center' }}>
-            <Button variant="outlined" color="inherit">
-               Coach Messages
+      <div className="UserCoachLandingPage">
+        <Grid container>
+          <Grid item sm>
+
+            <Paper style={{ padding: 20, margin: 20, textAlign: 'center' }}>
+              <Button variant="outlined" color="inherit">
+                Client Messages
               </Button>
-          </Paper>
-        </Grid>
-        <Grid item sm>
-          <Paper style={{ padding: 20, margin: 20, textAlign: 'center'  }}>
-            <Button variant="outlined" color="inherit" component={Link} to="/workoutform" >
-               Coach Workouts
+            </Paper>
+          </Grid>
+          <Grid item sm>
+            <Paper style={{ padding: 20, margin: 20, textAlign: 'center' }}>
+              <Button variant="outlined" color="inherit" component={Link} to="/workoutform" >
+                Client Workouts
               </Button>
-          </Paper>
-        </Grid>
-        <Grid item sm>
-          <Paper style={{ padding: 20, margin: 20, textAlign: 'center'  }}>
-            <Button variant="outlined" color="inherit">
-               Coach Macro Track
+            </Paper>
+          </Grid>
+          <Grid item sm>
+            <Paper style={{ padding: 20, margin: 20, textAlign: 'center' }}>
+              <Button variant="outlined" color="inherit">
+                Client Macro Track
               </Button>
-          </Paper>
+            </Paper>
+          </Grid>
         </Grid>
-      </Grid>
       </div>
     )
   }
 }
 
-export default UserLandingPage;
+export default UserCoachLandingPage;
