@@ -36,7 +36,6 @@ const styles = theme => ({
 // function UserLandingPage(props) {
 //   const { classes } = props;
 
-<<<<<<< HEAD
 class UserLandingPage extends Component {
   render() {
     return (
@@ -69,35 +68,3 @@ class UserLandingPage extends Component {
 }
 
 export default UserLandingPage;
-=======
-//   return (
-//     <div className={classes.root}>
-//       <GridList cellHeight={180} className={classes.gridList}>
-//         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-//           <ListSubheader component="div">December</ListSubheader>
-//         </GridListTile>
-//         {tileData.map(tile => (
-//           <GridListTile key={tile.img}>
-//             <img src={tile.img} alt={tile.title} />
-//             <GridListTileBar
-//               title={tile.title}
-//               subtitle={<span>by: {tile.author}</span>}
-//               actionIcon={
-//                 <IconButton className={classes.icon}>
-//                   <InfoIcon />
-//                 </IconButton>
-//               }
-//             />
-//           </GridListTile>
-//         ))}
-//       </GridList>
-//     </div>
-//   );
-// }
-
-// UserLandingPage.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
-
-// export default withStyles(styles)(UserLandingPage);
->>>>>>> development
