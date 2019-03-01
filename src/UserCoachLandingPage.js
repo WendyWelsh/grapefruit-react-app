@@ -16,27 +16,33 @@ const styles = theme => ({
   },
 });
 
-// /**
-//  * The example data is structured as follows:
-//  *
-//  * import image from 'path/to/image.jpg';
-//  * [etc...]
-//  *
-//  * const tileData = [
-//  *   {
-//  *     img: image,
-//  *     title: 'Image',
-//  *     author: 'author',
-//  *   },
-//  *   {
-// //  *     [etc...]
-//  *   },
-//  * ];
-//  */
-// function UserLandingPage(props) {
-//   const { classes } = props;
 
 class UserCoachLandingPage extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.directToMacroForm = this.directToMacroForm.bind(this)
+    this.directToWorkoutForm = this.directToWorkoutForm.bind(this)
+  }
+    state = {
+      anchorEl: null,
+    };
+    
+    
+    handleClick = event => {
+      this.setState({ anchorEl: event.currentTarget });
+    };
+  
+    handleClose = () => {
+      this.setState({ anchorEl: null });
+    };
+
+    directToMacroForm() {
+      this.props.history.push("/macroform");
+    }
+    directToWorkoutForm() {
+      this.props.history.push("/workoutform");
+    }
   render() {
     return (
       <div className="UserCoachLandingPage">
@@ -51,15 +57,29 @@ class UserCoachLandingPage extends React.Component {
           </Grid>
           <Grid item sm>
             <Paper style={{ padding: 20, margin: 20, textAlign: 'center' }}>
-              <Button variant="outlined" color="inherit" component={Link} to="/workoutform" >
+              <Button onClick={this.directToWorkoutForm} variant="outlined" color="inherit" component={Link} to="/workoutform" >
                 Client Workouts
               </Button>
             </Paper>
           </Grid>
           <Grid item sm>
             <Paper style={{ padding: 20, margin: 20, textAlign: 'center' }}>
-              <Button variant="outlined" color="inherit">
+              <Button onClick={this.directToMacroForm} variant="outlined" color="inherit">
                 Client Macro Track
+              </Button>
+            </Paper>
+          </Grid>
+          <Grid item sm>
+            <Paper style={{ padding: 20, margin: 20, textAlign: 'center' }}>
+              <Button onClick={this.directToMacroForm} variant="outlined" color="inherit">
+                Client Macro Log
+              </Button>
+            </Paper>
+          </Grid>
+          <Grid item sm>
+            <Paper style={{ padding: 20, margin: 20, textAlign: 'center' }}>
+              <Button onClick={this.directToMacroForm} variant="outlined" color="inherit">
+                Client Workout Log
               </Button>
             </Paper>
           </Grid>
