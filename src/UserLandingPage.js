@@ -16,53 +16,36 @@ const styles = theme => ({
   },
 });
 
-// /**
-//  * The example data is structured as follows:
-//  *
-//  * import image from 'path/to/image.jpg';
-//  * [etc...]
-//  *
-//  * const tileData = [
-//  *   {
-//  *     img: image,
-//  *     title: 'Image',
-//  *     author: 'author',
-//  *   },
-//  *   {
-// //  *     [etc...]
-//  *   },
-//  * ];
-//  */
-// function UserLandingPage(props) {
-//   const { classes } = props;
 
 class UserLandingPage extends Component {
   render() {
     return (
+      <div className="UserLandingPage">
       <Grid container>
         <Grid item sm>
           
           <Paper style={{ padding: 20, margin: 20, textAlign: 'center' }}>
             <Button variant="outlined" color="inherit">
-              Messages
+               Coach Messages
               </Button>
           </Paper>
         </Grid>
         <Grid item sm>
           <Paper style={{ padding: 20, margin: 20, textAlign: 'center'  }}>
             <Button variant="outlined" color="inherit" component={Link} to="/workoutform" >
-              Workouts
+               Workout Log
               </Button>
           </Paper>
         </Grid>
         <Grid item sm>
           <Paper style={{ padding: 20, margin: 20, textAlign: 'center'  }}>
             <Button variant="outlined" color="inherit">
-              Macro Track
+               Macro Track Log
               </Button>
           </Paper>
         </Grid>
       </Grid>
+      </div>
     )
   }
 }
