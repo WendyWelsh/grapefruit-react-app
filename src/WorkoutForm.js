@@ -69,7 +69,7 @@ class WorkoutForm extends React.Component {
 
     return (
      
-      
+      <div classname="WorkoutForm">
       <TableHead>
         <TableRow>
           <TableCell padding="checkbox">
@@ -106,6 +106,7 @@ class WorkoutForm extends React.Component {
           )}
         </TableRow>
       </TableHead>
+      </div>
     
     );
   }

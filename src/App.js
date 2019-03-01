@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import UserLandingPage from './UserLandingPage';
+import UserCoachLandingPage from './UserCoachLandingPage';
 import CoachList from "./CoachList";
 import ClientList from "./ClientList";
 import Login from "./Login";
@@ -67,7 +68,8 @@ class App extends Component {
               <Route path="/macroform" component={MacroForm} />
               <Route path="/coachworkoutselector" component={CoachWorkoutSelector} />
               <Route path="/messageboard" component={MessageBoard}/>
-              {/*<Route path="/userlandingpage" component={UserLandingPage} />*/}
+              <Route path="/userlandingpage" component={UserLandingPage} />
+              <Route path="/usercoachlandingpage" component={UserCoachLandingPage} />
             </div>
           </MuiThemeProvider>
         </div>
