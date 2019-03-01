@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
+// import NoSsr from '@material-ui/core/NoSsr';
 import Tab from '@material-ui/core/Tab';
 import {withRouter} from "react-router-dom"
 
@@ -21,9 +22,9 @@ TabContainer.propTypes = {
     children: PropTypes.node.isRequired,
 };
 
-// function LinkTab(props) {
-//     return <Tab component="a" onClick={event => event.preventDefault()} {...props} />;
-// }
+function LinkTab(props) {
+    return <Tab component="a" onClick={event => event.preventDefault()} {...props} />;
+}
 
 const styles = theme => ({
     root: {
@@ -67,9 +68,17 @@ class ButtonNavigation extends React.Component {
                 <div className={classes.root}>
                     <AppBar position="static">
                         <Tabs variant="fullWidth" value={value} onChange={this.handleChange}>
-                           
-                            <button className="buttonNav" onClick={this.directToLogin}>Login</button>
-                            <button className="buttonNav" onClick={this.directToRegister}>Register</button>
+                            {/*<LinkTab
+                                label="LOGIN"
+                                // Route path={"/Login"}
+                            />
+
+                            <LinkTab
+                                label="Register"
+                                // onClick={this.directToRegister}
+                            />*/}
+                            <button onClick={this.directToLogin}>Login</button>
+                            <button onClick={this.directToRegister}>Register</button>
 
                         </Tabs>
                     </AppBar>

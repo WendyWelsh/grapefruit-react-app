@@ -24,7 +24,6 @@ import Paper from '@material-ui/core/Paper';
 // populate the images with those coaches
 // make a function to route to either a profile page or messaging
 
-
 const styles = theme => ({
   
   button: {
