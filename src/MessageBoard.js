@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import MessageList from './MessageList';
 import MessageBoardTitle from './MessageBoardTitle';
 import SendMessageForm from './SendMessageForm';
-import Chatkit from '@pusher/chatkit-server'
+import Chatkit from '@pusher/chatkit-client'
 
 // const chatkit = new Chatkit({
 //   instanceLocator: "v1:us1-staging:...",
@@ -17,16 +17,18 @@ const testToken = "https://us1.pusherplatform.io/services/chatkit_token_provider
 
 const userName = "user1";
 
-const roomId = 19389927;
+const roomId = "19389927";
 
 const DUMMY_DATA = [
     {
       senderId: "perborgen",
-      text: "who'll win?"
+      text: "who'll win?",
+      id: "0"
     },
     {
       senderId: "janedoe",
-      text: "who'll win?"
+      text: "who'll win?",
+      id: "1"
     }
 ]
 
@@ -35,7 +37,7 @@ class MessageBoard extends React.Component {
     constructor() { 
         super()
         this.state = {
-           messages: DUMMY_DATA
+           messages: []
         }
     }
 
@@ -47,19 +49,23 @@ class MessageBoard extends React.Component {
     }
   
     componentDidMount() {
+        const tokenProvider = new Chatkit.TokenProvider({
+            url: testToken
+
+          });
+
         const chatManager = new Chatkit.ChatManager({
           instanceLocator: instanceLocator,
           userId: userName,
-          tokenProvider: new Chatkit.TokenProvider({
-            url: testToken
-          })
+          tokenProvider: tokenProvider
         })
+        
         
         chatManager.connect().then(currentUser => {
             currentUser.subscribeToRoom({
               roomId: roomId,
               hooks: {
-                onNewMessage: message => {
+                onMessage: message => {
                   this.setState({
                     messages: [...this.state.messages, message]
                   })
