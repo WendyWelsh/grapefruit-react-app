@@ -38,7 +38,7 @@ function MacroForm(props) {
     const { classes } = props;
 
     return (
-        <div>
+        <div className="MacroForm">
             <Paper className={classes.root}>
                 <Table className={classes.table}>
                     <TableHead>
