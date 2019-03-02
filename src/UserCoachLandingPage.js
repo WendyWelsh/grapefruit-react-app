@@ -21,65 +21,65 @@ class UserCoachLandingPage extends React.Component {
   constructor(props) {
     super(props)
 
+    this.directToMessageBoard = this.directToMessageBoard.bind(this)
     this.directToMacroForm = this.directToMacroForm.bind(this)
     this.directToWorkoutForm = this.directToWorkoutForm.bind(this)
   }
-    state = {
-      anchorEl: null,
-    };
-    
-    
-    handleClick = event => {
-      this.setState({ anchorEl: event.currentTarget });
-    };
-  
-    handleClose = () => {
-      this.setState({ anchorEl: null });
-    };
+  state = {
+    anchorEl: null,
+  };
 
-    directToMacroForm() {
-      this.props.history.push("/macroform");
-    }
-    directToWorkoutForm() {
-      this.props.history.push("/workoutform");
-    }
+
+  handleClick = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
+
+  directToMessageBoard() {
+    this.props.history.push("/messageboard");
+  }
+
+  directToMacroForm() {
+    this.props.history.push("/macroform");
+  }
+  directToWorkoutForm() {
+    this.props.history.push("/workoutform");
+  }
   render() {
     return (
       <div className="UserCoachLandingPage">
         <Grid container>
           <Grid item sm>
-
-            <Paper style={{ padding: 20, margin: 20, textAlign: 'center' }}>
-              <Button variant="outlined" color="inherit">
+            <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
+              <Button onClick={this.directToMessageBoard} variant="outlined" color="inherit">
                 Client Messages
               </Button>
             </Paper>
           </Grid>
           <Grid item sm>
-            <Paper style={{ padding: 20, margin: 20, textAlign: 'center' }}>
-              <Button onClick={this.directToWorkoutForm} variant="outlined" color="inherit" component={Link} to="/workoutform" >
-                Client Workouts
-              </Button>
-            </Paper>
-          </Grid>
-          <Grid item sm>
-            <Paper style={{ padding: 20, margin: 20, textAlign: 'center' }}>
-              <Button onClick={this.directToMacroForm} variant="outlined" color="inherit">
-                Client Macro Track
-              </Button>
-            </Paper>
-          </Grid>
-          <Grid item sm>
-            <Paper style={{ padding: 20, margin: 20, textAlign: 'center' }}>
+            <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
               <Button onClick={this.directToMacroForm} variant="outlined" color="inherit">
                 Client Macro Log
               </Button>
             </Paper>
+            <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
+              <Button onClick={this.directToMacroForm} variant="outlined" color="inherit">
+                Create Client Macro Track
+              </Button>
+            </Paper>
           </Grid>
           <Grid item sm>
-            <Paper style={{ padding: 20, margin: 20, textAlign: 'center' }}>
-              <Button onClick={this.directToMacroForm} variant="outlined" color="inherit">
+            <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
+              <Button onClick={this.directToWorkoutForm} variant="outlined" color="inherit">
                 Client Workout Log
+              </Button>
+            </Paper>
+            <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
+              <Button onClick={this.directToWorkoutForm} variant="outlined" color="inherit" component={Link} to="/workoutform" >
+                Create Client Workouts
               </Button>
             </Paper>
           </Grid>
