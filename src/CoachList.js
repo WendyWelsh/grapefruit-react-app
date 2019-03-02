@@ -100,41 +100,7 @@ const images = [
     width: '30%',
     id: null,
   },
-  {
-    url: '/static/images/grid-list/breakfast.jpg',
-    title: 'Client 4',
-    width: '40%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/burgers.jpg',
-    title: 'Client 5',
-    width: '30%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/camera.jpg',
-    title: 'Client 6',
-    width: '30%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/breakfast.jpg',
-    title: 'Client 7',
-    width: '40%',
-  },
-  {
-    url: '/static/images/grid-list/burgers.jpg',
-    title: 'Client 8',
-    width: '30%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/camera.jpg',
-    title: 'Client 9',
-    width: '30%',
-    id: null,
-  },
+
 ];
 
 // removeClient(id) {
@@ -201,11 +167,14 @@ class ButtonBases extends React.Component {
                   {image.title}
                   <span className={classes.imageMarked} />
                 </Typography>
-                <Paper style={{ padding:3, margin: 3, textAlign: 'center'  }}>
-            <Button variant="outlined" color="none">
-              Remove
-              </Button>
-          </Paper>
+                <Paper style={{ padding: 3, margin: 3, textAlign: 'center' }}>
+                  <Button variant="outlined" color="none">
+                    Remove
+                  </Button>
+                  <Button variant="outlined" color="none">
+                    Add
+                  </Button>
+                </Paper>
               </span>
             </ButtonBase>
           ))}

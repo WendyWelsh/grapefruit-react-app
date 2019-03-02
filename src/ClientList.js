@@ -26,7 +26,7 @@ import Paper from '@material-ui/core/Paper';
 
 
 const styles = theme => ({
-  
+
   button: {
     margin: theme.spacing.unit,
   },
@@ -108,7 +108,7 @@ const images = [
     url: '/static/images/grid-list/breakfast.jpg',
     title: 'Coach 1',
     width: '40%',
-    id: null, 
+    id: null,
   },
   {
     url: '/static/images/grid-list/burgers.jpg',
@@ -122,42 +122,7 @@ const images = [
     width: '30%',
     id: null,
   },
-  {
-    url: '/static/images/grid-list/breakfast.jpg',
-    title: 'Coach 4',
-    width: '40%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/burgers.jpg',
-    title: 'Coach 5',
-    width: '30%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/camera.jpg',
-    title: 'Coach 6',
-    width: '30%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/breakfast.jpg',
-    title: 'Coach 7',
-    width: '40%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/burgers.jpg',
-    title: 'Coach 8',
-    width: '30%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/camera.jpg',
-    title: 'Coach 9',
-    width: '30%',
-    id: null,
-  },
+  
 ];
 
 
@@ -167,22 +132,22 @@ class ButtonBases extends React.Component {
 
     this.directToUserLandingPage = this.directToUserLandingPage.bind(this)
   }
-    state = {
-      anchorEl: null,
-    };
-    
-    
-    handleClick = event => {
-      this.setState({ anchorEl: event.currentTarget });
-    };
-  
-    handleClose = () => {
-      this.setState({ anchorEl: null });
-    };
+  state = {
+    anchorEl: null,
+  };
 
-    directToUserLandingPage() {
-      this.props.history.push("/userlandingpage");
-    }
+
+  handleClick = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
+
+  directToUserLandingPage() {
+    this.props.history.push("/userlandingpage");
+  }
   render() {
     const { classes } = this.props;
     return (
@@ -217,13 +182,18 @@ class ButtonBases extends React.Component {
                   {image.title}
                   <span className={classes.imageMarked} />
                 </Typography>
-                <Paper style={{ padding:3, margin: 3, textAlign: 'center'  }}>
-            <Button variant="outlined" color="none">
-              Remove
-              </Button>
-          </Paper>
+                <Paper style={{ padding: 3, margin: 3, textAlign: 'center' }}>
+                  <Button variant="outlined" color="none">
+                    Remove
+                  </Button>
+                </Paper>
+                <Paper style={{ padding: 3, margin: 3, textAlign: 'center' }}>
+                  <Button variant="outlined" color="none">
+                    Add
+                  </Button>
+                </Paper>
               </span>
-              
+
             </ButtonBase>
           ))}
 
