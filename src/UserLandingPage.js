@@ -63,14 +63,14 @@ class UserLandingPage extends React.Component {
           </Grid>
           <Grid item sm>
             <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
-              <Button  onClick = {this.directToMacroForm} variant="outlined" color="inherit">
+              <Button  onClick = {this.directToWorkoutForm} variant="outlined" color="inherit">
                 Workout Log
               </Button>
             </Paper>
           </Grid>
           <Grid item sm>
             <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
-              <Button  onClick = {this.directToWorkoutForm} variant="outlined" color="inherit">
+              <Button  onClick = {this.directToMacroForm} variant="outlined" color="inherit">
                 Macro Track Log
               </Button>
             </Paper>
