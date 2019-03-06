@@ -97,19 +97,19 @@ class ButtonBases extends React.Component {
       anchorEl: null,
       coaches: [{
         url: '/static/images/grid-list/breakfast.jpg',
-        title: 'Client 1',
+        title: 'Coach 1',
         width: '18%',
         id: 1,
       },
       {
         url: '/static/images/grid-list/burgers.jpg',
-        title: 'Client 2',
+        title: 'Coach 2',
         width: '18%',
         id: 2,
       },
       {
         url: '/static/images/grid-list/camera.jpg',
-        title: 'Client 3',
+        title: 'Coach 3',
         width: '18%',
         id: 3,
       },]
@@ -133,7 +133,7 @@ class ButtonBases extends React.Component {
   };
 
   directToCoachList() {
-    this.props.history.push("/usercoachlandingpage");
+    this.props.history.push("/coach/home");
   }
 
   render() {

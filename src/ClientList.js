@@ -117,20 +117,20 @@ class ButtonBases extends React.Component {
       anchorEl: null,
       clients: [{
         url: '/static/images/grid-list/breakfast.jpg',
-        title: 'Coach 1',
-        width: '12%',
+        title: 'Client 1',
+        width: '30%',
         id: 1,
       },
       {
         url: '/static/images/grid-list/burgers.jpg',
-        title: 'Coach 2',
-        width: '12%',
+        title: 'Client 2',
+        width: '30%',
         id: 2,
       },
       {
         url: '/static/images/grid-list/camera.jpg',
-        title: 'Coach 3',
-        width: '12%',
+        title: 'Client 3',
+        width: '30%',
         id: 3,
       },
       ]
@@ -154,7 +154,7 @@ class ButtonBases extends React.Component {
   };
 
   directToUserLandingPage() {
-    this.props.history.push("/userlandingpage");
+    this.props.history.push("/user/home");
   }
   render() {
     const { classes } = this.props;
@@ -193,6 +193,8 @@ class ButtonBases extends React.Component {
                     {image.title}
                     <span className={classes.imageMarked} />
                   </Typography>
+                  <DeleteIcon className={classes.rightIcon} />
+                
                 </span>
               </ButtonBase>
               {/* <Paper style={{ padding: 3, margin: 3, textAlign: 'center' }}>
@@ -200,28 +202,23 @@ class ButtonBases extends React.Component {
                   Remove
              </Button>
               </Paper> */}
-              {/* <Paper style={{ padding: 3, margin: 3, textAlign: 'center' }}>
-                <Button variant="outlined" color="none">
-                  Add
-                  </Button>
-              </Paper> */}
+           
               {/* <Button variant="contained" color="primary" className={classes.button}></Button> */}
-              <Button id={image.id} onClick={() => this.handleRemoveClient(image.id)} variant="outlined" color="primary" className={classes.button}>
+              {/* <Button id={image.id} onClick={() => this.handleRemoveClient(image.id)} variant="outlined" color="primary" className={classes.button}>
                 Delete
                <DeleteIcon className={classes.rightIcon} />
-              </Button>
-              <Button id={image.id} onClick={() => this.handleRemoveClient(image.id)} padding='50' variant="outlined" color="primary" className={classes.button}>
-                Add
-                <Fab padding= '50' size="small" color="primary" aria-label="Add" className={classes.margin}>
-                  <AddIcon />
-                </Fab>
-
-              </Button>
+              </Button> */}
+            
 
             </>
           ))}
 
         </div>
+           <Paper style={{ padding: 3, margin: 3, textAlign: 'center' }}>
+                <Button variant="outlined" color="none">
+                  Add
+                  </Button>
+              </Paper>
       </div>
     );
   }
