@@ -6,6 +6,11 @@ import Typography from '@material-ui/core/Typography';
 import { withRouter } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
+import DeleteIcon from '@material-ui/icons/Delete';
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
+import Icon from '@material-ui/core/Icon';
+
 
 //Is the coach list a list of all coaches available? 
 //or a list of the logged in users coaches
@@ -26,7 +31,7 @@ import Paper from '@material-ui/core/Paper';
 
 
 const styles = theme => ({
-  
+
   button: {
     margin: theme.spacing.unit,
   },
@@ -103,128 +108,117 @@ const styles = theme => ({
   },
 });
 
-const images = [
-  {
-    url: '/static/images/grid-list/breakfast.jpg',
-    title: 'Coach 1',
-    width: '40%',
-    id: null, 
-  },
-  {
-    url: '/static/images/grid-list/burgers.jpg',
-    title: 'Coach 2',
-    width: '30%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/camera.jpg',
-    title: 'Coach 3',
-    width: '30%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/breakfast.jpg',
-    title: 'Coach 4',
-    width: '40%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/burgers.jpg',
-    title: 'Coach 5',
-    width: '30%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/camera.jpg',
-    title: 'Coach 6',
-    width: '30%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/breakfast.jpg',
-    title: 'Coach 7',
-    width: '40%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/burgers.jpg',
-    title: 'Coach 8',
-    width: '30%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/camera.jpg',
-    title: 'Coach 9',
-    width: '30%',
-    id: null,
-  },
-];
-
 
 class ButtonBases extends React.Component {
   constructor(props) {
     super(props)
 
-    this.directToUserLandingPage = this.directToUserLandingPage.bind(this)
-  }
-    state = {
+    this.state = {
       anchorEl: null,
-    };
-    
-    
-    handleClick = event => {
-      this.setState({ anchorEl: event.currentTarget });
-    };
-  
-    handleClose = () => {
-      this.setState({ anchorEl: null });
+      clients: [{
+        url: '/static/images/grid-list/breakfast.jpg',
+        title: 'Coach 1',
+        width: '12%',
+        id: 1,
+      },
+      {
+        url: '/static/images/grid-list/burgers.jpg',
+        title: 'Coach 2',
+        width: '12%',
+        id: 2,
+      },
+      {
+        url: '/static/images/grid-list/camera.jpg',
+        title: 'Coach 3',
+        width: '12%',
+        id: 3,
+      },
+      ]
     };
 
-    directToUserLandingPage() {
-      this.props.history.push("/userlandingpage");
-    }
+    this.directToUserLandingPage = this.directToUserLandingPage.bind(this)
+    this.handleRemoveClient = this.handleRemoveClient.bind(this)
+  }
+
+  handleRemoveClient(id) {
+    console.log(id)
+
+  }
+
+  handleClick = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
+
+  directToUserLandingPage() {
+    this.props.history.push("/userlandingpage");
+  }
   render() {
     const { classes } = this.props;
+    const { clients } = this.state;
+    console.log(clients)
     return (
       <div className="CoachList">
 
         <div className={classes.root}>
-          {images.map(image => (
-            <ButtonBase
-              onClick={this.directToUserLandingPage}
-              focusRipple
-              key={image.title}
-              className={classes.image}
-              focusVisibleClassName={classes.focusVisible}
-              style={{
-                width: image.width,
-              }}
-            >
-              <span
-                className={classes.imageSrc}
+          {clients.map(image => (
+            <>
+              <ButtonBase
+                onClick={this.directToUserLandingPage}
+                focusRipple
+                key={image.title}
+                className={classes.image}
+                focusVisibleClassName={classes.focusVisible}
                 style={{
-                  backgroundImage: `url(${image.url})`,
+                  width: image.width,
                 }}
-              />
-              <span className={classes.imageBackdrop} />
-              <span className={classes.imageButton}>
-                <Typography
-                  component="span"
-                  variant="subtitle1"
-                  color="inherit"
-                  className={classes.imageTitle}
-                >
-                  {image.title}
-                  <span className={classes.imageMarked} />
-                </Typography>
-                <Paper style={{ padding:3, margin: 3, textAlign: 'center'  }}>
-            <Button variant="outlined" color="none">
-              Remove
+              >
+                <span
+                  className={classes.imageSrc}
+                  style={{
+                    backgroundImage: `url(${image.url})`,
+                  }}
+                />
+                <span className={classes.imageBackdrop} />
+                <span className={classes.imageButton}>
+                  <Typography
+                    component="span"
+                    variant="subtitle1"
+                    color="inherit"
+                    className={classes.imageTitle}
+                  >
+                    {image.title}
+                    <span className={classes.imageMarked} />
+                  </Typography>
+                </span>
+              </ButtonBase>
+              {/* <Paper style={{ padding: 3, margin: 3, textAlign: 'center' }}>
+                <Button id={image.id} onClick={() => this.handleRemoveClient(image.id)} variant="outlined" color="none">
+                  Remove
+             </Button>
+              </Paper> */}
+              {/* <Paper style={{ padding: 3, margin: 3, textAlign: 'center' }}>
+                <Button variant="outlined" color="none">
+                  Add
+                  </Button>
+              </Paper> */}
+              {/* <Button variant="contained" color="primary" className={classes.button}></Button> */}
+              <Button id={image.id} onClick={() => this.handleRemoveClient(image.id)} variant="outlined" color="primary" className={classes.button}>
+                Delete
+               <DeleteIcon className={classes.rightIcon} />
               </Button>
-          </Paper>
-              </span>
-              
-            </ButtonBase>
+              <Button id={image.id} onClick={() => this.handleRemoveClient(image.id)} padding='50' variant="outlined" color="primary" className={classes.button}>
+                Add
+                <Fab padding= '50' size="small" color="primary" aria-label="Add" className={classes.margin}>
+                  <AddIcon />
+                </Fab>
+
+              </Button>
+
+            </>
           ))}
 
         </div>

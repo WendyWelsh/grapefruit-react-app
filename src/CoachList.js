@@ -5,6 +5,9 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import { withRouter } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
 import Paper from '@material-ui/core/Paper';
 
 
@@ -81,62 +84,6 @@ const styles = theme => ({
   },
 });
 
-const images = [
-  {
-    url: '/static/images/grid-list/breakfast.jpg',
-    title: 'Client 1',
-    width: '40%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/burgers.jpg',
-    title: 'Client 2',
-    width: '30%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/camera.jpg',
-    title: 'Client 3',
-    width: '30%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/breakfast.jpg',
-    title: 'Client 4',
-    width: '40%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/burgers.jpg',
-    title: 'Client 5',
-    width: '30%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/camera.jpg',
-    title: 'Client 6',
-    width: '30%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/breakfast.jpg',
-    title: 'Client 7',
-    width: '40%',
-  },
-  {
-    url: '/static/images/grid-list/burgers.jpg',
-    title: 'Client 8',
-    width: '30%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/camera.jpg',
-    title: 'Client 9',
-    width: '30%',
-    id: null,
-  },
-];
-
 // removeClient(id) {
 //   this.setState({clientGroup: this.state.clientGroup.filter(client => client.id !== id)})
 // }
@@ -146,12 +93,36 @@ class ButtonBases extends React.Component {
   constructor(props) {
     super(props)
 
-    this.directToCoachList = this.directToCoachList.bind(this)
-  }
-  state = {
-    anchorEl: null,
-  };
+    this.state = {
+      anchorEl: null,
+      coaches: [{
+        url: '/static/images/grid-list/breakfast.jpg',
+        title: 'Client 1',
+        width: '18%',
+        id: 1,
+      },
+      {
+        url: '/static/images/grid-list/burgers.jpg',
+        title: 'Client 2',
+        width: '18%',
+        id: 2,
+      },
+      {
+        url: '/static/images/grid-list/camera.jpg',
+        title: 'Client 3',
+        width: '18%',
+        id: 3,
+      },]
+    };
 
+    this.directToCoachList = this.directToCoachList.bind(this)
+    this.handleRemoveCoach = this.handleRemoveCoach.bind(this)
+
+  }
+
+  handleRemoveCoach(id) {
+    console.log(id)
+  }
 
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -168,46 +139,63 @@ class ButtonBases extends React.Component {
   render() {
     const { anchorEl } = this.state;
     const { classes } = this.props;
+    const { coaches } = this.state;
+    console.log(coaches)
     // const {removeClient } = this.props;
     return (
       <div className="ClientList">
         {/* removeClient={this.removeClient.bind(this)} person={person} */}
         <div className={classes.root} >
-          {images.map(image => (
-            <ButtonBase
-              onClick={this.directToCoachList}
-              focusRipple
-              key={image.title}
-              className={classes.image}
-              focusVisibleClassName={classes.focusVisible}
-              style={{
-                width: image.width,
-              }}
-            >
-              <span
-                className={classes.imageSrc}
+          {coaches.map(image => (
+            <>
+              <ButtonBase
+                onClick={this.directToCoachList}
+                focusRipple
+                key={image.title}
+                className={classes.image}
+                focusVisibleClassName={classes.focusVisible}
                 style={{
-                  backgroundImage: `url(${image.url})`,
+                  width: image.width,
                 }}
-              />
-              <span className={classes.imageBackdrop} />
-              <span className={classes.imageButton}>
-                <Typography
-                  component="span"
-                  variant="subtitle1"
-                  color="inherit"
-                  className={classes.imageTitle}
-                >
-                  {image.title}
-                  <span className={classes.imageMarked} />
-                </Typography>
-                <Paper style={{ padding:3, margin: 3, textAlign: 'center'  }}>
-            <Button variant="outlined" color="none">
-              Remove
+              >
+                <span
+                  className={classes.imageSrc}
+                  style={{
+                    backgroundImage: `url(${image.url})`,
+                  }}
+                />
+                <span className={classes.imageBackdrop} />
+                <span className={classes.imageButton}>
+                  <Typography
+                    component="span"
+                    variant="subtitle1"
+                    color="inherit"
+                    className={classes.imageTitle}
+                  >
+                    {image.title}
+                    <span className={classes.imageMarked} />
+                  </Typography>
+                  {/* <Paper style={{ padding: 3, margin: 3, textAlign: 'center' }}>
+                  <Button variant="outlined" color="none">
+                    Remove
+                  </Button>
+                  <Button variant="outlined" color="none">
+                    Add
+                  </Button>
+                </Paper> */}
+                </span>
+              </ButtonBase>
+              <Button id={image.id} onClick={() => this.handleRemoveCoach(image.id)} variant="outlined" color="primary" className={classes.button}>
+                Delete
+            <DeleteIcon className={classes.rightIcon} />
               </Button>
-          </Paper>
-              </span>
-            </ButtonBase>
+              <Button id={image.id} onClick={() => this.handleRemoveCoach(image.id)} variant="outlined" color="primary" className={classes.button}>
+                Add
+             <Fab padding='50' size="small" color="primary" aria-label="Add" className={classes.margin}>
+                  <AddIcon />
+                </Fab>
+              </Button>
+            </>
           ))}
 
         </div>
