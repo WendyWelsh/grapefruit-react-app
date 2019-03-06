@@ -316,13 +316,13 @@ const Minimized = ({ maximize }) => (
             justifyContent: 'center',
             width: '60px',
             height: '60px',
-            background: '#0093FF',
-            color: '#fff',
+            background: 'black',
+            color: 'white',
             borderRadius: '50%',
             cursor: 'pointer',
         }}
     >
-        <IconButton color="#fff" onClick={maximize}>
+        <IconButton onClick={maximize}>
             <ChatIcon />
         </IconButton>
     </div>
