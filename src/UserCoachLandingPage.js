@@ -55,31 +55,23 @@ class UserCoachLandingPage extends React.Component {
           <Grid item sm>
             <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
               <Button onClick={this.directToMessageBoard} variant="outlined" color="inherit">
-                Client Messages
+                Messages
               </Button>
             </Paper>
           </Grid>
           <Grid item sm>
+            
             <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
               <Button onClick={this.directToMacroForm} variant="outlined" color="inherit">
-                Client Macro Log
-              </Button>
-            </Paper>
-            <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
-              <Button onClick={this.directToMacroForm} variant="outlined" color="inherit">
-                Create Client Macro Track
+                Macros
               </Button>
             </Paper>
           </Grid>
           <Grid item sm>
-            <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
-              <Button onClick={this.directToWorkoutForm} variant="outlined" color="inherit">
-                Client Workout Log
-              </Button>
-            </Paper>
+            
             <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
               <Button onClick={this.directToWorkoutForm} variant="outlined" color="inherit" component={Link} to="/workoutform" >
-                Create Client Workouts
+                Workouts
               </Button>
             </Paper>
           </Grid>
