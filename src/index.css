@@ -1,5 +1,5 @@
 .CoachList{
-  background: url(images/shoes.jpg) no-repeat center center fixed; 
+  background: url(images/dumbellscrop.jpg) no-repeat center center fixed; 
   background-size: cover;
   margin: 0;
   padding: 0;
@@ -7,6 +7,29 @@
 } 
 .ClientList{
   background: url(images/deadlift.jpeg) no-repeat center center fixed; 
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+.UserLandingPage{
+  background: url(images/barbellsmall.jpg) no-repeat center center fixed; 
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+.UserCoachLandingPage{
+  background: url(images/manbridge.jpg) no-repeat center center fixed; 
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+.MacroForm{
+  background: url(images/crossfitdumbell.jpg) no-repeat center center fixed; 
   background-size: cover;
   margin: 0;
   padding: 0;

@@ -17,7 +17,7 @@ const styles = theme => ({
 });
 
 
-class UserLandingPage extends React.Component {
+class UserCoachLandingPage extends React.Component {
   constructor(props) {
     super(props)
 
@@ -25,53 +25,53 @@ class UserLandingPage extends React.Component {
     this.directToMacroForm = this.directToMacroForm.bind(this)
     this.directToWorkoutForm = this.directToWorkoutForm.bind(this)
   }
-
   state = {
-    anchorel: null,
-  }
+    anchorEl: null,
+  };
+
 
   handleClick = event => {
-    this.setState({anchorEl: event.currentTarget});
+    this.setState({ anchorEl: event.currentTarget });
   };
 
   handleClose = () => {
-    this.setState({anchorEl: null});
+    this.setState({ anchorEl: null });
   };
 
   directToMessageBoard() {
-    this.props.history.push("/messageboard")
+    this.props.history.push("/messageboard");
   }
 
   directToMacroForm() {
-    this.props.history.push("/macroform")
+    this.props.history.push("/macroform");
   }
-
   directToWorkoutForm() {
-    this.props.history.push("/workoutform")
+    this.props.history.push("/workoutform");
   }
-
   render() {
     return (
-      <div className="UserLandingPage">
+      <div className="UserCoachLandingPage">
         <Grid container>
           <Grid item sm>
-            <Paper style={{ padding: 20, margin: 100, textAlign: 'center', }}>
-              <Button onClick = {this.directToMessageBoard} variant="outlined" color="inherit">
-                Coach Messages
+            <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
+              <Button onClick={this.directToMessageBoard} variant="outlined" color="inherit">
+                Messages
               </Button>
             </Paper>
           </Grid>
           <Grid item sm>
+            
             <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
-              <Button  onClick = {this.directToWorkoutForm} variant="outlined" color="inherit">
-                Workout Log
+              <Button onClick={this.directToMacroForm} variant="outlined" color="inherit">
+                Macros
               </Button>
             </Paper>
           </Grid>
           <Grid item sm>
+            
             <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
-              <Button  onClick = {this.directToMacroForm} variant="outlined" color="inherit">
-                Macro Track Log
+              <Button onClick={this.directToWorkoutForm} variant="outlined" color="inherit" component={Link} to="/workoutform" >
+                Workouts
               </Button>
             </Paper>
           </Grid>
@@ -81,4 +81,4 @@ class UserLandingPage extends React.Component {
   }
 }
 
-export default UserLandingPage;
+export default UserCoachLandingPage;

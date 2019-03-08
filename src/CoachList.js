@@ -4,23 +4,11 @@ import { withStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import { withRouter } from 'react-router-dom';
-
-//Is the coach list a list of all coaches available? 
-//or a list of the logged in users coaches
-
-//If its a list of all coaches available
-//make componentDidMount makes an axios.get call to the backend. 
-//backend route is going to filter through and return all users that are coaches.
-//populate the images const set below with those coaches information
-//make a function that routes to a "profile page" for that user
-
-//or
-
-//if its a list of the logged in users coaches
-// this requires a seperate relationship database
-//make call to backend to filter through relationship table and find our user returning the coaches that have a relationship with us
-// populate the images with those coaches
-// make a function to route to either a profile page or messaging
+import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
+import Paper from '@material-ui/core/Paper';
 
 
 const styles = theme => ({
@@ -96,122 +84,118 @@ const styles = theme => ({
   },
 });
 
-const images = [
-  {
-    url: '/static/images/grid-list/breakfast.jpg',
-    title: 'Coach 1',
-    width: '40%',
-    id: null, 
-  },
-  {
-    url: '/static/images/grid-list/burgers.jpg',
-    title: 'Coach 2',
-    width: '30%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/camera.jpg',
-    title: 'Coach 3',
-    width: '30%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/breakfast.jpg',
-    title: 'Coach 4',
-    width: '40%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/burgers.jpg',
-    title: 'Coach 5',
-    width: '30%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/camera.jpg',
-    title: 'Coach 6',
-    width: '30%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/breakfast.jpg',
-    title: 'Coach 7',
-    width: '40%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/burgers.jpg',
-    title: 'Coach 8',
-    width: '30%',
-    id: null,
-  },
-  {
-    url: '/static/images/grid-list/camera.jpg',
-    title: 'Coach 9',
-    width: '30%',
-    id: null,
-  },
-];
+// removeClient(id) {
+//   this.setState({clientGroup: this.state.clientGroup.filter(client => client.id !== id)})
+// }
 
 
 class ButtonBases extends React.Component {
   constructor(props) {
     super(props)
 
-    this.directToClientList = this.directToClientList.bind(this)
-  }
-    state = {
+    this.state = {
       anchorEl: null,
-    };
-    
-    
-    handleClick = event => {
-      this.setState({ anchorEl: event.currentTarget });
-    };
-  
-    handleClose = () => {
-      this.setState({ anchorEl: null });
+      coaches: [{
+        url: '/static/images/grid-list/breakfast.jpg',
+        title: 'Client 1',
+        width: '18%',
+        id: 1,
+      },
+      {
+        url: '/static/images/grid-list/burgers.jpg',
+        title: 'Client 2',
+        width: '18%',
+        id: 2,
+      },
+      {
+        url: '/static/images/grid-list/camera.jpg',
+        title: 'Client 3',
+        width: '18%',
+        id: 3,
+      },]
     };
 
-    directToClientList() {
-      this.props.history.push("/clientlist");
-    }
+    this.directToCoachList = this.directToCoachList.bind(this)
+    this.handleRemoveCoach = this.handleRemoveCoach.bind(this)
+
+  }
+
+  handleRemoveCoach(id) {
+    console.log(id)
+  }
+
+  handleClick = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
+
+  directToCoachList() {
+    this.props.history.push("/usercoachlandingpage");
+  }
+
   render() {
+    const { anchorEl } = this.state;
     const { classes } = this.props;
+    const { coaches } = this.state;
+    console.log(coaches)
+    // const {removeClient } = this.props;
     return (
-      <div className="CoachList">
-
-        <div className={classes.root}>
-          {images.map(image => (
-            <ButtonBase
-              onClick={this.directToClientList}
-              focusRipple
-              key={image.title}
-              className={classes.image}
-              focusVisibleClassName={classes.focusVisible}
-              style={{
-                width: image.width,
-              }}
-            >
-              <span
-                className={classes.imageSrc}
+      <div className="ClientList">
+        {/* removeClient={this.removeClient.bind(this)} person={person} */}
+        <div className={classes.root} >
+          {coaches.map(image => (
+            <>
+              <ButtonBase
+                onClick={this.directToCoachList}
+                focusRipple
+                key={image.title}
+                className={classes.image}
+                focusVisibleClassName={classes.focusVisible}
                 style={{
-                  backgroundImage: `url(${image.url})`,
+                  width: image.width,
                 }}
-              />
-              <span className={classes.imageBackdrop} />
-              <span className={classes.imageButton}>
-                <Typography
-                  component="span"
-                  variant="subtitle1"
-                  color="inherit"
-                  className={classes.imageTitle}
-                >
-                  {image.title}
-                  <span className={classes.imageMarked} />
-                </Typography>
-              </span>
-            </ButtonBase>
+              >
+                <span
+                  className={classes.imageSrc}
+                  style={{
+                    backgroundImage: `url(${image.url})`,
+                  }}
+                />
+                <span className={classes.imageBackdrop} />
+                <span className={classes.imageButton}>
+                  <Typography
+                    component="span"
+                    variant="subtitle1"
+                    color="inherit"
+                    className={classes.imageTitle}
+                  >
+                    {image.title}
+                    <span className={classes.imageMarked} />
+                  </Typography>
+                  {/* <Paper style={{ padding: 3, margin: 3, textAlign: 'center' }}>
+                  <Button variant="outlined" color="none">
+                    Remove
+                  </Button>
+                  <Button variant="outlined" color="none">
+                    Add
+                  </Button>
+                </Paper> */}
+                </span>
+              </ButtonBase>
+              <Button id={image.id} onClick={() => this.handleRemoveCoach(image.id)} variant="outlined" color="primary" className={classes.button}>
+                Delete
+            <DeleteIcon className={classes.rightIcon} />
+              </Button>
+              <Button id={image.id} onClick={() => this.handleRemoveCoach(image.id)} variant="outlined" color="primary" className={classes.button}>
+                Add
+             <Fab padding='50' size="small" color="primary" aria-label="Add" className={classes.margin}>
+                  <AddIcon />
+                </Fab>
+              </Button>
+            </>
           ))}
 
         </div>
