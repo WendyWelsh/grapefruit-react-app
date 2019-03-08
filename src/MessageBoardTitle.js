@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 function MessageBoardTitle() {
-    return <p class="title">My awesome chat app</p>
+    return <p class="title">Mike you're just fantastic.</p>
   }
 
 // class MessageBoardTitle extends React.Component {
