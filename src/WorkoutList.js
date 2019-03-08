@@ -7,6 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import {withRouter} from "react-router-dom"
 import Button from '@material-ui/core/Button';
+import {workoutMuscleGroup,workoutSets,workoutReps,workoutRPE,allWorkouts} from './WorkoutStorage'
 
 const styles = theme => ({
     root: {
@@ -21,114 +22,47 @@ const styles = theme => ({
     },
 });
 
-const muscleGroup = [
-    {
-        value: 'Chest',
-        label: 'Chest',
-    },
-    {
-        value: 'Back',
-        label: 'Back',
-    },
-    {
-        value: 'Legs',
-        label: 'Legs',
-    },
-    {
-        value: 'Shoulders',
-        label: 'Shoulders',
-    },
-    {
-        value: 'Calves',
-        label: 'Calves',
-    },
-    {
-        value: 'Biceps',
-        label: 'Biceps',
 
-    },
-    {
-        value: 'Cardio',
-        label: 'Cardio',
-    },
-    {
-        value: 'Glutes',
-        label: 'Glutes',
-    },
-];
-const workout = [
-    {
-        value: 'Bench press',
-        label: 'Bench press',
-    },
-    {
-        value: 'Incline Press',
-        label: 'Incline Press',
-    },
-    {
-        value: 'Flys',
-        label: 'Flys',
-    },
-    {
-        value: 'Pushups',
-        label: 'Pushups',
-    },
-    {
-        value: 'Dips',
-        label: 'Dips',
-    },
-    {
-        value: 'Decline Press',
-        label: 'Decline Press',
-    },
-];
+// const workout = [
+//     {
+//         value: 'Bench press',
+//         label: 'Bench press',
+//     },
+//     {
+//         value: 'Incline Press',
+//         label: 'Incline Press',
+//     },
+//     {
+//         value: 'Flys',
+//         label: 'Flys',
+//     },
+//     {
+//         value: 'Pushups',
+//         label: 'Pushups',
+//     },
+//     {
+//         value: 'Dips',
+//         label: 'Dips',
+//     },
+//     {
+//         value: 'Decline Press',
+//         label: 'Decline Press',
+//     },
+// ];
 
-const sets = [
-    {value: '1',label: '1',},
-    {value: '2',label: '2',},
-    {value: '3',label: '3',},
-    {value: '4',label: '4',},
-    {value: '5',label: '5',},
-    {value: '6',label: '6',},
-    {value: '7',label: '7',},
-    {value: '8',label: '8',},
-    {value: '9',label: '9',},
-    {value: '10',label: '10',},
-]
-const reps = [
-    {value: '1',label: '1',},
-    {value: '2',label: '2',},
-    {value: '3',label: '3',},
-    {value: '4',label: '4',},
-    {value: '5',label: '5',},
-    {value: '6',label: '6',},
-    {value: '7',label: '7',},
-    {value: '8',label: '8',},
-    {value: '9',label: '9',},
-    {value: '10',label: '10',},
-]
-const rpe = [
-    {value: '1',label: '1',},
-    {value: '2',label: '2',},
-    {value: '3',label: '3',},
-    {value: '4',label: '4',},
-    {value: '5',label: '5',},
-    {value: '6',label: '6',},
-    {value: '7',label: '7',},
-    {value: '8',label: '8',},
-    {value: '9',label: '9',},
-    {value: '10',label: '10',},
-]
+
 
 class WorkoutList extends React.Component {
     constructor(prop) {
         super(prop)
         this.state = {
-            muscleGroup: '',
+            workoutMuscleGroup: '',
             workout: '',
             sets: '',
             reps: '',
             rpe: '',
+            allWorkouts: allWorkouts,
+            filteredWorkOuts: []
             
         };
       
@@ -138,11 +72,26 @@ class WorkoutList extends React.Component {
        console.log("you clicked the FN button!!")
     }
 
-    handleChange = prop => event => {
+    handleChange = prop => event => {  
         this.setState({ [prop]: event.target.value });
+        this.getExercisesByMuscles();
+    }
+
+    getExercisesByMuscles() {
+        return this.state.allWorkouts.reduce((allWorkouts, workout) => {
+            const { workoutMuscleGroup } = workout
+
+            allWorkouts[workoutMuscleGroup] = allWorkouts[workoutMuscleGroup]
+            ? [...allWorkouts[workoutMuscleGroup], workout]
+            : [workout]
+            return allWorkouts
+        }, {})
+        
     }
 
         render() {
+            console.log(this.getExercisesByMuscles())
+            
             const { classes } = this.props;
 
             return (
@@ -151,13 +100,13 @@ class WorkoutList extends React.Component {
                         select
                         className={classNames(classes.margin, classes.textField)}
                         variant="outlined"
-                        value={this.state.muscleGroup}
-                        onChange={this.handleChange('muscleGroup')}
+                        value={this.state.workoutMuscleGroup}
+                        onChange={this.handleChange('workoutMuscleGroup')}
                         InputProps={{
                             startAdornment: <InputAdornment position="start">Muscle Group</InputAdornment>,
                         }}
                     >
-                        {muscleGroup.map(option => (
+                        {workoutMuscleGroup.map(option => (
                             <MenuItem key={option.value} value={option.value}>
                                 {option.label}
                             </MenuItem>
@@ -173,9 +122,9 @@ class WorkoutList extends React.Component {
                             startAdornment: <InputAdornment position="start">Workout</InputAdornment>,
                         }}
                     >
-                        {workout.map(option => (
-                            <MenuItem key={option.value} value={option.value}>
-                                {option.label}
+                        {allWorkouts.map(workout => (
+                            <MenuItem key={workout.title} value={workout.title}>
+                                {workout.title}
                             </MenuItem>
                         ))}
                     </TextField>
@@ -183,13 +132,13 @@ class WorkoutList extends React.Component {
                         select
                         className={classNames(classes.margin, classes.textField)}
                         variant="outlined"
-                        value={this.state.sets}
+                        value={workoutSets}
                         onChange={this.handleChange('sets')}
                         InputProps={{
                             startAdornment: <InputAdornment position="start">Sets</InputAdornment>,
                         }}
                     >
-                        {sets.map(option => (
+                        {workoutSets.map(option => (
                             <MenuItem key={option.value} value={option.value}>
                                 {option.label}
                             </MenuItem>
@@ -199,13 +148,13 @@ class WorkoutList extends React.Component {
                         select
                         className={classNames(classes.margin, classes.textField)}
                         variant="outlined"
-                        value={this.state.reps}
+                        value={workoutReps}
                         onChange={this.handleChange('reps')}
                         InputProps={{
                             startAdornment: <InputAdornment position="start">Reps</InputAdornment>,
                         }}
                     >
-                        {reps.map(option => (
+                        {workoutReps.map(option => (
                             <MenuItem key={option.value} value={option.value}>
                                 {option.label}
                             </MenuItem>
@@ -215,13 +164,13 @@ class WorkoutList extends React.Component {
                         select
                         className={classNames(classes.margin, classes.textField)}
                         variant="outlined"
-                        value={this.state.rpe}
+                        value={workoutRPE}
                         onChange={this.handleChange('rpe')}
                         InputProps={{
                             startAdornment: <InputAdornment position="start">RPE</InputAdornment>,
                         }}
                     >
-                        {rpe.map(option => (
+                        {workoutRPE.map(option => (
                             <MenuItem key={option.value} value={option.value}>
                                 {option.label}
                             </MenuItem>
@@ -230,6 +179,7 @@ class WorkoutList extends React.Component {
                     <Button onClick={this.handleClick} variant="outlined" size="large" color="primary" className={classes.margin}>
                         SUBMIT
                 </Button>
+              
                 </div>
             );
         }
