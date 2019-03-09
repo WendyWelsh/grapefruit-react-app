@@ -61,7 +61,7 @@ class Register extends React.Component {
       username: null,
       password: null,
       email: null,
-      role: 'client',
+      role: '1',
       formErrors: {
         username: "",
         password: "",
@@ -190,24 +190,6 @@ class Register extends React.Component {
                 )}
               </FormControl>
 
-              {/* <FormControlLabel
-            control={<Checkbox 
-              color="primary" 
-              name="role" 
-              value="coach" 
-              onChange={this.handleChange}
-              />}
-            label="Coach"
-          />
-              <FormControlLabel
-            control={<Checkbox 
-              color="primary" 
-              name="role" 
-              value="client" 
-              onChange={this.handleChange}
-              />}
-            label="Client"
-          /> */}
 
               <RadioGroup
                 aria-label="role"
@@ -216,13 +198,13 @@ class Register extends React.Component {
                 onChange={this.handleChange}
               >
                 <FormControlLabel
-                  value="coach"
+                  value="0"
                   control={<Radio color="primary" />}
                   label="Coach"
 
                 />
                 <FormControlLabel
-                  value="client"
+                  value="1"
                   control={<Radio color="primary" />}
                   label="Client"
 
