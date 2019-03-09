@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Chatkit from '@pusher/chatkit-client'
-import { withRouter } from 'react-router-dom'
 import {
     ThemeProvider,
     Avatar,
@@ -61,8 +60,9 @@ class MessageBoard extends Component {
             messageInput: '',
             messages: [],
             chatOpen: true,
-            sender: 'matt',
-            reciever: 'fred',
+            sender: 'fred',
+            reciever: 'bunyan',
+            room: '',
         };
 
         this.listMessages = this.listMessages.bind(this);
@@ -71,12 +71,8 @@ class MessageBoard extends Component {
         this.createRoom = this.createRoom.bind(this);
     }
 
-    
-
     componentDidMount() {
-        // this.isLoggedIn()
         this.createRoom(this.state.sender, this.state.reciever)
-        this.connect(this.state.sender)
     }
 
     createRoom(sender, reciever) {
@@ -84,10 +80,15 @@ class MessageBoard extends Component {
             {
                 user_id: sender,
                 inspector_id: reciever,
-            })
+            }).then((response)=> {
+                console.log('axios post ' + response.data)
+                this.setState({room:response.data.toString()})
+                this.connect(this.state.sender,response.data.toString())
+                console.log('state room' + this.state.room)
+              })
     }
 
-    connect(user) {
+    connect(user,roomId) {
         const tokenProvider = new Chatkit.TokenProvider({
             url: "https://us1.pusherplatform.io/services/chatkit_token_provider/v1/1d7cfa46-c2f6-46f8-826e-4b94a8d46b2e/token"
         });
@@ -102,7 +103,7 @@ class MessageBoard extends Component {
             .connect()
             .then(currentUser => {
                 currentUser.subscribeToRoom({
-                    roomId: currentUser.rooms[0].id,//this part needs to be the actual room
+                    roomId: roomId,
                     hooks: {
                         onMessage: message => {
                             var joined = this.state.messages
@@ -111,9 +112,6 @@ class MessageBoard extends Component {
                         }
                     }
                 });
-            })
-            .catch(error => {
-                console.error("error:", error);
             })
     }
 
@@ -140,12 +138,12 @@ class MessageBoard extends Component {
         )
     }
 
-    sendMessage(sender, reciever, input) {
+    sendMessage(sender, room, input) {
         if (input.length) {
             axios.post(`/chatSendMessage`,
                 {
                     sender_id: sender,
-                    reciever_id: reciever,
+                    room_id: room,
                     message: input
                 })
         } else {
@@ -159,7 +157,7 @@ class MessageBoard extends Component {
                 <ThemeProvider theme={themes['myTheme']}>
                     <FixedWrapper.Root>
                         <FixedWrapper.Maximized>
-                            <Maximized sender={this.state.sender} reciever={this.state.reciever} messageInput={this.state.messageInput} listMessages={this.listMessages} handleChange={this.handleChange} sendMessage={this.sendMessage} />
+                            <Maximized sender={this.state.sender} room={this.state.room} messageInput={this.state.messageInput} listMessages={this.listMessages} handleChange={this.handleChange} sendMessage={this.sendMessage}/>
                         </FixedWrapper.Maximized>
                         <FixedWrapper.Minimized>
                             <Minimized />
@@ -171,14 +169,14 @@ class MessageBoard extends Component {
     }
 }
 
-export default withRouter(MessageBoard)
+export default MessageBoard
 
 const Maximized = ({
     listMessages,
     sendMessage,
     minimize,
     sender,
-    reciever,
+    room,
 }) => {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', height: '100%', }}>
@@ -195,7 +193,7 @@ const Maximized = ({
                     {listMessages()}
                 </MessageList>
             </div>
-            <TextComposer onSend={(data) => { sendMessage(sender, reciever, data) }}>
+            <TextComposer onSend={(data) => { sendMessage(sender, room, data) }}>
                 <Row align="center">
                     <TextInput />
                     <SendButton />
