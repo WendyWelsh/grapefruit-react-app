@@ -103,7 +103,7 @@ class ButtonBases extends React.Component {
       anchorEl: null,
       clients: [{
         url: '/static/images/grid-list/breakfast.jpg',
-        title: 'Client 1',
+        title: 'joe',
         width: '25%',
         id: 1,
       },
