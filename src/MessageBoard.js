@@ -1,102 +1,8 @@
-// import React, { Component } from "react";
-// import MessageList from './MessageList';
-// import MessageBoardTitle from './MessageBoardTitle';
-// import SendMessageForm from './SendMessageForm';
-// import Chatkit from '@pusher/chatkit-client'
-
-// const chatkit = new Chatkit({
-//   instanceLocator: "v1:us1-staging:...",
-//   key: "9f0ae37c-1310-4fb2-b517...",
-// })
-
-// const Chatkit = require('@pusher/chatkit-server')
-
-// const instanceLocator = "v1:us1:1d7cfa46-c2f6-46f8-826e-4b94a8d46b2e";
-
-// const testToken = "https://us1.pusherplatform.io/services/chatkit_token_provider/v1/1d7cfa46-c2f6-46f8-826e-4b94a8d46b2e/token";
-
-// const userName = "user1";
-
-// const roomId = "19389927";
-
-// const DUMMY_DATA = [
-//     {
-//       senderId: "perborgen",
-//       text: "who'll win?",
-//       id: "0"
-//     },
-//     {
-//       senderId: "janedoe",
-//       text: "who'll win?",
-//       id: "1"
-//     }
-// ]
-
-
-// class MessageBoard extends React.Component {
-//     constructor() { 
-//         super()
-//         this.state = {
-//            messages: []
-//         }
-//     }
-
-//     sendMessage(text) {
-//         this.currentUser.sendMessage({
-//           text,
-//           roomId: roomId
-//         })
-//     }
-  
-//     componentDidMount() {
-//         const tokenProvider = new Chatkit.TokenProvider({
-//             url: testToken
-
-//           });
-
-//         const chatManager = new Chatkit.ChatManager({
-//           instanceLocator: instanceLocator,
-//           userId: userName,
-//           tokenProvider: tokenProvider
-//         })
-        
-        
-//         chatManager.connect().then(currentUser => {
-//             currentUser.subscribeToRoom({
-//               roomId: roomId,
-//               hooks: {
-//                 onMessage: message => {
-//                   this.setState({
-//                     messages: [...this.state.messages, message]
-//                   })
-//                 }
-//               }
-//             })
-//         })
-//     }
-     
-//     render() {
-//       return (
-//         <div className="MessageBoard">
-//           <MessageBoardTitle />
-//           <MessageList  messages={this.state.messages}/>
-//           <SendMessageForm sendMessage={this.sendMessage} />
-//        </div>
-//       )
-//     }
-// }
-
-//   export default MessageBoard;
-
 import React, { Component } from 'react';
 import axios from 'axios';
 import Chatkit from '@pusher/chatkit-client'
 import {
     ThemeProvider,
-    darkTheme,
-    elegantTheme,
-    purpleTheme,
-    defaultTheme,
     Avatar,
     TitleBar,
     TextInput,
@@ -112,96 +18,103 @@ import {
     IconButton,
     SendButton,
 } from '@livechat/ui-kit'
+
 const themes = {
-    purpleTheme: {
-        ...purpleTheme,
+    myTheme: {
         TitleBar: {
-            ...purpleTheme.TitleBar,
             css: {
                 backgroundColor: 'rgba(0,0,0,0)',
                 color: 'black',
             },
             IconButton: {
-                ...purpleTheme.TitleBar.IconButton,
                 css: {
-                  // ...purpleTheme.IconButton.css,
-                    backgroundColor: 'green',
+                    backgroundColor: 'rgba(20,20,20,0.1)',
+                    border: 'solid black 0.1em',
                     borderRadius: '50%',
                     color: 'black',
                 },
             },
         },
         MessageList: {
-            ...purpleTheme.MessageList,
             css: {
-                // ...purpleTheme.MessageList.css,
-                backgroundColor: 'rgb(0,206,210)',
+                border: 'solid black 0.1em',
+                backgroundColor: 'rgba(20,20,20,0.1)',
                 borderRadius: '1em',
             },
+
         },
         TextComposer: {
-            ...purpleTheme.TextComposer,
             css: {
-                ...purpleTheme.TextComposer.css,
-                // backgroundColor: 'blue',
                 marginTop: '1em',
             },
         },
     },
 }
-export default class MessageBoard extends Component {
+
+
+class MessageBoard extends Component {
+
     constructor() {
         super()
         this.state = {
             messageInput: '',
             messages: [],
             chatOpen: true,
+            sender: 'fred',
+            reciever: 'bunyan',
+            room: '',
         };
+
         this.listMessages = this.listMessages.bind(this);
         this.sendMessage = this.sendMessage.bind(this);
-        this.handleChange = this.handleChange.bind(this);
         this.connect = this.connect.bind(this);
         this.createRoom = this.createRoom.bind(this);
     }
+
     componentDidMount() {
-        this.connect('user1')
+        this.createRoom(this.state.sender, this.state.reciever)
     }
-    connect(user) {
+
+    createRoom(sender, reciever) {
+        axios.post(`/chatCreateRoom`,
+            {
+                user_id: sender,
+                inspector_id: reciever,
+            }).then((response)=> {
+                console.log('axios post ' + response.data)
+                this.setState({room:response.data.toString()})
+                this.connect(this.state.sender,response.data.toString())
+                console.log('state room' + this.state.room)
+              })
+    }
+
+    connect(user,roomId) {
         const tokenProvider = new Chatkit.TokenProvider({
             url: "https://us1.pusherplatform.io/services/chatkit_token_provider/v1/1d7cfa46-c2f6-46f8-826e-4b94a8d46b2e/token"
-
         });
+
         const chatManager = new Chatkit.ChatManager({
             instanceLocator: process.env.REACT_APP_CHATKIT_INSTANCE_LOCATOR,
             userId: user,
             tokenProvider: tokenProvider
         });
-        chatManager
-            .connect()
-            .then(currentUser => {
-                console.log("Connected as user ", currentUser);
-            })
-            .catch(error => {
-                console.error("error:", error);
-            });
+
         chatManager
             .connect()
             .then(currentUser => {
                 currentUser.subscribeToRoom({
-                    roomId: currentUser.rooms[0].id,
+                    roomId: roomId,
                     hooks: {
                         onMessage: message => {
-                            // var joined = 
-                            this.state.messages.push({ user: message.senderId, text: message.text })
-                            // this.setState({ mesages: joined })
+                            var joined = this.state.messages
+                            joined.push({ user: message.senderId, text: message.text })
+                            this.setState({ messages: joined })
                         }
                     }
                 });
             })
-            .catch(error => {
-                console.error("error:", error);
-            })
     }
+
     listMessages() {
         var i = 100;
         return (
@@ -212,7 +125,7 @@ export default class MessageBoard extends Component {
                         <Row>
                             <Avatar letter={item.user[0]} />
                             <MessageGroup onlyFirstWithMeta>
-                                <Message date="00:00" isOwn={true} authorName={item.user} radiusType='single'>
+                                <Message date="00:00" isOwn={false} authorName={item.user} radiusType='single'>
                                     <MessageText>
                                         {item.text}
                                     </MessageText>
@@ -224,47 +137,30 @@ export default class MessageBoard extends Component {
             })
         )
     }
-    createRoom(sender, reciever) {
-        axios.post(`/chatCreateRoom`,
-            {
-                user_id: sender,
-                inspector_id: reciever,
-            })
-        console.log('room Created')
-    }
-    sendMessage(sender, reciever, input) {
-        this.createRoom(sender, reciever)
+
+    sendMessage(sender, room, input) {
         if (input.length) {
             axios.post(`/chatSendMessage`,
                 {
                     sender_id: sender,
-                    reciever_id: reciever,
+                    room_id: room,
                     message: input
                 })
-            console.log("Sent Message")
         } else {
             console.log("Field is Empty")
         }
     }
-    
-    handleChange = name => event => {
-        this.setState({
-            [name]: event.target.value,
-        });
-        console.log(event.target.value)
-    };
-    //How do we minimize and maximize the fixed wrapper
-    //how do we add a change handler to the
+
     render() {
         return (
             <div>
-                <ThemeProvider theme={themes['purpleTheme']}>
+                <ThemeProvider theme={themes['myTheme']}>
                     <FixedWrapper.Root>
                         <FixedWrapper.Maximized>
-                            <Maximized {...this.props} messageInput={this.state.messageInput} listMessages={this.listMessages} handleChange={this.handleChange} sendMessage={this.sendMessage} />
+                            <Maximized sender={this.state.sender} room={this.state.room} messageInput={this.state.messageInput} listMessages={this.listMessages} handleChange={this.handleChange} sendMessage={this.sendMessage}/>
                         </FixedWrapper.Maximized>
                         <FixedWrapper.Minimized>
-                            <Minimized {...this.props} />
+                            <Minimized />
                         </FixedWrapper.Minimized>
                     </FixedWrapper.Root>
                 </ThemeProvider>
@@ -272,12 +168,15 @@ export default class MessageBoard extends Component {
         );
     }
 }
+
+export default MessageBoard
+
 const Maximized = ({
     listMessages,
-    handleChange,
     sendMessage,
-    messageInput,
     minimize,
+    sender,
+    room,
 }) => {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', height: '100%', }}>
@@ -294,20 +193,16 @@ const Maximized = ({
                     {listMessages()}
                 </MessageList>
             </div>
-            <TextComposer
-                onChange={handleChange('messageInput')}
-                onClick={() => sendMessage('user1', 'user2', messageInput)}
-            >
+            <TextComposer onSend={(data) => { sendMessage(sender, room, data) }}>
                 <Row align="center">
                     <TextInput />
                     <SendButton />
                 </Row>
             </TextComposer>
-            <div style={{ textAlign: 'center', fontSize: '.6em', padding: '.4em', background: '#fff', color: '#888', }}>
-            </div>
         </div>
     )
 }
+
 const Minimized = ({ maximize }) => (
     <div
         style={{
@@ -316,9 +211,10 @@ const Minimized = ({ maximize }) => (
             justifyContent: 'center',
             width: '60px',
             height: '60px',
-            background: 'black',
-            color: 'white',
+            background: 'rgb(0,206,210)',
+            color: '#fff',
             borderRadius: '50%',
+            border: 'solid black 0.1em',
             cursor: 'pointer',
         }}
     >
