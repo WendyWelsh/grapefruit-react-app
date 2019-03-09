@@ -40,10 +40,10 @@ class NavBarButton extends React.Component {
     this.props.history.push("/macroform");
   }
   directToClientList() {
-    this.props.history.push("/clientlist");
+    this.props.history.push("/coach/clientlist");
   }
   directToCoachList() {
-    this.props.history.push("/coachlist");
+    this.props.history.push("/client/coachlist");
   }
 
   render() {
