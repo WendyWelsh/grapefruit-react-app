@@ -10,7 +10,6 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
@@ -20,6 +19,9 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
 import WorkoutList from './WorkoutList'
 import {withRouter} from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+
+
 
 let counter = 0;
 function createData(name, calories, fat, carbs, protein) {
@@ -52,10 +54,10 @@ function getSorting(order, orderBy) {
 }
 
 const rows = [
-  { id: 'name', numeric: false, disablePadding: true, label: 'Chest' },
-  { id: 'calories', numeric: true, disablePadding: false, label: 'Sets' },
-  { id: 'fat', numeric: true, disablePadding: false, label: 'Reps' },
-  { id: 'carbs', numeric: true, disablePadding: false, label: 'RPE' },
+  { id: 'Chest', numeric: false, disablePadding: true, label: 'Chest' },
+  { id: 'Sets', numeric: true, disablePadding: false, label: 'Sets' },
+  { id: 'Reps', numeric: true, disablePadding: false, label: 'Reps' },
+  { id: 'RPE', numeric: true, disablePadding: false, label: 'RPE' },
   
 ];
 
@@ -69,7 +71,7 @@ class WorkoutForm extends React.Component {
 
     return (
      
-      <div classname="WorkoutForm">
+      
       <TableHead>
         <TableRow>
           <TableCell padding="checkbox">
@@ -106,7 +108,7 @@ class WorkoutForm extends React.Component {
           )}
         </TableRow>
       </TableHead>
-      </div>
+      
     
     );
   }
@@ -157,13 +159,13 @@ let EnhancedTableToolbar = props => {
     >
       <div className={classes.title}>
         {numSelected > 0 ? (
-          <Typography color="inherit" variant="subtitle1">
+          <div color="inherit" variant="subtitle1">
             {numSelected} selected
-          </Typography>
+          </div>
         ) : (
-          <Typography variant="h6" id="tableTitle">
+          <div variant="h6" id="tableTitle">
             Muscle Group
-          </Typography>
+          </div>
         )}
       </div>
       <div className={classes.spacer} />
@@ -194,6 +196,9 @@ EnhancedTableToolbar.propTypes = {
 EnhancedTableToolbar = withStyles(toolbarStyles)(EnhancedTableToolbar);
 
 const styles = theme => ({
+  margin: {
+    margin: theme.spacing.unit,
+  },
   root: {
     width: '100%',
     marginTop: theme.spacing.unit * 3,
@@ -204,6 +209,7 @@ const styles = theme => ({
   tableWrapper: {
     overflowX: 'auto',
   },
+  
 });
 
 class EnhancedTable extends React.Component {
@@ -342,6 +348,9 @@ class EnhancedTable extends React.Component {
           onChangeRowsPerPage={this.handleChangeRowsPerPage}
         />
       </Paper>
+      <Button variant="outlined" size="large" color="primary" className={classes.margin}>
+    Submit Workout
+    </Button>
       </div>
     );
   }
