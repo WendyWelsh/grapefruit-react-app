@@ -17,7 +17,7 @@ const styles = theme => ({
 });
 
 
-class UserCoachLandingPage extends React.Component {
+class CoachLandingPage extends React.Component {
   constructor(props) {
     super(props)
 
@@ -50,7 +50,7 @@ class UserCoachLandingPage extends React.Component {
   }
   render() {
     return (
-      <div className="UserCoachLandingPage">
+      <div className="CoachLandingPage">
         <Grid container>
           <Grid item sm>
             <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
@@ -81,4 +81,4 @@ class UserCoachLandingPage extends React.Component {
   }
 }
 
-export default UserCoachLandingPage;
+export default CoachLandingPage;

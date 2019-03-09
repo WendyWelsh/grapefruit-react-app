@@ -12,22 +12,8 @@ import Fab from '@material-ui/core/Fab';
 import Icon from '@material-ui/core/Icon';
 
 
-//Is the coach list a list of all coaches available? 
-//or a list of the logged in users coaches
 
-//If its a list of all coaches available
-//make componentDidMount makes an axios.get call to the backend. 
-//backend route is going to filter through and return all users that are coaches.
-//populate the images const set below with those coaches information
-//make a function that routes to a "profile page" for that user
 
-//or
-
-//if its a list of the logged in users coaches
-// this requires a seperate relationship database
-//make call to backend to filter through relationship table and find our user returning the coaches that have a relationship with us
-// populate the images with those coaches
-// make a function to route to either a profile page or messaging
 
 
 const styles = theme => ({
@@ -117,21 +103,22 @@ class ButtonBases extends React.Component {
       anchorEl: null,
       clients: [{
         url: '/static/images/grid-list/breakfast.jpg',
-        title: 'Coach 1',
-        width: '12%',
+        title: 'joe',
+        width: '25%',
         id: 1,
       },
       {
         url: '/static/images/grid-list/burgers.jpg',
-        title: 'Coach 2',
-        width: '12%',
+        title: 'Client 2',
+        width: '25%',
         id: 2,
       },
       {
         url: '/static/images/grid-list/camera.jpg',
-        title: 'Coach 3',
-        width: '12%',
+        title: 'Client 3',
+        width: '25%',
         id: 3,
+        
       },
       ]
     };
@@ -140,8 +127,19 @@ class ButtonBases extends React.Component {
     this.handleRemoveClient = this.handleRemoveClient.bind(this)
   }
 
+  // handleRemoveClient(id) {
+  //   const clientId = this.state.id
+    // axios.delete('http://localhost3000/coach/clientlist/$(clientId)')
+    // .then(response =>{
+    //   this.props.history.push('/');
+    // console.log(id);
+  // })
+  // .catch(err => console.log(err));
+// }
+
   handleRemoveClient(id) {
     console.log(id)
+    
 
   }
 
@@ -154,7 +152,7 @@ class ButtonBases extends React.Component {
   };
 
   directToUserLandingPage() {
-    this.props.history.push("/userlandingpage");
+    this.props.history.push("/user/home");
   }
   render() {
     const { classes } = this.props;
@@ -192,36 +190,28 @@ class ButtonBases extends React.Component {
                   >
                     {image.title}
                     <span className={classes.imageMarked} />
-                  </Typography>
+                  </Typography>                
                 </span>
               </ButtonBase>
-              {/* <Paper style={{ padding: 3, margin: 3, textAlign: 'center' }}>
-                <Button id={image.id} onClick={() => this.handleRemoveClient(image.id)} variant="outlined" color="none">
-                  Remove
-             </Button>
-              </Paper> */}
-              {/* <Paper style={{ padding: 3, margin: 3, textAlign: 'center' }}>
-                <Button variant="outlined" color="none">
-                  Add
-                  </Button>
-              </Paper> */}
-              {/* <Button variant="contained" color="primary" className={classes.button}></Button> */}
-              <Button id={image.id} onClick={() => this.handleRemoveClient(image.id)} variant="outlined" color="primary" className={classes.button}>
-                Delete
+                        {/* <Button variant="contained" color="primary" className={classes.button}></Button> */}
+              <Button id={image.id} onClick={() => this.handleRemoveClient(image.id)} color="primary" className={classes.button}>
+              
                <DeleteIcon className={classes.rightIcon} />
               </Button>
-              <Button id={image.id} onClick={() => this.handleRemoveClient(image.id)} padding='50' variant="outlined" color="primary" className={classes.button}>
-                Add
-                <Fab padding= '50' size="small" color="primary" aria-label="Add" className={classes.margin}>
-                  <AddIcon />
-                </Fab>
-
-              </Button>
+            
 
             </>
           ))}
 
         </div>
+           <ButtonBase>
+                <Button variant="outlined" color="primary">
+                 
+                  <Fab size="medium" color="primary" aria-label="Add" className={classes.margin}>
+          <AddIcon />
+        </Fab>
+                  </Button>
+              </ButtonBase>
       </div>
     );
   }

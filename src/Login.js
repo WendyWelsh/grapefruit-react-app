@@ -10,6 +10,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import withStyles from '@material-ui/core/styles/withStyles';
 import {withRouter} from 'react-router-dom';
+import axios from "axios"
 
 import ButtonNavigation from './ButtonNavigation';
 
@@ -45,10 +46,91 @@ const styles = theme => ({
   },
 });
 
-class Login extends React.Component {
 
+const formValid = ({ formErrors, ...rest }) => {
+  let valid = true
+
+  //validate form errors being empty
+  Object.values(formErrors).forEach(val => {
+      val.length > 0 && (valid = false)
+  })
+
+  //validate the form was filled out
+  Object.values(rest).forEach(val => {
+      val === null && (valid = false)
+  })
+
+  return valid
+}
+
+class Login extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state= {
+      email: null,
+      password: null,
+      logged_in: false,
+      token: null,
+      formErrors: {
+        email: "",
+        password: "",
+        logged_in: false,
+      }
+    }
+
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleSubmit(e) {
+    e.preventDefault()
+
+    //{username, password})
+
+    axios.post("/login",
+
+        {
+            email: this.state.email,
+            password: this.state.password,
+
+        }
+    ).then((response) => {
+       this.props.history.push('/home')
+       localStorage.setItem("instaham-jwt", `Bearer ${response.data.data.token}`);
+
+    })
+
+
+}
+
+
+handleChange = e => {
+    e.preventDefault()
+    const { name, value } = e.target
+    let formErrors = this.state.formErrors
+
+    switch (name) {
+        case "email":
+            formErrors.email =
+                value.length < 6
+                    ? 'minimum 6 characters required' : ""
+            break;
+        case "password":
+            formErrors.password =
+                value.length < 6
+                    ? 'minimum 6 characters required' : ""
+            break;
+        default:
+            break;
+
+    }
+
+    this.setState({ formErrors, [name]: value })
+
+}
 
   render() {
+    const { formErrors } = this.state
 
     const { classes } = this.props;
     return (
@@ -66,11 +148,32 @@ class Login extends React.Component {
           <form className={this.props.classes.form}>
             <FormControl margin="normal" required fullWidth>
               <InputLabel htmlFor="email">Email Address</InputLabel>
-              <Input id="email" name="email" autoComplete="email" autoFocus />
+              <Input 
+              className={formErrors.email.length > 0 ? "error" : null}
+              id="email" 
+              name="email" 
+              autoComplete="email" 
+              autoFocus 
+              onChange={this.handleChange}
+              />
+              {formErrors.email.length > 0 && (
+                <span className="errorMessage">{formErrors.email}</span>
+              )}
             </FormControl>
+
             <FormControl margin="normal" required fullWidth>
-              <InputLabel htmlFor="password">Password</InputLabel>
-              <Input name="password" type="password" id="password" autoComplete="current-password" />
+              <InputLabel htmlFor="email">Password</InputLabel>
+              <Input 
+              className={formErrors.password.length > 0 ? "error" : null}
+              id="password" 
+              name="password" 
+              type="password" 
+              autoComplete="current-password"
+              onChange={this.handleChange}
+              />
+              {formErrors.password.length > 0 && (
+                <span className="errorMessage">{formErrors.password}</span>
+              )}
             </FormControl>
             
             <Button
