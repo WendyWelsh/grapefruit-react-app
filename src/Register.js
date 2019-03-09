@@ -13,6 +13,8 @@ import Paper from '@material-ui/core/Paper';
 import withStyles from '@material-ui/core/styles/withStyles';
 import ButtonNavigation from './ButtonNavigation';
 import { withRouter } from 'react-router-dom';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
 import axios from "axios"
 
 const styles = theme => ({
@@ -49,7 +51,7 @@ const styles = theme => ({
 
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
- );
+);
 
 class Register extends React.Component {
   constructor(props) {
@@ -59,6 +61,7 @@ class Register extends React.Component {
       username: null,
       password: null,
       email: null,
+      role: 'client',
       formErrors: {
         username: "",
         password: "",
@@ -73,56 +76,57 @@ class Register extends React.Component {
 
 
   //e.preventDefault() keeps page from refreshing after clicking submit
- handleSubmit(e) {
-   e.preventDefault()
+  handleSubmit(e) {
+    e.preventDefault()
 
-   //{username, email, password})
-   axios.post("/create",
-     {
-       username: this.state.username,
-       email: this.state.email,
-       password: this.state.password,
+    //{username, email, password})
+    axios.post("/create",
+      {
+        username: this.state.username,
+        email: this.state.email,
+        password: this.state.password,
+        role: this.state.role,
 
-     }
-   ).then((response) => {
+      }
+    ).then((response) => {
 
-     this.props.history.push('/home')
-   })
+      this.props.history.push('/user')
+    })
 
- }
+  }
 
- handleChange = e => {
-   e.preventDefault()
-   const { name, value } = e.target
-   let formErrors = this.state.formErrors
+  handleChange = e => {
+    e.preventDefault()
+    const { name, value } = e.target
+    let formErrors = this.state.formErrors
+    console.log("I'm working!")
+    //switch is a cleaner else if statement
+    //using ternary operator which is the ? so if value.length is less than 2 first string is executed if not second
 
-   //switch is a cleaner else if statement
-   //using ternary operator which is the ? so if value.length is less than 2 first string is executed if not second
 
+    switch (name) {
+      case "username":
+        formErrors.username =
+          value.length < 6
+            ? 'minimum 6 characters required' : ""
+        break;
+      case "password":
+        formErrors.password =
+          value.length < 6
+            ? 'minimum 6 characters required' : ""
+        break;
+      case "email":
+        formErrors.email = emailRegex.test(value)
+          ? ""
+          : "invalid email address";
+        break;
+      default:
+        break;
 
-   switch (name) {
-     case "username":
-       formErrors.username =
-         value.length < 6
-           ? 'minimum 6 characters required' : ""
-       break;
-     case "password":
-       formErrors.password =
-         value.length < 6
-           ? 'minimum 6 characters required' : ""
-       break;
-     case "email":
-       formErrors.email = emailRegex.test(value)
-         ? ""
-         : "invalid email address";
-       break;
-     default:
-       break;
+    }
+    this.setState({ formErrors, [name]: value }, () => console.log(this.state))
 
-   }
-   this.setState({ formErrors, [name]: value }, () => console.log(this.state))
-
- }
+  }
 
 
   render() {
@@ -143,78 +147,108 @@ class Register extends React.Component {
             <form className={classes.form} onSubmit={this.handleSubmit} noValidate>
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="username">UserName</InputLabel>
-                <Input 
-                id="username" 
-                name="username" 
-                autoComplete="username"
-                className={formErrors.username.length > 0 ? "error" : null}
-                 autoFocus
-                  />
-                 {formErrors.username.length > 0 && (
-               <span className="errorMessage">{formErrors.username}</span>
-             )}
+                <Input
+                  onChange={this.handleChange}
+                  id="username"
+                  name="username"
+                  autoComplete="username"
+                  className={formErrors.username.length > 0 ? "error" : null}
+                  autoFocus
+                />
+                {formErrors.username.length > 0 && (
+                  <span className="errorMessage">{formErrors.username}</span>
+                )}
               </FormControl>
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="email">Email Address</InputLabel>
-                <Input 
-                  id="email" 
-                  name="email" 
-                  autoComplete="email" 
+                <Input
+                  id="email"
+                  name="email"
+                  autoComplete="email"
                   className={formErrors.email.length > 0 ? "error" : null}
                   onChange={this.handleChange}
                   noValidate
                   autoFocus />
-                  {formErrors.email.length > 0 && (
-                    <span className="errorMessage">{formErrors.email}</span>
-                  )}
+                {formErrors.email.length > 0 && (
+                  <span className="errorMessage">{formErrors.email}</span>
+                )}
 
               </FormControl>
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="password">Password</InputLabel>
-                <Input 
-                name="password" 
-                type="password" 
-                id="password" 
-                autoComplete="current-password" 
-                className={formErrors.password.length > 0 ? "error" : null}
-                noValidate
-                onChange={this.handleChange}
+                <Input
+                  name="password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                  className={formErrors.password.length > 0 ? "error" : null}
+                  noValidate
+                  onChange={this.handleChange}
                 />
                 {formErrors.password.length > 0 && (
                   <span className="errorMessage">{formErrors.password}</span>
                 )}
               </FormControl>
 
-              <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
+              {/* <FormControlLabel
+            control={<Checkbox 
+              color="primary" 
+              name="role" 
+              value="coach" 
+              onChange={this.handleChange}
+              />}
             label="Coach"
           />
               <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
+            control={<Checkbox 
+              color="primary" 
+              name="role" 
+              value="client" 
+              onChange={this.handleChange}
+              />}
             label="Client"
-          />
-             
+          /> */}
 
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  className={classes.submit}
-                >
-                  Register
+              <RadioGroup
+                aria-label="role"
+                name="role"
+                value={this.state.role}
+                onChange={this.handleChange}
+              >
+                <FormControlLabel
+                  value="coach"
+                  control={<Radio color="primary" />}
+                  label="Coach"
+
+                />
+                <FormControlLabel
+                  value="client"
+                  control={<Radio color="primary" />}
+                  label="Client"
+
+                />
+              </RadioGroup>
+
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Register
           </Button>
-        </form>
-      </Paper>
-    </main>
-    </div>
-        );
-      }
-      }
-      
-      
+            </form>
+          </Paper>
+        </main>
+      </div>
+    );
+  }
+}
+
+
 Register.propTypes = {
-          classes: PropTypes.object.isRequired,
-      };
-      
+  classes: PropTypes.object.isRequired,
+};
+
 export default withRouter(withStyles(styles)(Register));
