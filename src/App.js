@@ -65,7 +65,7 @@ class App extends Component {
               <Route path="/coachworkoutselector" component={CoachWorkoutSelector} />
               <Route path="/messageboard" component={MessageBoard}/>
               <Route path="/client" component={UserLandingPage} />
-              {/* <Route path="/coach" component={CoachLandingPage} /> */}
+              <Route path="/coach/client/:id" component={CoachLandingPage} />
             </div>
           </MuiThemeProvider>
         </div>

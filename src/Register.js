@@ -89,13 +89,13 @@ class Register extends React.Component {
 
       }
     ).then((response) => {
-
+      localStorage.setItem("grapefruit-jwt", `Bearer ${response.data.data.token}`);
       if (response.data.role === 0 ) {
         this.props.history.push('/coach/clientlist')
       } else {
         this.props.history.push('/client')
       }
-      localStorage.setItem("grapefruit-jwt", `Bearer ${response.data.data.token}`);
+     
 
     })
 

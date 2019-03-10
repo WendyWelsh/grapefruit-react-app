@@ -167,8 +167,8 @@ class ButtonBases extends React.Component {
     this.setState({ anchorEl: null });
   };
 
-  directToUserLandingPage() {
-    this.props.history.push("/user/home");
+  directToUserLandingPage(clientId) {
+    this.props.history.push("/coach/client/" + clientId);
   }
   render() {
     const { classes } = this.props;
@@ -181,7 +181,7 @@ class ButtonBases extends React.Component {
           {clients.map(client => (
             <>
               <ButtonBase
-                onClick={this.directToUserLandingPage}
+                onClick={() => this.directToUserLandingPage(client.client.id)}
                 focusRipple
                 key={client.client.username}
                 className={classes.image}
