@@ -64,8 +64,8 @@ class App extends Component {
               <Route path="/macroform" component={MacroForm} />
               <Route path="/coachworkoutselector" component={CoachWorkoutSelector} />
               <Route path="/messageboard" component={MessageBoard}/>
-              <Route path="/user" component={UserLandingPage} />
-              <Route path="/coach" component={CoachLandingPage} />
+              <Route path="/client" component={UserLandingPage} />
+              {/* <Route path="/coach" component={CoachLandingPage} /> */}
             </div>
           </MuiThemeProvider>
         </div>
