@@ -32,19 +32,19 @@ class CoachLandingPage extends React.Component {
     this.directToMacroForm = this.directToMacroForm.bind(this)
     this.directToWorkoutForm = this.directToWorkoutForm.bind(this)
   }
-  
-componentDidMount(){
-  axios.get('/coach/clients/' + this.props.match.params.id,
-   {
-      headers: {
-        Authorization: localStorage.getItem('grapefruit-jwt')
-      }
-  }).then((response) => {
-    this.setState({client: response.data.data[0].client})
-    console.log(response)
 
-  })
-}
+  componentDidMount() {
+    axios.get('/coach/clients/' + this.props.match.params.id,
+      {
+        headers: {
+          Authorization: localStorage.getItem('grapefruit-jwt')
+        }
+      }).then((response) => {
+        this.setState({ client: response.data.data[0].client })
+        console.log(response)
+
+      })
+  }
 
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -62,7 +62,7 @@ componentDidMount(){
     this.props.history.push("/macroform");
   }
   directToWorkoutForm() {
-    this.props.history.push("/workoutform");
+    this.props.history.push("/coach/client/" + this.props.match.params.id + "/workout");
   }
   render() {
     return (
@@ -74,7 +74,7 @@ componentDidMount(){
             </Paper>
           </Grid>
         </Grid>
-          
+
         <Grid container>
           <Grid item sm>
             <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
@@ -84,7 +84,7 @@ componentDidMount(){
             </Paper>
           </Grid>
           <Grid item sm>
-            
+
             <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
               <Button onClick={this.directToMacroForm} variant="outlined" color="inherit">
                 Macros
@@ -92,9 +92,9 @@ componentDidMount(){
             </Paper>
           </Grid>
           <Grid item sm>
-            
+
             <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
-              <Button onClick={this.directToWorkoutForm} variant="outlined" color="inherit" component={Link} to="/workoutform" >
+              <Button onClick={this.directToWorkoutForm} variant="outlined" color="inherit" >
                 Workouts
               </Button>
             </Paper>

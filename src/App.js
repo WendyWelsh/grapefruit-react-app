@@ -16,6 +16,7 @@ import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import NavBar from "./NavBar";
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 import MessageBoard from "./MessageBoard";
+import EnhancedTable from "./WorkoutForm";
 
 const theme = createMuiTheme({
   palette: {
@@ -60,12 +61,12 @@ class App extends Component {
               <Route path="/register" component={Register} />
               <Route path="/coach/clientlist" component={ClientList} />
               {/* <Route path="/client/coachlist" component={CoachList} /> */}
-              <Route path="/workoutform" component={WorkoutForm} />
+              <Route path="/coach/client/:id/workout" component={EnhancedTable} />
               <Route path="/macroform" component={MacroForm} />
               <Route path="/coachworkoutselector" component={CoachWorkoutSelector} />
               <Route path="/messageboard" component={MessageBoard}/>
               <Route path="/client" component={UserLandingPage} />
-              <Route path="/coach/client/:id" component={CoachLandingPage} />
+              <Route exact path="/coach/client/:id" component={CoachLandingPage} />
             </div>
           </MuiThemeProvider>
         </div>
