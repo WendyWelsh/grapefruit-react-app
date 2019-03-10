@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+import axios from "axios";
 
 const styles = theme => ({
   button: {
@@ -20,15 +21,30 @@ const styles = theme => ({
 class CoachLandingPage extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      anchorEl: null,
+      client: {
+        username: ""
+      }
+    };
 
     this.directToMessageBoard = this.directToMessageBoard.bind(this)
     this.directToMacroForm = this.directToMacroForm.bind(this)
     this.directToWorkoutForm = this.directToWorkoutForm.bind(this)
   }
-  state = {
-    anchorEl: null,
-  };
+  
+componentDidMount(){
+  axios.get('/coach/clients/' + this.props.match.params.id,
+   {
+      headers: {
+        Authorization: localStorage.getItem('grapefruit-jwt')
+      }
+  }).then((response) => {
+    this.setState({client: response.data.data[0].client})
+    console.log(response)
 
+  })
+}
 
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -51,6 +67,14 @@ class CoachLandingPage extends React.Component {
   render() {
     return (
       <div className="CoachLandingPage">
+        <Grid container>
+          <Grid item sm>
+            <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
+              <h1>{this.state.client.username}</h1>
+            </Paper>
+          </Grid>
+        </Grid>
+          
         <Grid container>
           <Grid item sm>
             <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
