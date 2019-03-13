@@ -95,8 +95,13 @@ class Login extends React.Component {
 
         }
     ).then((response) => {
-       this.props.history.push('/home')
-       localStorage.setItem("instaham-jwt", `Bearer ${response.data.data.token}`);
+      localStorage.setItem("grapefruit-jwt", `Bearer ${response.data.data.token}`);
+       if (response.data.role === 0 ) {
+         this.props.history.push('/coach/clientlist')
+       } else {
+         this.props.history.push('/client')
+       }
+       
 
     })
 
@@ -145,7 +150,7 @@ handleChange = e => {
           <h1>
             Login
         </h1>
-          <form className={this.props.classes.form}>
+          <form onSubmit={this.handleSubmit} className={this.props.classes.form}>
             <FormControl margin="normal" required fullWidth>
               <InputLabel htmlFor="email">Email Address</InputLabel>
               <Input 
