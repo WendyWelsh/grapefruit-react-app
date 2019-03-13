@@ -10,6 +10,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import Icon from '@material-ui/core/Icon';
+import axios from "axios"
 
 
 
@@ -100,47 +101,62 @@ class ButtonBases extends React.Component {
 
     this.state = {
       anchorEl: null,
-      clients: [{
-        url: '/static/images/grid-list/breakfast.jpg',
-        title: 'joe',
-        width: '25%',
-        id: 1,
-      },
-      {
-        url: '/static/images/grid-list/burgers.jpg',
-        title: 'Client 2',
-        width: '25%',
-        id: 2,
-      },
-      {
-        url: '/static/images/grid-list/camera.jpg',
-        title: 'Client 3',
-        width: '25%',
-        id: 3,
-        
-      },
-      ]
+      clients: []
+      // clients: [{
+      //   url: '/static/images/grid-list/breakfast.jpg',
+      //   title: 'joe',
+      //   width: '25%',
+      //   id: 1,
+      // },
+      // {
+      //   url: '/static/images/grid-list/burgers.jpg',
+      //   title: 'Client 2',
+      //   width: '25%',
+      //   id: 2,
+      // },
+      // {
+      //   url: '/static/images/grid-list/camera.jpg',
+      //   title: 'Client 3',
+      //   width: '25%',
+      //   id: 3,
+
+      // },
+      // ]
     };
 
     this.directToUserLandingPage = this.directToUserLandingPage.bind(this)
     this.handleRemoveClient = this.handleRemoveClient.bind(this)
   }
 
+  componentDidMount() {
+    axios.get("/coach/clients",
+      {
+        headers: {
+          Authorization: localStorage.getItem('grapefruit-jwt')
+        }
+      }
+    ).then((response) => {
+      this.setState({clients: response.data.data})
+      console.log(response)
+
+    })
+  }
+
   // handleRemoveClient(id) {
   //   const clientId = this.state.id
-    // axios.delete('http://localhost3000/coach/clientlist/$(clientId)')
-    // .then(response =>{
-    //   this.props.history.push('/');
-    // console.log(id);
+  // axios.delete('http://localhost3000/coach/clientlist/$(clientId)')
+  // .then(response =>{
+  //   this.props.history.push('/');
+  // console.log(id);
   // })
   // .catch(err => console.log(err));
-// }
+  // }
 
   handleRemoveClient(id) {
     console.log(id)
-    
 
   }
+
 
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -150,35 +166,31 @@ class ButtonBases extends React.Component {
     this.setState({ anchorEl: null });
   };
 
-  directToUserLandingPage() {
-    this.props.history.push("/user/home");
+  directToUserLandingPage(clientId) {
+    this.props.history.push("/coach/client/" + clientId);
   }
   render() {
     const { classes } = this.props;
     const { clients } = this.state;
-    console.log(clients)
+   
     return (
       <div className="CoachList">
 
         <div className={classes.root}>
-          {clients.map(image => (
+          {clients.map(client => (
             <>
               <ButtonBase
-                onClick={this.directToUserLandingPage}
+                onClick={() => this.directToUserLandingPage(client.client.id)}
                 focusRipple
-                key={image.title}
+                key={client.client.username}
                 className={classes.image}
                 focusVisibleClassName={classes.focusVisible}
                 style={{
-                  width: image.width,
+                  width: "25%"
                 }}
+    
               >
-                <span
-                  className={classes.imageSrc}
-                  style={{
-                    backgroundImage: `url(${image.url})`,
-                  }}
-                />
+                
                 <span className={classes.imageBackdrop} />
                 <span className={classes.imageButton}>
                   <Typography
@@ -187,30 +199,30 @@ class ButtonBases extends React.Component {
                     color="inherit"
                     className={classes.imageTitle}
                   >
-                    {image.title}
+                    {client.client.username}
                     <span className={classes.imageMarked} />
-                  </Typography>                
+                  </Typography>
                 </span>
               </ButtonBase>
-                        {/* <Button variant="contained" color="primary" className={classes.button}></Button> */}
-              <Button id={image.id} onClick={() => this.handleRemoveClient(image.id)} color="primary" className={classes.button}>
-              
-               <DeleteIcon className={classes.rightIcon} />
+              {/* <Button variant="contained" color="primary" className={classes.button}></Button> */}
+              <Button id={client.id} onClick={() => this.handleRemoveClient(client.id)} color="primary" className={classes.button}>
+
+                <DeleteIcon className={classes.rightIcon} />
               </Button>
-            
+
 
             </>
           ))}
 
         </div>
-           <ButtonBase>
-                <Button variant="outlined" color="primary">
-                 
-                  <Fab size="medium" color="primary" aria-label="Add" className={classes.margin}>
-          <AddIcon />
-        </Fab>
-                  </Button>
-              </ButtonBase>
+        <ButtonBase>
+          <Button variant="outlined" color="primary">
+
+            <Fab size="medium" color="primary" aria-label="Add" className={classes.margin}>
+              <AddIcon />
+            </Fab>
+          </Button>
+        </ButtonBase>
       </div>
     );
   }
