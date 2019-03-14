@@ -28,6 +28,8 @@ const styles = theme => ({
     flexWrap: 'wrap',
     minWidth: 300,
     width: '100%',
+    justifyContent: 'center',  
+  
   },
   image: {
     position: 'relative',
@@ -69,6 +71,7 @@ const styles = theme => ({
     bottom: 0,
     backgroundSize: 'cover',
     backgroundPosition: 'center 40%',
+    
   },
   imageBackdrop: {
     position: 'absolute',
@@ -175,7 +178,7 @@ class ButtonBases extends React.Component {
     const { clients } = this.state;
    
     return (
-      <div className="CoachList">
+      <div className="CoachList" >
 
         <div className={classes.root}>
           {clients.map(client => (
