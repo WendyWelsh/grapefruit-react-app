@@ -64,7 +64,7 @@ class App extends Component {
               <Route path="/coach/client/:id/workout" component={EnhancedTable} />
               <Route path="/macroform" component={MacroForm} />
               <Route path="/coachworkoutselector" component={CoachWorkoutSelector} />
-              <Route path="/messageboard" component={MessageBoard}/>
+              {/* <Route path="/messageboard" component={MessageBoard}/> */}
               <Route path="/client" component={UserLandingPage} />
               <Route exact path="/coach/client/:id" component={CoachLandingPage} />
             </div>
