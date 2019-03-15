@@ -206,24 +206,24 @@ class ButtonBases extends React.Component {
                 </span>
               </ButtonBase>
               {/* <Button variant="contained" color="primary" className={classes.button}></Button> */}
-              <Button id={client.id} onClick={() => this.handleRemoveClient(client.id)} color="primary" className={classes.button}>
+              {/* <Button id={client.id} onClick={() => this.handleRemoveClient(client.id)} color="primary" className={classes.button}>
 
                 <DeleteIcon className={classes.rightIcon} />
-              </Button>
+              </Button> */}
 
 
             </>
           ))}
 
         </div>
-        <ButtonBase>
+        {/* <ButtonBase>
           <Button variant="outlined" color="primary">
 
             <Fab size="medium" color="primary" aria-label="Add" className={classes.margin}>
               <AddIcon />
             </Fab>
           </Button>
-        </ButtonBase>
+        </ButtonBase> */}
       </div>
     );
   }
