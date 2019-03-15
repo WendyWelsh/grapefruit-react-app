@@ -40,27 +40,20 @@ const rows = [
 class WorkoutForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      client: {
-        username: "",
-        date: []
-      },
-      
-
-
-    }
+    
   }
   componentDidMount() {
-    axios.get('/coach/clients/' + this.props.match.params.id,
-      {
-        headers: {
-          Authorization: localStorage.getItem('grapefruit-jwt')
-        }
-      }).then((response) => {
-        this.setState({ client: response.data.data[0].client })
-        console.log(response)
+    // axios.get('/coach/clients/' + this.props.match.params.id,
+    //   {
+    //     headers: {
+    //       Authorization: localStorage.getItem('grapefruit-jwt')
+    //     }
+    //   }).then((response) => {
+    //     this.setState({ client: response.data.data[0].client })
+    //     console.log(response)
 
-      })
+    //   })
+    
   }
 
 handleSubmit = () => {
@@ -77,8 +70,8 @@ handleSubmit = () => {
 
     return (
       <div>
-        <h1>{this.state.client.username}</h1>
-        <WorkoutList />
+        
+        
         <Paper className={classes.root}>
           <Table className={classes.table}>
             <TableHead>
@@ -92,15 +85,15 @@ handleSubmit = () => {
             </TableHead>
             
             <TableBody>
-              {rows.map(row => (
-                <TableRow key={row.id}>
+              {this.props.workouts.map(workout=> (
+                <TableRow key={workout.id}>
                   <TableCell component="th" scope="row">
-                    {row.name}
+                    {workout.muscleGroup}
                   </TableCell>
-                  <TableCell align="right">{row.workout}</TableCell>
-                  <TableCell align="right">{row.sets}</TableCell>
-                  <TableCell align="right">{row.reps}</TableCell>
-                  <TableCell align="right">{row.rpe}
+                  <TableCell align="right">{workout.workout}</TableCell>
+                  <TableCell align="right">{workout.sets}</TableCell>
+                  <TableCell align="right">{workout.reps}</TableCell>
+                  <TableCell align="right">{workout.rpe}
                   
                   </TableCell>
                 </TableRow>
