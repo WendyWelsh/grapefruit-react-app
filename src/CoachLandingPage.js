@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import axios from "axios";
+import MessageBoard from "./MessageBoard";
 
 const styles = theme => ({
   button: {
@@ -76,13 +77,13 @@ class CoachLandingPage extends React.Component {
         </Grid>
 
         <Grid container>
-          <Grid item sm>
+          {/* <Grid item sm>
             <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
               <Button onClick={this.directToMessageBoard} variant="outlined" color="inherit">
                 Messages
               </Button>
             </Paper>
-          </Grid>
+          </Grid> */}
           <Grid item sm>
 
             <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
@@ -100,6 +101,7 @@ class CoachLandingPage extends React.Component {
             </Paper>
           </Grid>
         </Grid>
+        <MessageBoard/>
       </div>
     )
   }
