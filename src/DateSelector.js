@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
+
 const styles = theme => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
+    paddingTop: 23,
+    
   },
   textField: {
     marginLeft: theme.spacing.unit,
@@ -22,6 +25,7 @@ const styles = theme => ({
 margin: {
   margin: theme.spacing.unit,
  },
+
 });
 
 function DateSelector(props) {
@@ -33,7 +37,7 @@ function DateSelector(props) {
         id="date"
         label="Week Of"
         type="date"
-        defaultValue="2017-05-24"
+        defaultValue="2019-03-01"
         className={classes.textField}
         InputLabelProps={{
           shrink: true,
