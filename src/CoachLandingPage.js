@@ -30,8 +30,8 @@ class CoachLandingPage extends React.Component {
     };
 
     this.directToMessageBoard = this.directToMessageBoard.bind(this)
-    this.directToMacroForm = this.directToMacroForm.bind(this)
-    this.directToWorkoutForm = this.directToWorkoutForm.bind(this)
+    this.directToMacroList = this.directToMacroList.bind(this)
+    this.directToWorkoutList = this.directToWorkoutList.bind(this)
   }
 
   componentDidMount() {
@@ -59,10 +59,10 @@ class CoachLandingPage extends React.Component {
     this.props.history.push("/messageboard");
   }
 
-  directToMacroForm() {
-    this.props.history.push("/macroform");
+  directToMacroList() {
+    this.props.history.push("/macroList");
   }
-  directToWorkoutForm() {
+  directToWorkoutList() {
     this.props.history.push("/coach/client/" + this.props.match.params.id + "/workout");
   }
   render() {
@@ -87,7 +87,7 @@ class CoachLandingPage extends React.Component {
           <Grid item sm>
 
             <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
-              <Button onClick={this.directToMacroForm} variant="outlined" color="inherit">
+              <Button onClick={this.directToMacroList} variant="outlined" color="inherit">
                 Macros
               </Button>
             </Paper>
@@ -95,7 +95,7 @@ class CoachLandingPage extends React.Component {
           <Grid item sm>
 
             <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
-              <Button onClick={this.directToWorkoutForm} variant="outlined" color="inherit" >
+              <Button onClick={this.directToWorkoutList} variant="outlined" color="inherit" >
                 Workouts
               </Button>
             </Paper>
