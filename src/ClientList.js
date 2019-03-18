@@ -4,12 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import { withRouter } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
-import DeleteIcon from '@material-ui/icons/Delete';
-import AddIcon from '@material-ui/icons/Add';
-import Fab from '@material-ui/core/Fab';
-import Icon from '@material-ui/core/Icon';
+
 import axios from "axios"
 
 

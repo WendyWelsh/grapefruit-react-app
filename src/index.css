@@ -41,6 +41,16 @@
   margin: 0;
   padding: 0;
   height: 100vh;
+  background-attachment: fixed;  
+}
+.loginForm{
+  background: rgba(255,255,255,0.5);}
+.Register{
+  background: url(images/mountainyoga.jpg) no-repeat center center fixed; 
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
   background-attachment: fixed; 
  
 }

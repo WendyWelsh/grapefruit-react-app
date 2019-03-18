@@ -8,7 +8,6 @@ import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
-import Paper from '@material-ui/core/Paper';
 
 
 const styles = theme => ({
@@ -137,11 +136,10 @@ class ButtonBases extends React.Component {
   }
 
   render() {
-    const { anchorEl } = this.state;
+    
     const { classes } = this.props;
     const { coaches } = this.state;
-    console.log(coaches)
-    // const {removeClient } = this.props;
+       // const {removeClient } = this.props;
     return (
       <div className="ClientList">
         {/* removeClient={this.removeClient.bind(this)} person={person} */}

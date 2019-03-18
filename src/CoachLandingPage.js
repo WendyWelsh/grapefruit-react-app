@@ -1,10 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
 import axios from "axios";
 import MessageBoard from "./MessageBoard";
 
@@ -33,8 +30,8 @@ class CoachLandingPage extends React.Component {
     };
 
     this.directToMessageBoard = this.directToMessageBoard.bind(this)
-    this.directToMacroForm = this.directToMacroForm.bind(this)
-    this.directToWorkoutForm = this.directToWorkoutForm.bind(this)
+    this.directToMacroList = this.directToMacroList.bind(this)
+    this.directToWorkoutList = this.directToWorkoutList.bind(this)
   }
 
   componentDidMount() {
@@ -62,10 +59,10 @@ class CoachLandingPage extends React.Component {
     this.props.history.push("/messageboard");
   }
 
-  directToMacroForm() {
-    this.props.history.push("/macroform");
+  directToMacroList() {
+    this.props.history.push("/macroList");
   }
-  directToWorkoutForm() {
+  directToWorkoutList() {
     this.props.history.push("/coach/client/" + this.props.match.params.id + "/workout");
   }
   render() {
@@ -93,7 +90,7 @@ class CoachLandingPage extends React.Component {
           <Grid item sm>
 
             <Paper style={{ padding: 20, margin: 100, textAlign: 'center',  opacity: 0.8 }}>
-              <Button onClick={this.directToMacroForm} variant="outlined" color="inherit">
+              <Button onClick={this.directToMacroList} variant="outlined" color="inherit">
                 Macros
               </Button>
             </Paper>
@@ -101,7 +98,7 @@ class CoachLandingPage extends React.Component {
           <Grid item sm>
 
             <Paper style={{ padding: 20, margin: 100, textAlign: 'center',  opacity: 0.8 }}>
-              <Button onClick={this.directToWorkoutForm} variant="outlined" color="inherit" >
+              <Button onClick={this.directToWorkoutList} variant="outlined" color="inherit" >
                 Workouts
               </Button>
             </Paper>
