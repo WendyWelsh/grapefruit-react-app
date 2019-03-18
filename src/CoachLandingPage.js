@@ -11,10 +11,13 @@ import MessageBoard from "./MessageBoard";
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
+    transition: theme.transitions.create('opacity'),
+   
 
   },
   input: {
     display: 'none',
+    
   },
 });
 
@@ -69,9 +72,12 @@ class CoachLandingPage extends React.Component {
     return (
       <div className="CoachLandingPage">
         <Grid container>
-          <Grid item sm>
-            <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
-              <h1>{this.state.client.username}</h1>
+          <Grid item md>
+            <Paper style={{ padding: 20, margin: 100, textAlign: 'center', opacity: 0.8 }}>
+              {/* <h1>{this.state.client.username}</h1> */}
+              <Button  variant="outlined" color="inherit">
+              <div>{this.state.client.username}</div>
+              </Button>
             </Paper>
           </Grid>
         </Grid>
@@ -86,7 +92,7 @@ class CoachLandingPage extends React.Component {
           </Grid> */}
           <Grid item sm>
 
-            <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
+            <Paper style={{ padding: 20, margin: 100, textAlign: 'center',  opacity: 0.8 }}>
               <Button onClick={this.directToMacroForm} variant="outlined" color="inherit">
                 Macros
               </Button>
@@ -94,7 +100,7 @@ class CoachLandingPage extends React.Component {
           </Grid>
           <Grid item sm>
 
-            <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
+            <Paper style={{ padding: 20, margin: 100, textAlign: 'center',  opacity: 0.8 }}>
               <Button onClick={this.directToWorkoutForm} variant="outlined" color="inherit" >
                 Workouts
               </Button>

@@ -32,6 +32,7 @@ const styles = theme => ({
         marginLeft: "auto",
         marginRight: "auto",
         width: 400,
+        opacity: "0.8",
     },
 });
 
@@ -65,7 +66,7 @@ class ButtonNavigation extends React.Component {
 
         return (
                 <div className={classes.root}>
-                    <AppBar position="static">
+                    <AppBar position="static" >
                         <Tabs variant="fullWidth" value={value} onChange={this.handleChange}>
                             {/* here's the login and register buttons */}
                             <button className="buttonNav" onClick={this.directToLogin}>Login</button>

@@ -21,8 +21,8 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       light: "#9242f4",
-      main: "#FF5B8E",
-      dark: "#5B7EFF",
+      main: "#607D8B", // slate blue
+      dark: "#90A4AE", //med blue
       contrastText: "#010302"
     },
     secondary: {
@@ -32,7 +32,7 @@ const theme = createMuiTheme({
       contrastText: "black"
     },
     button: {
-      backgroundColor: "#9242f4",
+      backgroundColor: "#B0BEC5", //light grey
       textColor: "black",
       height: 50,
       width: 100,

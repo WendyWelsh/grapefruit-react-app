@@ -32,13 +32,14 @@ const styles = theme => ({
   paper: {
     // marginTop: theme.spacing.unit * 8,
     display: 'flex',
+    opacity: "0.8",
     flexDirection: 'column',
     alignItems: 'center',
     padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
   },
   avatar: {
     margin: theme.spacing.unit,
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.primary.main,
   },
   form: {
     width: '100%', // Fix IE 11 issue.
@@ -90,12 +91,12 @@ class Register extends React.Component {
       }
     ).then((response) => {
       localStorage.setItem("grapefruit-jwt", `Bearer ${response.data.data.token}`);
-      if (response.data.role === 0 ) {
+      if (response.data.role === 0) {
         this.props.history.push('/coach/clientlist')
       } else {
         this.props.history.push('/client')
       }
-     
+
 
     })
 
@@ -139,17 +140,17 @@ class Register extends React.Component {
     const { classes } = this.props;
     const { formErrors } = this.state;
     return (
-      <div>
+      <div className="Login">
         <ButtonNavigation />
         <main className={classes.main}>
           <CssBaseline />
           <Paper className={classes.paper}>
-            <Avatar className={classes.avatar}>
+            <Avatar className={classes.avatar} >
               <LockOutlinedIcon />
             </Avatar>
-            <h1>
+            <div>
               Register
-        </h1>
+            </div>
             <form className={classes.form} onSubmit={this.handleSubmit} noValidate>
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="username">UserName</InputLabel>
