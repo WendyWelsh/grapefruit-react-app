@@ -2,20 +2,16 @@ import React, { Component } from "react";
 import "./App.css";
 import UserLandingPage from './UserLandingPage';
 import CoachLandingPage from './CoachLandingPage';
-import CoachList from "./CoachList";
 import ClientList from "./ClientList";
 import Login from "./Login";
 import Register from "./Register";
 import "./index.css";
-import AccountForm from './AccountForm';
 import MacroList from './MacroList';
 import CoachWorkoutSelector from './CoachWorkoutSelector';
 import WorkoutList from './WorkoutList'
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import NavBar from "./NavBar";
-import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
-import MessageBoard from "./MessageBoard";
-import WorkoutForm from "./WorkoutForm";
+import { BrowserRouter as Router, Route, } from "react-router-dom";
 
 const theme = createMuiTheme({
   palette: {

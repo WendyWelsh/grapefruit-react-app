@@ -10,7 +10,7 @@ import {withRouter} from "react-router-dom"
 
 function TabContainer(props) {
     return (
-        // <Typography component="div" style={{ padding: 8 * 3 }}>
+        
         <div>
             {props.children}
         </div>

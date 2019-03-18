@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import withStyles from '@material-ui/core/styles/withStyles';
 import {withRouter} from 'react-router-dom';
@@ -40,10 +38,13 @@ const styles = theme => ({
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing.unit,
-  },
+    backgroundColor: 'transparent', 
+    boxShadow: 'none',
+   },
   submit: {
     marginTop: theme.spacing.unit * 3,
   },
+  
 });
 
 
@@ -144,9 +145,7 @@ handleChange = e => {
       <main className={this.props.classes.main}>
         <CssBaseline />
         <Paper className={this.props.classes.paper}>
-          <Avatar className={this.props.classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
+          
           <h1>
             Login
         </h1>

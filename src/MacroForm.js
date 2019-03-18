@@ -21,57 +21,46 @@ const styles = theme => ({
     },
 });
 
-let id = 0;
-function createData(name, calories, fat, carbs, protein) {
-    id += 1;
-    return { id, name, calories, fat, carbs, protein };
-}
 
-const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
+class MacroForm extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+    render() {
+        const { classes } = this.props;
+        return (
 
-function MacroForm(props) {
-    const { classes } = props;
-
-    return (
-
-        <div>
-            <Paper className={classes.root}>
-                <Table className={classes.table}>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Dessert (100g serving)</TableCell>
-                            <TableCell align="right">Carbohydrates</TableCell>
-                            <TableCell align="right">Protein (g)</TableCell>
-                            <TableCell align="right">Fat (g)</TableCell>
-                            <TableCell align="right">Total Daily Calories (g)</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {rows.map(row => (
-                            <TableRow key={row.id}>
-                                <TableCell component="th" scope="row">
-                                    {row.name}
-                                </TableCell>
-                                <TableCell align="right">{row.calories}</TableCell>
-                                <TableCell align="right">{row.fat}</TableCell>
-                                <TableCell align="right">{row.carbs}</TableCell>
-                                <TableCell align="right">{row.protein}</TableCell>
+            <div>
+                <Paper className={classes.root}>
+                    <Table className={classes.table}>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Carbohydrates (g)</TableCell>
+                                <TableCell align="right">Protein (g)</TableCell>
+                                <TableCell align="right">Fat (g)</TableCell>
+                                <TableCell align="right">Total Daily Calories (g)</TableCell>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </Paper>
-            <Button variant="outlined" size="large" color="primary" className={classes.margin}>
-                Submit Macros
+                        </TableHead>
+                        <TableBody>
+                            {this.props.macrosToSend.map(macros => (
+                                <TableRow key={macros.id}>
+                                    <TableCell component="th" scope="row">
+                                        {macros.carbsSelected}
+                                    </TableCell>
+                                    <TableCell align="right">{macros.proteinSelected}</TableCell>
+                                    <TableCell align="right">{macros.fatSelected}</TableCell>
+
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </Paper>
+                <Button variant="outlined" size="large" color="primary" className={classes.margin}>
+                    Submit Macros
     </Button>
-        </div>
-    );
+            </div>
+        );
+    }
 }
 
 MacroForm.propTypes = {

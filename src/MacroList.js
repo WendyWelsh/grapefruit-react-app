@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-import axios from 'axios';
 import { withRouter } from "react-router-dom"
 import MacroForm from './MacroForm'
 import Button from '@material-ui/core/Button';
@@ -29,8 +26,8 @@ const styles = theme => ({
     },
     margin: {
         margin: theme.spacing.unit,
-       
-       
+
+
     },
 });
 
@@ -39,17 +36,35 @@ const styles = theme => ({
 class MacroList extends React.Component {
     constructor(prop) {
         super(prop)
-    this.state = {
-        carbohydrates: '',
-        protein: '',
-        fat: '',
-        client: {
+        this.state = {
+            date: '',
+            carbohydrates: '',
+            protein: '',
+            fat: '',
+            client: {
                 username: "",
                 date: []
-              },
-    };
-}
+            },
+            clientMacros: []
+        };
+    }
 
+
+
+    handleSubmit = () => {
+        let selectedMacros = {
+            dateSelected:this.state.date,
+            carbsSelected: this.state.carbohydrates,
+            proteinSelected: this.state.protein,
+            fatSelected: this.state.fat,
+             
+        }
+            let newMacroArray = this.state.clientMacros.slice();
+            newMacroArray.push(selectedMacros);
+            this.setState({clientMacros:newMacroArray})
+
+
+    }
 
 
     handleChange = name => event => {
@@ -58,18 +73,20 @@ class MacroList extends React.Component {
         });
     };
 
-   
+
+
 
     render() {
         const { classes } = this.props;
 
         return (
             <div>
-            
+
+                <h1>{this.state.client.username}</h1>
                 <Grid container>
                     <Grid item sm>
                         <form className={classes.container} noValidate autoComplete="off">
-                        <DateSelector />
+                            <DateSelector />
                             <TextField
                                 id="filled-number"
                                 label="Carbohydrates"
@@ -120,14 +137,14 @@ class MacroList extends React.Component {
                                 color="primary"
                                 className={classes.margin}>
                                 ADD
-    
+
                             </Button>
                         </form>
                     </Grid>
                 </Grid>
                 <Grid container>
                     <Grid item sm>
-                        <MacroForm />
+                        <MacroForm macrosToSend={this.state.clientMacros}/>
                     </Grid>
                 </Grid>
             </div>
