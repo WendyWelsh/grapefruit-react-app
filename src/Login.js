@@ -9,8 +9,9 @@ import Paper from '@material-ui/core/Paper';
 import withStyles from '@material-ui/core/styles/withStyles';
 import {withRouter} from 'react-router-dom';
 import axios from "axios"
-
+import Avatar from '@material-ui/core/Avatar';
 import ButtonNavigation from './ButtonNavigation';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
 const styles = theme => ({
   main: {
@@ -147,7 +148,9 @@ handleChange = e => {
      
         <CssBaseline />
         <Paper className={this.props.classes.paper}>
-          
+            <Avatar className={classes.avatar} >
+              <LockOutlinedIcon />
+            </Avatar>
           <div>
             Login
         </div>
