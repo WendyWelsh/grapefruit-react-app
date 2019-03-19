@@ -6,7 +6,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import {withRouter} from "react-router-dom"
-
+import Button from '@material-ui/core/Button';
 
 function TabContainer(props) {
     return (
@@ -69,9 +69,8 @@ class ButtonNavigation extends React.Component {
                     <AppBar position="static" >
                         <Tabs variant="fullWidth" value={value} onChange={this.handleChange}>
                             {/* here's the login and register buttons */}
-                            <button className="buttonNav" onClick={this.directToLogin}>Login</button>
-                            <button className="buttonNav" onClick={this.directToRegister}>Register</button>
-
+                            <Button onClick={this.directToLogin}>Login</Button>
+                            <Button onClick={this.directToRegister}>Register</Button>
                         </Tabs>
                     </AppBar>
 

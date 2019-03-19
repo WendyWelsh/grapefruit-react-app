@@ -6,7 +6,8 @@ import Grid from '@material-ui/core/Grid';
 import { withRouter } from "react-router-dom"
 import MacroForm from './MacroForm'
 import Button from '@material-ui/core/Button';
-import DateSelector from './DateSelector'
+import DateSelector from './DateSelector';
+import Paper from '@material-ui/core/Paper';
 
 
 const styles = theme => ({
@@ -66,6 +67,7 @@ class MacroList extends React.Component {
 
     }
 
+    
 
     handleChange = name => event => {
         this.setState({
@@ -80,9 +82,10 @@ class MacroList extends React.Component {
         const { classes } = this.props;
 
         return (
-            <div>
+            <div className='macrolist'>
 
                 <h1>{this.state.client.username}</h1>
+                <Paper style={{ opacity: 0.95 }}>
                 <Grid container>
                     <Grid item sm>
                         <form className={classes.container} noValidate autoComplete="off">
@@ -147,6 +150,7 @@ class MacroList extends React.Component {
                         <MacroForm macrosToSend={this.state.clientMacros}/>
                     </Grid>
                 </Grid>
+                </Paper>
             </div>
         );
     }

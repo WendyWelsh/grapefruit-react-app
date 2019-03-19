@@ -35,7 +35,7 @@ function DateSelector(props) {
     <form className={classes.container} noValidate>
       <TextField
         id="date"
-        label="Week Of"
+        label="Week of"
         type="date"
         defaultValue="2019-03-01"
         className={classes.textField}

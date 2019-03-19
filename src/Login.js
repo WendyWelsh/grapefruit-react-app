@@ -7,11 +7,12 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import Paper from '@material-ui/core/Paper';
 import withStyles from '@material-ui/core/styles/withStyles';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import axios from "axios"
 import Avatar from '@material-ui/core/Avatar';
 import ButtonNavigation from './ButtonNavigation';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { Grid } from '@material-ui/core';
 
 const styles = theme => ({
   main: {
@@ -40,13 +41,13 @@ const styles = theme => ({
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing.unit,
-    backgroundColor: 'transparent', 
+    backgroundColor: 'transparent',
     boxShadow: 'none',
-   },
+  },
   submit: {
     marginTop: theme.spacing.unit * 3,
   },
-  
+
 });
 
 
@@ -55,12 +56,12 @@ const formValid = ({ formErrors, ...rest }) => {
 
   //validate form errors being empty
   Object.values(formErrors).forEach(val => {
-      val.length > 0 && (valid = false)
+    val.length > 0 && (valid = false)
   })
 
   //validate the form was filled out
   Object.values(rest).forEach(val => {
-      val === null && (valid = false)
+    val === null && (valid = false)
   })
 
   return valid
@@ -69,7 +70,7 @@ const formValid = ({ formErrors, ...rest }) => {
 class Login extends React.Component {
   constructor(props) {
     super(props)
-    this.state= {
+    this.state = {
       email: null,
       password: null,
       logged_in: false,
@@ -92,114 +93,117 @@ class Login extends React.Component {
 
     axios.post("/login",
 
-        {
-            email: this.state.email,
-            password: this.state.password,
+      {
+        email: this.state.email,
+        password: this.state.password,
 
-        }
+      }
     ).then((response) => {
       localStorage.setItem("grapefruit-jwt", `Bearer ${response.data.data.token}`);
-       if (response.data.role === 0 ) {
-         this.props.history.push('/coach/clientlist')
-       } else {
-         this.props.history.push('/client')
-       }
-       
+      if (response.data.role === 0) {
+        this.props.history.push('/coach/clientlist')
+      } else {
+        this.props.history.push('/client')
+      }
+
 
     })
 
 
-}
+  }
 
 
-handleChange = e => {
+  handleChange = e => {
     e.preventDefault()
     const { name, value } = e.target
     let formErrors = this.state.formErrors
 
     switch (name) {
-        case "email":
-            formErrors.email =
-                value.length < 6
-                    ? 'minimum 6 characters required' : ""
-            break;
-        case "password":
-            formErrors.password =
-                value.length < 6
-                    ? 'minimum 6 characters required' : ""
-            break;
-        default:
-            break;
+      case "email":
+        formErrors.email =
+          value.length < 6
+            ? 'minimum 6 characters required' : ""
+        break;
+      case "password":
+        formErrors.password =
+          value.length < 6
+            ? 'minimum 6 characters required' : ""
+        break;
+      default:
+        break;
 
     }
 
     this.setState({ formErrors, [name]: value })
 
-}
+  }
 
   render() {
     const { formErrors } = this.state
 
     const { classes } = this.props;
     return (
-      <div className = "Login">
+      <div className="Login">
+       
      <ButtonNavigation />
-      <main className={this.props.classes.main}>
-     
-        <CssBaseline />
-        <Paper className={this.props.classes.paper}>
+        <main className={this.props.classes.main}>
+
+          <CssBaseline />
+          <Paper className={this.props.classes.paper}>
             <Avatar className={classes.avatar} >
               <LockOutlinedIcon />
             </Avatar>
-          <div>
-            Login
-        </div>
-          <form onSubmit={this.handleSubmit} className={this.props.classes.form}>
-            <FormControl margin="normal" required fullWidth>
-              <InputLabel htmlFor="email">Email Address</InputLabel>
-              <Input 
-              className={formErrors.email.length > 0 ? "error" : null}
-              id="email" 
-              name="email" 
-              autoComplete="email" 
-              autoFocus 
-              onChange={this.handleChange}
-              />
-              {formErrors.email.length > 0 && (
-                <span className="errorMessage">{formErrors.email}</span>
-              )}
-            </FormControl>
+            <InputLabel>
+              Login
+           </InputLabel> 
+            <form onSubmit={this.handleSubmit} className={this.props.classes.form}>
+              <FormControl margin="normal" required fullWidth>
+                <InputLabel htmlFor="email">Email Address</InputLabel>
+                <Input
+                  className={formErrors.email.length > 0 ? "error" : null}
+                  id="email"
+                  name="email"
+                  autoComplete="email"
+                  autoFocus
+                  onChange={this.handleChange}
+                />
+                {formErrors.email.length > 0 && (
+                  <span className="errorMessage">{formErrors.email}</span>
+                )}
+              </FormControl>
 
-            <FormControl margin="normal" required fullWidth>
-              <InputLabel htmlFor="email">Password</InputLabel>
-              <Input 
-              className={formErrors.password.length > 0 ? "error" : null}
-              id="password" 
-              name="password" 
-              type="password" 
-              autoComplete="current-password"
-              onChange={this.handleChange}
-              />
-              {formErrors.password.length > 0 && (
-                <span className="errorMessage">{formErrors.password}</span>
-              )}
-              
-            </FormControl>
-            
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={this.props.classes.submit}
-            >
-              Submit
+              <FormControl margin="normal" required fullWidth>
+                <InputLabel htmlFor="email">Password</InputLabel>
+                <Input
+                  className={formErrors.password.length > 0 ? "error" : null}
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  onChange={this.handleChange}
+                />
+                {formErrors.password.length > 0 && (
+                  <span className="errorMessage">{formErrors.password}</span>
+                )}
+
+              </FormControl>
+
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={this.props.classes.submit}
+              >
+                Submit
           </Button>
-          
-          </form>
-        </Paper>
-      </main>
-      </div>
+
+            </form>
+          </Paper>
+        </main>
+      
+      </div >
+      
     );
   }
 }

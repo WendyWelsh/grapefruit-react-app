@@ -11,11 +11,14 @@ import { workoutMuscleGroup, workoutSets, workoutReps, workoutRPE, allWorkouts }
 import WorkoutForm from './WorkoutForm'
 import Grid from '@material-ui/core/Grid';
 import axios from 'axios';
+import InputLabel from '@material-ui/core/InputLabel';
+import Paper from '@material-ui/core/Paper';
 
 const styles = theme => ({
     root: {
         display: 'flex',
         flexWrap: 'wrap',
+        opacity: 0.8,
     },
     margin: {
         margin: theme.spacing.unit,
@@ -39,9 +42,9 @@ class WorkoutList extends React.Component {
             client: {
                 username: "",
                 date: []
-              },
+            },
             clientWorkouts: []
-              
+
         };
 
 
@@ -54,30 +57,30 @@ class WorkoutList extends React.Component {
             workout: this.state.workout,
             sets: this.state.sets,
             reps: this.state.reps,
-            rpe: this.state.rpe 
+            rpe: this.state.rpe
         }
-            let newArray = this.state.clientWorkouts.slice();
-            newArray.push(selectedWorkout);
-            this.setState({clientWorkouts:newArray})
+        let newArray = this.state.clientWorkouts.slice();
+        newArray.push(selectedWorkout);
+        this.setState({ clientWorkouts: newArray })
 
 
     }
 
 
     componentDidMount() {
-        
-        axios.get('/coach/clients/' + this.props.match.params.id,
-          {
-            headers: {
-              Authorization: localStorage.getItem('grapefruit-jwt')
-            }
-          }).then((response) => {
-            this.setState({ client: response.data.data[0].client })
-            console.log(response)
-    
-          })
 
-      }
+        axios.get('/coach/clients/' + this.props.match.params.id,
+            {
+                headers: {
+                    Authorization: localStorage.getItem('grapefruit-jwt')
+                }
+            }).then((response) => {
+                this.setState({ client: response.data.data[0].client })
+                console.log(response)
+
+            })
+
+    }
 
     handleChange = prop => event => {
         this.setState({ [prop]: event.target.value });
@@ -115,10 +118,16 @@ class WorkoutList extends React.Component {
 
         return (
             <div className={classes.root}>
-            <h1>{this.state.client.username}</h1>
+
                 <Grid container>
+
                     <Grid item sm>
-                        <TextField
+                        <Paper style={{ padding: 2,  margin: 10, textAlign: 'left', opacity: 0.9 }}>
+                            <Button  color="inherit">
+                                <h1>{this.state.client.username}</h1>
+                            </Button>
+                        </Paper>
+                        <TextField className={classes.root}
                             select
                             className={classNames(classes.margin, classes.textField)}
                             variant="outlined"
@@ -205,13 +214,13 @@ class WorkoutList extends React.Component {
                             color="primary"
                             className={classes.margin}>
                             ADD
-        
+
                         </Button>
                     </Grid>
                 </Grid>
                 <Grid container>
                     <Grid item sm>
-                        <WorkoutForm workouts={this.state.clientWorkouts}/>
+                        <WorkoutForm workouts={this.state.clientWorkouts} />
                     </Grid>
                 </Grid>
 

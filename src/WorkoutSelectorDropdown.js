@@ -12,6 +12,8 @@ const styles = theme => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
+    opacity: 0.9,
+   
   },
   formControl: {
     margin: theme.spacing.unit,

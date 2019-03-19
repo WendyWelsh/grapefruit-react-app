@@ -7,7 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import NavBarButton from './NavBarButton'
+import NavBarButton from './NavBarButton';
+import { InputLabel } from '@material-ui/core';
 
 const styles = {
   root: {
@@ -26,17 +27,21 @@ function NavBar(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-          
+      <AppBar className="logo"  position="static">
+        <Toolbar  >
+          {/* <IconButton className="{classes.menuButton}" color="inherit" aria-label="Menu">       
          <NavBarButton/>
-
-
-
-          </IconButton>
-          <Typography variant="h6" color="inherit" className={classes.grow}>
-            Grapefruit
+          </IconButton> */}
+          {/* <div className="icon" ></div> */}
+          <Typography  className={classes.grow}>
+          
+            {/* Grapefruit */}
+            {/* <GrapefruitLogo /> */}
+            {/* <svgIcon width="568" height="150" viewBox="0 0 568 150" fill="none" xmlns="http://www.w3.org/2000/svg"
+            ></svgIcon> */}
+           
+          {/* <img src='images/grapfruitlogo.jpg' variant="h6" color="inherit" width="80" height="50"/> */}
+          
           </Typography>
           <Button color="inherit">Logout</Button>
         </Toolbar>

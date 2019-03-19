@@ -1,5 +1,5 @@
 .CoachList{
-  background: url(images/dumbellscrop.jpg) no-repeat center center fixed; 
+  background: url(images/brightkettle.jpg) no-repeat center center fixed; 
   background-size: cover;
   margin: 0;
   padding: 0;
@@ -28,15 +28,22 @@
   height: 100vh;
 }
 
-.MacroForm{
-  background: url(images/crossfitdumbell.jpg) no-repeat center center fixed; 
+.macrolist{
+  background: url(images/breadcaloriesdiet.jpg) no-repeat center center fixed; 
   background-size: cover;
   margin: 0;
   padding: 0;
   height: 100vh;
 }
+  .workoutform{
+    background: url(images/athleticsblueground.jpg) no-repeat center center fixed; 
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
 .Login{
-  background: url(images/mountainyoga.jpg) no-repeat center center fixed; 
+  background: url(images/barbellbodybuilding.jpg) no-repeat center center fixed; 
   background-size: cover;
   margin: 0;
   padding: 0;
@@ -45,6 +52,7 @@
 }
 .loginForm{
   background: rgba(255,255,255,0.5);}
+
 .Register{
   background: url(images/mountainyoga.jpg) no-repeat center center fixed; 
   background-size: cover;
@@ -54,6 +62,11 @@
   background-attachment: fixed; 
  
 }
+.logo {
+  background: url("images/grapefruitlogotag.svg")  no-repeat ;
+}
+
+
 /* .Login{
   background: url(images/ropeclimbresize.jpg) no-repeat center center fixed; 
   background-size: cover;
