@@ -1,14 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import withStyles from '@material-ui/core/styles/withStyles';
 import ButtonNavigation from './ButtonNavigation';
@@ -16,7 +13,8 @@ import { withRouter } from 'react-router-dom';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import axios from "axios"
-
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Avatar from '@material-ui/core/Avatar';
 const styles = theme => ({
   main: {
     width: 'auto',
@@ -32,13 +30,14 @@ const styles = theme => ({
   paper: {
     // marginTop: theme.spacing.unit * 8,
     display: 'flex',
+    opacity: "0.8",
     flexDirection: 'column',
     alignItems: 'center',
     padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
   },
   avatar: {
     margin: theme.spacing.unit,
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.primary.main,
   },
   form: {
     width: '100%', // Fix IE 11 issue.
@@ -90,12 +89,12 @@ class Register extends React.Component {
       }
     ).then((response) => {
       localStorage.setItem("grapefruit-jwt", `Bearer ${response.data.data.token}`);
-      if (response.data.role === 0 ) {
+      if (response.data.role === 0) {
         this.props.history.push('/coach/clientlist')
       } else {
         this.props.history.push('/client')
       }
-     
+
 
     })
 
@@ -139,17 +138,17 @@ class Register extends React.Component {
     const { classes } = this.props;
     const { formErrors } = this.state;
     return (
-      <div>
+      <div className="Login">
         <ButtonNavigation />
         <main className={classes.main}>
           <CssBaseline />
           <Paper className={classes.paper}>
-            <Avatar className={classes.avatar}>
+            <Avatar className={classes.avatar} >
               <LockOutlinedIcon />
             </Avatar>
-            <h1>
+            <div>
               Register
-        </h1>
+            </div>
             <form className={classes.form} onSubmit={this.handleSubmit} noValidate>
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="username">UserName</InputLabel>

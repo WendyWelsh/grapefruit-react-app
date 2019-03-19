@@ -4,15 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import { withRouter } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
-import DeleteIcon from '@material-ui/icons/Delete';
-import AddIcon from '@material-ui/icons/Add';
-import Fab from '@material-ui/core/Fab';
-import Icon from '@material-ui/core/Icon';
+
 import axios from "axios"
-
-
 
 
 
@@ -27,6 +20,8 @@ const styles = theme => ({
     flexWrap: 'wrap',
     minWidth: 300,
     width: '100%',
+    justifyContent: 'center',  
+  
   },
   image: {
     position: 'relative',
@@ -68,6 +63,7 @@ const styles = theme => ({
     bottom: 0,
     backgroundSize: 'cover',
     backgroundPosition: 'center 40%',
+    
   },
   imageBackdrop: {
     position: 'absolute',
@@ -174,7 +170,7 @@ class ButtonBases extends React.Component {
     const { clients } = this.state;
    
     return (
-      <div className="CoachList">
+      <div className="CoachList" >
 
         <div className={classes.root}>
           {clients.map(client => (

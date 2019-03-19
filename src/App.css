@@ -1,10 +1,15 @@
 .buttonNav{
-    font-size:24px;
+    font-size:18px;
     width:200px;
+    opacity: 0.6;
     padding: 14px 40px;
-    border-radius: 8px;
+    border-radius: 0px;
     cursor: pointer;
+   
 
 }
-.buttonNav:hover {background-color: #8E86F7}
+.buttonNav:hover {
+    background-color: #607D8B;
+    opacity: 0.6;
+}
 

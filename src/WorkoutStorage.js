@@ -34,198 +34,198 @@ export const workoutMuscleGroup = [
 export const allWorkouts = [
     //Chest start
 {
-    id: 'Bench Press',
+    id: 1,
     title: 'Bench Press',
     workoutMuscleGroup: 'Chest',
 },
 {
-    id: 'Dumbbell Bench Press',
+    id: 2,
     title: 'Dumbbell Bench Press',
     workoutMuscleGroup: 'Chest',
 },
 {
-    id: 'Incline Bench Press',
+    id: 3,
     title: 'Incline Bench Press',
     workoutMuscleGroup: 'Chest',
 },
 {
-    id: 'Decline Bench Press',
+    id: 4,
     title: 'Decline Bench Press',
     workoutMuscleGroup: 'Chest',
 },
 {
-    id: 'Dumbbell Flys',
+    id: 5,
     title: 'Dumbbell Flys',
     workoutMuscleGroup: 'Chest',
 },
 {
-    id: 'Dips',
+    id: 6,
     title: 'Dips',
     workoutMuscleGroup: 'Chest',
 },
 {
-    id: 'Pushups',
+    id: 7,
     title: 'Pushups',
     workoutMuscleGroup: 'Chest',
 },
 {
-    id: 'Dumbbell Pullover',
+    id: 8,
     title: 'Dumbbell Pullover',
     workoutMuscleGroup: 'Chest',
 },
 //chest end
 //Back start
 {
-    id: 'Deadlift',
+    id: 9,
     title: 'Deadlift',
     workoutMuscleGroup: 'Back',
 },
 {
-    id: 'Trap-Bar Deadlift',
+    id: 10,
     title: 'Trap-Bar Deadlift',
     workoutMuscleGroup: 'Back',
 },
 {
-    id: 'Pullup',
+    id: 11,
     title: 'Pullup',
     workoutMuscleGroup: 'Back',
 },
 {
-    id: 'Weighted Pullup',
+    id: 12,
     title: 'Weighted Pullup',
     workoutMuscleGroup: 'Back',
 },
 {
-    id: 'Chinup',
+    id: 13,
     title: 'Chinup',
     workoutMuscleGroup: 'Back',
 },
 {
-    id: 'Romanian DeadLift',
+    id: 14,
     title: 'Romanian DeadLift',
     workoutMuscleGroup: 'Back',
 },
 {
-    id: 'Barbell Row',
+    id: 15,
     title: 'Barbell Row',
     workoutMuscleGroup: 'Back',
 },
 {
-    id: 'Lat Pulldown',
+    id: 16,
     title: 'Lat Pulldown',
     workoutMuscleGroup: 'Back',
 },
 {
-    id: 'Bentover Reverse Fly',
+    id: 17,
     title: 'Bentover Reverse Fly',
     workoutMuscleGroup: 'Back',
 },
 {
-    id: 'Seated Cable Row',
+    id: 18,
     title: 'Seated Cable Row',
     workoutMuscleGroup: 'Back',
 },
 //Back end
 //Legs Start
 {
-    id: 'Back Squat',
+    id: 19,
     title: 'Back Squat',
     workoutMuscleGroup: 'Legs',
 },
 {
-    id: 'Front Squat',
+    id: 20,
     title: 'Front Squat',
     workoutMuscleGroup: 'Legs',
 },
 {
-    id: 'Split Squat',
+    id: 21,
     title: 'Split Squat',
     workoutMuscleGroup: 'Legs',
 },
 {
-    id: 'Pause Squat',
+    id: 22,
     title: 'Pause Squat',
     workoutMuscleGroup: 'Legs',
 },
 {
-    id: 'Dumbbell Stepups',
+    id: 23,
     title: 'Dumbbell Stepups',
     workoutMuscleGroup: 'Legs',
 },
 {
-    id: 'Lunges',
+    id: 24,
     title: 'Lunges',
     workoutMuscleGroup: 'Legs',
 },
 {
-    id: 'Leg Press',
+    id: 25,
     title: 'Leg Press',
     workoutMuscleGroup: 'Legs',
 },
 {
-    id: 'Standing Calf Raises',
+    id: 26,
     title: 'Standing Calf Raises',
     workoutMuscleGroup: 'Legs',
 },
 {
-    id: 'Leg Extensions',
+    id: 27,
     title: 'Leg Extensions',
     workoutMuscleGroup: 'Legs',
 },
 {
-    id: 'Leg Curls',
+    id: 28,
     title: 'Leg Curls',
     workoutMuscleGroup: 'Legs',
 },
 //Legs End
 //Biceps start
 {
-    id: 'Barbell Curl',
+    id: 29,
     title: 'Barbell Curl',
     workoutMuscleGroup: 'Biceps',
 },
 {
-    id: 'Wide Grip Barbell curl',
+    id: 30,
     title: 'Wide Grip Barbell curl',
     workoutMuscleGroup: 'Biceps',
 },
 {
-    id: 'Close Grip Barbell Curl',
+    id: 31,
     title: 'Close Grip Barbell Curl',
     workoutMuscleGroup: 'Biceps',
 },
 {
-    id: 'Standing Dumbbell Curl',
+    id: 32,
     title: 'Standing Dumbbell Curl',
     workoutMuscleGroup: 'Biceps',
 },
 {
-    id: 'Concentrated Curl',
+    id: 33,
     title: 'Concentrated Curl',
     workoutMuscleGroup: 'Biceps',
 },
 {
-    id: 'One Arm Cable Curl',
+    id: 34,
     title: 'One Arm Cable Curl',
     workoutMuscleGroup: 'Biceps',
 },
 {
-    id: 'Two arm Cable Curl',
+    id: 35,
     title: 'Two arm Cable Curl',
     workoutMuscleGroup: 'Biceps',
 },
 {
-    id: 'Hammer Curl',
+    id: 36,
     title: 'Hammer Curl',
     workoutMuscleGroup: 'Biceps',
 },
 {
-    id: 'Incline Dumbbell Curl',
+    id: 37,
     title: 'Incline Dumbbell Curl',
     workoutMuscleGroup: 'Biceps',
 },
 {
-    id: 'EZ Bar Curl',
+    id: 38,
     title: 'EZ Bar Curl',
     workoutMuscleGroup: 'Biceps',
 },
@@ -233,37 +233,37 @@ export const allWorkouts = [
 //Tricep start
 
 {
-    id: 'Close Grip Bench Press',
+    id: 39,
     title: 'Close Grip Bench Press',
     workoutMuscleGroup: 'Triceps',
 },
 {
-    id: 'Decline Tricep Extensions',
+    id: 40,
     title: 'Decline Tricep Extensions',
     workoutMuscleGroup: 'Triceps',
 },
 {
-    id: 'Cable Pushdowns',
+    id: 41,
     title: 'Cable Pushdowns',
     workoutMuscleGroup: 'Triceps',
 },
 {
-    id: 'Lying Tricep Extensions',
+    id: 42,
     title: 'Lying Tricep Extensions',
     workoutMuscleGroup: 'Triceps',
 },
 {
-    id: 'One Arm Overhead Extensions',
+    id: 43,
     title: 'One Arm Overhead Extensions',
     workoutMuscleGroup: 'Triceps',
 },
 {
-    id: 'Dips',
+    id: 44,
     title: 'Dips',
     workoutMuscleGroup: 'Triceps',
 },
 {
-    id: 'One Arm Cable PullDown',
+    id: 45,
     title: 'One Arm Cable PullDown',
     workoutMuscleGroup: 'Triceps',
 },
@@ -271,84 +271,84 @@ export const allWorkouts = [
 //Tricep End
 //Shoulders Start
 {
-    id: 'Barbell Overhead Press',
+    id: 46,
     title: 'Barbell Overhead Press',
     workoutMuscleGroup: 'Shoulders',
 },
 {
-    id: 'Seated Dumbbell Overhead press',
+    id: 47,
     title: 'Seated Dumbbell Overhead press',
     workoutMuscleGroup: 'Shoulders',
 },
 {
-    id: 'Standing Dumbbell Overhead Press',
+    id: 48,
     title: 'Standing Dumbbell Overhead Press',
     workoutMuscleGroup: 'Shoulders',
 },
 {
-    id: 'Standing Dumbbell Fly',
+    id: 49,
     title: 'Standing Dumbbell Fly',
     workoutMuscleGroup: 'Shoulders',
 },
 {
-    id: 'Dumbell Front Raises',
+    id: 50,
     title: 'Dumbell Front Raises',
     workoutMuscleGroup: 'Shoulders',
 },
 {
-    id: 'Cable Face Pull',
+    id: 51,
     title: 'Cable Face Pull',
     workoutMuscleGroup: 'Shoulders',
 },
 {
-    id: 'Barbell High Pull',
+    id: 52,
     title: 'Barbell High Pull',
     workoutMuscleGroup: 'Shoulders',
 },
 {
-    id: 'Trap Raise',
+    id: 53,
     title: 'Trap Raise',
     workoutMuscleGroup: 'Shoulders',
 },
 {
-    id: 'Dumbbell Shrugs',
+    id: 54,
     title: 'Dumbbell Shrugs',
     workoutMuscleGroup: 'Shoulders',
 },
 //Shoulders End
 //Cardio start
 {
-    id: 'Elliptical',
+    id: 55,
     title: 'Elliptical',
     workoutMuscleGroup: 'Cardio',
 },
 {
-    id: 'Treadmill',
+    id: 56,
     title: 'Treadmill',
     workoutMuscleGroup: 'Cardio',
 },
 {
-    id: 'Stair Climber',
+    id: 57,
     title: 'Stair Climber',
     workoutMuscleGroup: 'Cardio',
 },
 {
-    id: 'Jump Rope',
+    id: 58,
     title: 'Jump Rope',
     workoutMuscleGroup: 'Cardio',
 },
 {
-    id: 'Cycling',
+    id: 59,
     title: 'Cycling',
     workoutMuscleGroup: 'Cardio',
 },
 {
-    id: 'Swimming',
+    id: 60,
     title: 'Swimming',
     workoutMuscleGroup: 'Cardio',
 },
 {
-    id: 'Rowing',
+    id: 61,
     title: 'Rowing',
     workoutMuscleGroup: 'Cardio',
 },
