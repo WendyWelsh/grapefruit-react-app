@@ -39,6 +39,7 @@ function DateSelector(props) {
         type="date"
         defaultValue="2019-03-01"
         className={classes.textField}
+        onChange={props.onChange}
         InputLabelProps={{
           shrink: true,
         }}

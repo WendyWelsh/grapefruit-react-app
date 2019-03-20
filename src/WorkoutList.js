@@ -33,6 +33,7 @@ class WorkoutList extends React.Component {
     constructor(prop) {
         super(prop)
         this.state = {
+            date: '',
             workoutMuscleGroup: '',
             workout: '',
             sets: '1',
@@ -54,6 +55,7 @@ class WorkoutList extends React.Component {
 
     handleSubmit = () => {
         let selectedWorkout = {
+            date: this.state.date,
             muscleGroup: this.state.workoutMuscleGroup,
             workout: this.state.workout,
             sets: this.state.sets,
@@ -84,8 +86,9 @@ class WorkoutList extends React.Component {
     }
 
     handleChange = prop => event => {
+        
         this.setState({ [prop]: event.target.value });
-
+        
 
 
     }
@@ -101,11 +104,6 @@ class WorkoutList extends React.Component {
         }, {})
 
     }
-
-
-
-
-
 
 
 
@@ -129,7 +127,9 @@ class WorkoutList extends React.Component {
                             </Button>
                         </Paper>
                         <form className={classes.container} noValidate autoComplete="off">
-                            <DateSelector />
+                         <DateSelector 
+                         value={this.state.date}  
+                         onChange={this.handleChange('date')} />
                         <TextField className={classes.root}
                             select
                             className={classNames(classes.margin, classes.textField)}
@@ -227,7 +227,9 @@ class WorkoutList extends React.Component {
                 <Grid container>
                     <Grid item sm>
                   
-                        <WorkoutForm workouts={this.state.clientWorkouts} />
+                        <WorkoutForm 
+                        workouts={this.state.clientWorkouts} 
+                        clientId={this.props.match.params.id}/>
                     </Grid>
                 </Grid>
 
