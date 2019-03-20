@@ -24,6 +24,7 @@ const styles = theme => ({
       width: 400,
       marginLeft: 'auto',
       marginRight: 'auto',
+      // paddingTop: '150px', 
     },
   },
   paper: {
@@ -32,7 +33,7 @@ const styles = theme => ({
     flexDirection: 'column',
     alignItems: 'center',
     opacity: "0.8",
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
+    padding: `${theme.spacing.unit * 5}px ${theme.spacing.unit * 5}px ${theme.spacing.unit * 5}px`,
   },
   avatar: {
     margin: theme.spacing.unit,
@@ -45,7 +46,7 @@ const styles = theme => ({
     boxShadow: 'none',
   },
   submit: {
-    marginTop: theme.spacing.unit * 3,
+    marginTop: theme.spacing.unit * 5,
   },
 
 });

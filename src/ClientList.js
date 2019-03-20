@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import { withRouter } from 'react-router-dom';
-
+import { spacing } from '@material-ui/system';
 import axios from "axios"
 
 
@@ -14,17 +14,22 @@ const styles = theme => ({
 
   button: {
     margin: theme.spacing.unit,
+   
   },
+
 
   root: {
     display: 'flex',
     flexWrap: 'wrap',
     minWidth: 300,
     width: '100%',
-    justifyContent: 'center',  
-  
-  },
+    justifyContent: 'center',
+    paddingTop: '150px', 
+   
+
+},
   image: {
+
     position: 'relative',
     height: 200,
     [theme.breakpoints.down('xs')]: {
@@ -57,6 +62,7 @@ const styles = theme => ({
     color: theme.palette.common.white,
   },
   imageSrc: {
+
     position: 'absolute',
     left: 0,
     right: 0,
@@ -64,7 +70,7 @@ const styles = theme => ({
     bottom: 0,
     backgroundSize: 'cover',
     backgroundPosition: 'center 40%',
-    
+
   },
   imageBackdrop: {
     position: 'absolute',
@@ -80,14 +86,14 @@ const styles = theme => ({
     position: 'relative',
     padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 4}px ${theme.spacing.unit + 6}px`,
   },
-  imageMarked: {
-    height: 3,
+imageMarked: {
+  height: 3,
     width: 18,
-    backgroundColor: theme.palette.common.white,
-    position: 'absolute',
-    bottom: -2,
-    left: 'calc(50% - 9px)',
-    transition: theme.transitions.create('opacity'),
+      backgroundColor: theme.palette.common.white,
+        position: 'absolute',
+          bottom: -2,
+            left: 'calc(50% - 9px)',
+              transition: theme.transitions.create('opacity'),
   },
 });
 
@@ -133,7 +139,7 @@ class ButtonBases extends React.Component {
         }
       }
     ).then((response) => {
-      this.setState({clients: response.data.data})
+      this.setState({ clients: response.data.data })
       console.log(response)
 
     })
@@ -169,7 +175,7 @@ class ButtonBases extends React.Component {
   render() {
     const { classes } = this.props;
     const { clients } = this.state;
-   
+
     return (
       <div className="CoachList" >
 
@@ -185,9 +191,9 @@ class ButtonBases extends React.Component {
                 style={{
                   width: "25%"
                 }}
-    
+
               >
-                
+
                 <span className={classes.imageBackdrop} />
                 <span className={classes.imageButton}>
                   <Typography

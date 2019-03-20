@@ -28,11 +28,12 @@ TabContainer.propTypes = {
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor: theme.palette.background,
         marginLeft: "auto",
         marginRight: "auto",
         width: 400,
         opacity: "0.8",
+        paddingTop: '80px', 
     },
 });
 
