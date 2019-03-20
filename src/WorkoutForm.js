@@ -15,9 +15,11 @@ const styles = theme => ({
     width: '100%',
     marginTop: theme.spacing.unit * 3,
     overflowX: 'auto',
+    opacity: 0.9,
   },
   table: {
     minWidth: 700,
+    
   },
 });
 
@@ -45,10 +47,9 @@ class WorkoutForm extends React.Component {
 
 
     return (
-      <div>
+      <div className='workoutform'>
 
-
-        <Paper className={classes.root}>
+        <Paper style={{ opacity: 0.95 }} >
           <Table className={classes.table}>
             <TableHead>
               <TableRow>
