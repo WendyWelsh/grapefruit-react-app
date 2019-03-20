@@ -13,6 +13,7 @@ import Grid from '@material-ui/core/Grid';
 import axios from 'axios';
 import InputLabel from '@material-ui/core/InputLabel';
 import Paper from '@material-ui/core/Paper';
+import DateSelector from './DateSelector';
 
 const styles = theme => ({
     root: {
@@ -127,6 +128,8 @@ class WorkoutList extends React.Component {
                                 <h1>{this.state.client.username}</h1>
                             </Button>
                         </Paper>
+                        <form className={classes.container} noValidate autoComplete="off">
+                            <DateSelector />
                         <TextField className={classes.root}
                             select
                             className={classNames(classes.margin, classes.textField)}
@@ -207,6 +210,7 @@ class WorkoutList extends React.Component {
                                 </MenuItem>
                             ))}
                         </TextField>
+                       
                         <Button
                             onClick={this.handleSubmit}
                             variant="outlined"
@@ -214,12 +218,15 @@ class WorkoutList extends React.Component {
                             color="primary"
                             className={classes.margin}>
                             ADD
-
+                          
                         </Button>
+                        </form>
                     </Grid>
                 </Grid>
+             
                 <Grid container>
                     <Grid item sm>
+                  
                         <WorkoutForm workouts={this.state.clientWorkouts} />
                     </Grid>
                 </Grid>
