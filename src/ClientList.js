@@ -4,8 +4,10 @@ import { withStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import { withRouter } from 'react-router-dom';
-
+import { spacing } from '@material-ui/system';
 import axios from "axios"
+// import RaisedButton from '@material-ui/core/RaisedButton';
+import Button from '@material-ui/core/Button';
 
 
 
@@ -13,17 +15,22 @@ const styles = theme => ({
 
   button: {
     margin: theme.spacing.unit,
+   
   },
+
 
   root: {
     display: 'flex',
     flexWrap: 'wrap',
     minWidth: 300,
     width: '100%',
-    justifyContent: 'center',  
-  
-  },
+    justifyContent: 'center',
+    paddingTop: '150px', 
+   
+
+},
   image: {
+
     position: 'relative',
     height: 200,
     [theme.breakpoints.down('xs')]: {
@@ -56,6 +63,7 @@ const styles = theme => ({
     color: theme.palette.common.white,
   },
   imageSrc: {
+
     position: 'absolute',
     left: 0,
     right: 0,
@@ -63,7 +71,7 @@ const styles = theme => ({
     bottom: 0,
     backgroundSize: 'cover',
     backgroundPosition: 'center 40%',
-    
+
   },
   imageBackdrop: {
     position: 'absolute',
@@ -79,14 +87,14 @@ const styles = theme => ({
     position: 'relative',
     padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 4}px ${theme.spacing.unit + 6}px`,
   },
-  imageMarked: {
-    height: 3,
+imageMarked: {
+  height: 3,
     width: 18,
-    backgroundColor: theme.palette.common.white,
-    position: 'absolute',
-    bottom: -2,
-    left: 'calc(50% - 9px)',
-    transition: theme.transitions.create('opacity'),
+      backgroundColor: theme.palette.common.white,
+        position: 'absolute',
+          bottom: -2,
+            left: 'calc(50% - 9px)',
+              transition: theme.transitions.create('opacity'),
   },
 });
 
@@ -94,9 +102,10 @@ const styles = theme => ({
 class ButtonBases extends React.Component {
   constructor(props) {
     super(props)
-
+ 
     this.state = {
-      anchorEl: null,
+        selectedFile: null,
+        anchorEl: null, 
       clients: []
       // clients: [{
       //   url: '/static/images/grid-list/breakfast.jpg',
@@ -132,7 +141,7 @@ class ButtonBases extends React.Component {
         }
       }
     ).then((response) => {
-      this.setState({clients: response.data.data})
+      this.setState({ clients: response.data.data })
       console.log(response)
 
     })
@@ -147,6 +156,22 @@ class ButtonBases extends React.Component {
   // })
   // .catch(err => console.log(err));
   // }
+// fileSelectedHandler selects the event and targets image 
+fileSelectedHandler = event => {
+  this.setState({
+      selectedFile: event.target.files[0]
+  })
+
+}
+
+// fileUploadHandler = () => {
+//   const fd = new FormData();
+//   fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
+//   axios.post('https://firebasestorage.googleapis.com/v0/b/instaham-78e55.appspot.com/o/meatonfork.jpeg?alt=media&token=ce57906d-0561-416d-bac6-d9f94a53b378', fd)
+//       .then(res => {
+//           console.log(res);
+//       })
+
 
   handleRemoveClient(id) {
     console.log(id)
@@ -168,13 +193,27 @@ class ButtonBases extends React.Component {
   render() {
     const { classes } = this.props;
     const { clients } = this.state;
-   
+
     return (
       <div className="CoachList" >
 
         <div className={classes.root}>
           {clients.map(client => (
             <>
+            {/* <input
+  accept="image/*"
+  className={classes.input}
+  style={{ display: 'none' }}
+  id="raised-button-file"
+  multiple
+  type="file"
+/>
+<label htmlFor="raised-button-file">
+  <Button variant="raised" component="span" className={classes.button}>
+    Upload
+  </Button>
+</label>  */}
+            
               <ButtonBase
                 onClick={() => this.directToUserLandingPage(client.client.id)}
                 focusRipple
@@ -184,9 +223,9 @@ class ButtonBases extends React.Component {
                 style={{
                   width: "25%"
                 }}
-    
+
               >
-                
+
                 <span className={classes.imageBackdrop} />
                 <span className={classes.imageButton}>
                   <Typography

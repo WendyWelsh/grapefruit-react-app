@@ -13,6 +13,7 @@ import Grid from '@material-ui/core/Grid';
 import axios from 'axios';
 import InputLabel from '@material-ui/core/InputLabel';
 import Paper from '@material-ui/core/Paper';
+import DateSelector from './DateSelector';
 
 const styles = theme => ({
     root: {
@@ -22,6 +23,7 @@ const styles = theme => ({
     },
     margin: {
         margin: theme.spacing.unit,
+        
     },
     textField: {
         flexBasis: 200,
@@ -32,6 +34,7 @@ class WorkoutList extends React.Component {
     constructor(prop) {
         super(prop)
         this.state = {
+            date: '',
             workoutMuscleGroup: '',
             workout: '',
             sets: '1',
@@ -53,6 +56,7 @@ class WorkoutList extends React.Component {
 
     handleSubmit = () => {
         let selectedWorkout = {
+            date: this.state.date,
             muscleGroup: this.state.workoutMuscleGroup,
             workout: this.state.workout,
             sets: this.state.sets,
@@ -83,8 +87,9 @@ class WorkoutList extends React.Component {
     }
 
     handleChange = prop => event => {
+        
         this.setState({ [prop]: event.target.value });
-
+        
 
 
     }
@@ -100,11 +105,6 @@ class WorkoutList extends React.Component {
         }, {})
 
     }
-
-
-
-
-
 
 
 
@@ -126,7 +126,11 @@ class WorkoutList extends React.Component {
                             <Button  color="inherit">
                                 <h1>{this.state.client.username}</h1>
                             </Button>
-                        </Paper>
+                            </Paper>
+                        <form className={classes.container} noValidate autoComplete="off">
+                         <DateSelector 
+                         value={this.state.date}  
+                         onChange={this.handleChange('date')} />
                         <TextField className={classes.root}
                             select
                             className={classNames(classes.margin, classes.textField)}
@@ -207,6 +211,7 @@ class WorkoutList extends React.Component {
                                 </MenuItem>
                             ))}
                         </TextField>
+                       
                         <Button
                             onClick={this.handleSubmit}
                             variant="outlined"
@@ -214,13 +219,19 @@ class WorkoutList extends React.Component {
                             color="primary"
                             className={classes.margin}>
                             ADD
-
+                          
                         </Button>
+                        
+                        </form>
                     </Grid>
                 </Grid>
+             
                 <Grid container>
                     <Grid item sm>
-                        <WorkoutForm workouts={this.state.clientWorkouts} />
+                  
+                        <WorkoutForm 
+                        workouts={this.state.clientWorkouts} 
+                        clientId={this.props.match.params.id}/>
                     </Grid>
                 </Grid>
 

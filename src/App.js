@@ -17,19 +17,19 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       light: "#9242f4",
-      main: "#8FBF1A", // green* "8FBF1A",slate blue #607D8B, orange/red "dd4b39", green #24AF9E
-      dark: "#1613FF", //bright blue
-      contrastText: "#FFFFFF"
+      main: "#607D8B", // green* "8FBF1A",slate blue #607D8B, orange/red "dd4b39", green #24AF9E
+      dark: "#B0BEC5", //bright blue
+      contrastText: "#000000"
     },
     secondary: {
       light: "#1613FF",
-      main: "#1613FF",  //#1D14BF, grey 5B7DFF
+      main: "#B0BEC5",  //#1D14BF, grey 5B7DFF
       dark: "#1613FF",
-      contrastText: "FFFFFF"
+      contrastText: "000000"
     },
     button: {
-      backgroundColor: "#1613FF", //light grey
-      textColor: "FFFFFF",
+      backgroundColor: "#B0BEC5", //light grey
+      textColor: "000000",
       height: 50,
       width: 100,
       // borderRadius: 55,
