@@ -6,6 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import { withRouter } from 'react-router-dom';
 import { spacing } from '@material-ui/system';
 import axios from "axios"
+// import RaisedButton from '@material-ui/core/RaisedButton';
+import Button from '@material-ui/core/Button';
 
 
 
@@ -101,9 +103,10 @@ imageMarked: {
 class ButtonBases extends React.Component {
   constructor(props) {
     super(props)
-
+ 
     this.state = {
-      anchorEl: null,
+        selectedFile: null,
+        anchorEl: null, 
       clients: []
       // clients: [{
       //   url: '/static/images/grid-list/breakfast.jpg',
@@ -154,6 +157,22 @@ class ButtonBases extends React.Component {
   // })
   // .catch(err => console.log(err));
   // }
+// fileSelectedHandler selects the event and targets image 
+fileSelectedHandler = event => {
+  this.setState({
+      selectedFile: event.target.files[0]
+  })
+
+}
+
+// fileUploadHandler = () => {
+//   const fd = new FormData();
+//   fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
+//   axios.post('https://firebasestorage.googleapis.com/v0/b/instaham-78e55.appspot.com/o/meatonfork.jpeg?alt=media&token=ce57906d-0561-416d-bac6-d9f94a53b378', fd)
+//       .then(res => {
+//           console.log(res);
+//       })
+
 
   handleRemoveClient(id) {
     console.log(id)
@@ -182,6 +201,20 @@ class ButtonBases extends React.Component {
         <div className={classes.root}>
           {clients.map(client => (
             <>
+            {/* <input
+  accept="image/*"
+  className={classes.input}
+  style={{ display: 'none' }}
+  id="raised-button-file"
+  multiple
+  type="file"
+/>
+<label htmlFor="raised-button-file">
+  <Button variant="raised" component="span" className={classes.button}>
+    Upload
+  </Button>
+</label>  */}
+            
               <ButtonBase
                 onClick={() => this.directToUserLandingPage(client.client.id)}
                 focusRipple

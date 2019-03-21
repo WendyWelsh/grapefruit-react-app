@@ -23,6 +23,7 @@ const styles = theme => ({
     },
     margin: {
         margin: theme.spacing.unit,
+        
     },
     textField: {
         flexBasis: 200,
@@ -125,7 +126,7 @@ class WorkoutList extends React.Component {
                             <Button  color="inherit">
                                 <h1>{this.state.client.username}</h1>
                             </Button>
-                        </Paper>
+                            </Paper>
                         <form className={classes.container} noValidate autoComplete="off">
                          <DateSelector 
                          value={this.state.date}  
@@ -220,6 +221,7 @@ class WorkoutList extends React.Component {
                             ADD
                           
                         </Button>
+                        
                         </form>
                     </Grid>
                 </Grid>

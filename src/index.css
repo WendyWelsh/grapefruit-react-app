@@ -35,8 +35,8 @@
   padding: 0;
   height: 100vh;
 }
-  .workoutform{
-    background: url(images/athleticsblueground.jpg) no-repeat center center fixed; 
+.workoutform{
+    background: url(images/weights.jpg) no-repeat center center fixed; 
     background-size: cover;
     margin: 0;
     padding: 0;

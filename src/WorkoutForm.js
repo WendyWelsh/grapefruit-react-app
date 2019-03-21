@@ -72,8 +72,7 @@ class WorkoutForm extends React.Component {
               ))}
             </TableBody>
           </Table>
-        </Paper>
-        <Button
+          <Button
           onClick={this.handleSubmit}
           variant="outlined"
           size="large"
@@ -82,6 +81,8 @@ class WorkoutForm extends React.Component {
         >
           Submit Workout
         </Button>
+        </Paper>
+     
       </div>
     );
   }
