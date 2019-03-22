@@ -60,7 +60,7 @@ class CoachLandingPage extends React.Component {
   }
 
   directToMacroList() {
-    this.props.history.push("/macroList");
+    this.props.history.push("/coach/client/" + this.props.match.params.id + "/macroList");
   }
   directToWorkoutList() {
     this.props.history.push("/coach/client/" + this.props.match.params.id + "/workout");
