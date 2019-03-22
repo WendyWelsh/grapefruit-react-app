@@ -54,6 +54,7 @@ class MacroList extends React.Component {
 
     handleSubmit = () => {
         let selectedMacros = {
+            date:this.state.date,
             dateSelected:this.state.date,
             carbsSelected: this.state.carbohydrates,
             proteinSelected: this.state.protein,
@@ -89,7 +90,9 @@ class MacroList extends React.Component {
                 <Grid container>
                     <Grid item sm>
                         <form className={classes.container} noValidate autoComplete="off">
-                            <DateSelector />
+                        <DateSelector 
+                        value={this.state.date}  
+                        onChange={this.handleChange('date')} />
                             <TextField
                                 id="filled-number"
                                 label="Carbohydrates"

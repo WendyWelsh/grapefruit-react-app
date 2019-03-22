@@ -50,7 +50,8 @@ class WorkoutForm extends React.Component {
           <Table className={classes.table}>
             <TableHead>
               <TableRow>
-                <TableCell>Muscle Group</TableCell>
+                <TableCell>Date</TableCell>
+                <TableCell align="right">Muscle Group</TableCell>
                 <TableCell align="right">Workout</TableCell>
                 <TableCell align="right">Sets</TableCell>
                 <TableCell align="right">Reps</TableCell>
@@ -62,8 +63,9 @@ class WorkoutForm extends React.Component {
               {this.props.workouts.map(workout => (
                 <TableRow key={workout.id}>
                   <TableCell component="th" scope="row">
-                    {workout.muscleGroup}
+                    {workout.date}
                   </TableCell>
+                  <TableCell align="right">{workout.muscleGroup}</TableCell>
                   <TableCell align="right">{workout.workout}</TableCell>
                   <TableCell align="right">{workout.sets}</TableCell>
                   <TableCell align="right">{workout.reps}</TableCell>
