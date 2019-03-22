@@ -14,6 +14,19 @@ const styles = theme => ({
   },
 });
 
+const buttonStyle = {
+  borderRadius: '10%',
+}
+
+const paper = {
+  padding: 150, 
+  marginLeft: '10px', 
+  maxWidth: '150px',
+  textAlign: 'center',
+  margin: 'auto',
+  
+}
+
 
 class UserLandingPage extends React.Component {
   constructor(props) {
@@ -51,25 +64,20 @@ class UserLandingPage extends React.Component {
   render() {
     return (
       <div className="UserLandingPage">
-        <Grid container>
-        <Grid item xs={6} sm={3}>
-            <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
-            
-              <Button  onClick = {this.directToWorkoutForm} variant="outlined" color="inherit">
+         {/* <Grid container>
+    */}
+          {/* <Grid item xs={6} sm={3}>
+           */} 
+            <Paper style={paper}>
+            <Button style={buttonStyle} onClick = {this.directToWorkoutForm} variant="outlined" color="inherit">
                 Workout Log
               </Button>
-            </Paper>
-            
-          </Grid>
-          <Grid item xs={6} sm={3}>
-          
-            <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
-              <Button  onClick = {this.directToMacroForm} variant="outlined" color="inherit">
+              <Button style={buttonStyle} onClick = {this.directToMacroForm} variant="outlined" color="inherit">
                 Macro Track Log
               </Button>
             </Paper>
-          </Grid>
-        </Grid>
+          {/* </Grid> */}
+        {/* </Grid> */}
         <MessageBoard sender="Wendy" receiver="Matt"/>
       </div>
     )

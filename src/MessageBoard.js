@@ -42,7 +42,7 @@ const themes = {
     MessageList: {
       css: {
         borderWidth: "2px",
-        borderColor: "black",
+        borderColor: "gray",
         borderStyle: "solid",
         backgroundColor: "rgba(255,225,225,1)",
         borderRadius: "1em",
