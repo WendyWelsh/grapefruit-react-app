@@ -21,6 +21,7 @@ const styles = theme => ({
   table: {
     minWidth: 700
   }
+  
 });
 
 class WorkoutForm extends React.Component {

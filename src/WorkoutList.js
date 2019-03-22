@@ -11,7 +11,7 @@ import { workoutMuscleGroup, workoutSets, workoutReps, workoutRPE, allWorkouts }
 import WorkoutForm from './WorkoutForm'
 import Grid from '@material-ui/core/Grid';
 import axios from 'axios';
-
+import Typography from '@material-ui/core/Typography';
 import DateSelector from './DateSelector';
 import moment from 'moment';
 
@@ -126,14 +126,15 @@ this.updateDate=this.updateDate.bind(this)
 
         return (
             <div className={classes.root}>
-
+            
+                    <Typography 
+                    style={{ marginLeft: 7, paddingTop: 30}}              
+                    variant="display1"
+                    gutterBottom>
+                    {this.state.client.username} 
+                    </Typography>
                 <Grid container>
-
                     <Grid item sm>
-                        
-                          
-                                <h1>{this.state.client.username}</h1>
-                           
                         <form className={classes.container} noValidate autoComplete="off">
                          <DateSelector 
                          value={this.state.date}
