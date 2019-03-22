@@ -104,7 +104,8 @@ class CoachLandingPage extends React.Component {
             </Paper>
           </Grid>
         </Grid>
-        <MessageBoard/>
+        {/* <MessageBoard sender="lincoln" receiver={this.state.client.username}/> */}
+        <MessageBoard sender="lincoln" receiver="bob"/>
       </div>
     )
   }

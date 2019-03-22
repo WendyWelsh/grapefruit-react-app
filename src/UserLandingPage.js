@@ -70,7 +70,7 @@ class UserLandingPage extends React.Component {
             </Paper>
           </Grid>
         </Grid>
-        <MessageBoard/>
+        <MessageBoard sender="Wendy" receiver="Matt"/>
       </div>
     )
   }
