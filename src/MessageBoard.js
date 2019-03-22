@@ -24,15 +24,16 @@ const themes = {
   myTheme: {
     TitleBar: {
       css: {
-        backgroundColor: "rgba(153, 102, 153, 1)",
-        borderRadius: "10%",
+        backgroundColor: "red",
+        borderRadius: "10em",
         fontSize:38,
         color: "white",
-        fontFamily: "Lucida Console"
+        fontFamily: "Lucida Console",
+        borderWidth: "2px",
       },
       IconButton: {
         css: {
-          backgroundColor: "rgba(153, 102, 153, 1)",
+          backgroundColor: "white",
           border: "solid black 0.1em",
           borderRadius: "50%",
           color: "black"
@@ -44,9 +45,11 @@ const themes = {
         borderWidth: "2px",
         borderColor: "gray",
         borderStyle: "solid",
-        backgroundColor: "rgba(255,225,225,1)",
+        backgroundColor: "slategray",
         borderRadius: "1em",
         textAlign: "justify",
+        fontFamily: "Lucida Console",
+        fontSize: '23px'
       }
     },
     TextComposer: {css: {marginTop: "1em"}}

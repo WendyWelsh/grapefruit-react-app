@@ -15,17 +15,29 @@ const styles = theme => ({
 });
 
 const buttonStyle = {
-  borderRadius: '10%',
+  borderRadius: '10em',
+  boxShadow: '2px 2px 0.5px white',
+  fontSize: '16px',
+  fontWeight: 'bold',
+  fontFamily: 'Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif',
+  border: '9px',
+  color: 'red'
 }
 
 const paper = {
-  padding: 150, 
+  padding: 180, 
   marginLeft: '10px', 
   maxWidth: '150px',
   textAlign: 'center',
   margin: 'auto',
-  
+  borderRadius: '8px',
+  height: 'auto',
+  backgroundColor: 'lightgray',
+  boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
 }
+
+  
+
 
 
 class UserLandingPage extends React.Component {
