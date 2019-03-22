@@ -8,7 +8,8 @@ import MacroForm from './MacroForm'
 import Button from '@material-ui/core/Button';
 import DateSelector from './DateSelector';
 import Paper from '@material-ui/core/Paper';
-
+import axios from 'axios';
+import moment from 'moment';
 
 const styles = theme => ({
     container: {
@@ -36,9 +37,9 @@ const styles = theme => ({
 
 class MacroList extends React.Component {
     constructor(prop) {
-        super(prop)
+        super(prop)     
         this.state = {
-            date: '',
+            date: moment().format('YYYY-MM-DD'),
             carbohydrates: '',
             protein: '',
             fat: '',
@@ -50,10 +51,33 @@ class MacroList extends React.Component {
         };
     }
 
+    componentDidMount() {
+
+        axios.get('/coach/clients/' + this.props.match.params.id,
+            {
+                headers: {
+                    Authorization: localStorage.getItem('grapefruit-jwt')
+                }
+            }).then((response) => {
+        
+                this.setState({ client: response.data.data[0].client })
+                console.log(response)
+
+            })
+
+    }
+
+    updateDate = (newDate) => {
+        console.log(newDate)
+        this.setState({date: newDate})
+
+    }
 
 
     handleSubmit = () => {
+       
         let selectedMacros = {
+            date:this.state.date,
             dateSelected:this.state.date,
             carbsSelected: this.state.carbohydrates,
             proteinSelected: this.state.protein,
@@ -84,12 +108,14 @@ class MacroList extends React.Component {
         return (
             <div className='macrolist'>
 
-                <h1>{this.state.client.username}</h1>
-                <Paper style={{ opacity: 0.95 }}>
-                <Grid container>
+            <Paper style={{ opacity: 0.95 }}>
+            <h1>{this.state.client.username}</h1>
+            <Grid container>
                     <Grid item sm>
                         <form className={classes.container} noValidate autoComplete="off">
-                            <DateSelector />
+                        <DateSelector 
+                        value={this.state.date}  
+                        updateDate={this.updateDate}/>
                             <TextField
                                 id="filled-number"
                                 label="Carbohydrates"

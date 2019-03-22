@@ -58,7 +58,7 @@ class App extends Component {
               <Route path="/coach/clientlist" component={ClientList} />
               {/* <Route path="/client/coachlist" component={CoachList} /> */}
               <Route path="/coach/client/:id/workout" component={WorkoutList} />
-              <Route path="/MacroList" component={MacroList} />
+              <Route path="/coach/client/:id/macroList" component={MacroList} />
               <Route path="/coachworkoutselector" component={CoachWorkoutSelector} />
               {/* <Route path="/messageboard" component={MessageBoard}/> */}
               <Route path="/client" component={UserLandingPage} />

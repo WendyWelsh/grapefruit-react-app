@@ -11,9 +11,9 @@ import { workoutMuscleGroup, workoutSets, workoutReps, workoutRPE, allWorkouts }
 import WorkoutForm from './WorkoutForm'
 import Grid from '@material-ui/core/Grid';
 import axios from 'axios';
-import InputLabel from '@material-ui/core/InputLabel';
-import Paper from '@material-ui/core/Paper';
+
 import DateSelector from './DateSelector';
+import moment from 'moment';
 
 const styles = theme => ({
     root: {
@@ -33,8 +33,9 @@ const styles = theme => ({
 class WorkoutList extends React.Component {
     constructor(prop) {
         super(prop)
+       
         this.state = {
-            date: '',
+            date: moment().format('YYYY-MM-DD'),
             workoutMuscleGroup: '',
             workout: '',
             sets: '1',
@@ -49,10 +50,17 @@ class WorkoutList extends React.Component {
             clientWorkouts: []
 
         };
-
+this.handleSubmit=this.handleSubmit.bind(this)
+this.updateDate=this.updateDate.bind(this)
 
     };
 
+
+    updateDate = (newDate) => {
+        console.log(newDate)
+        this.setState({date: newDate})
+
+    }
 
     handleSubmit = () => {
         let selectedWorkout = {
@@ -122,15 +130,15 @@ class WorkoutList extends React.Component {
                 <Grid container>
 
                     <Grid item sm>
-                        <Paper style={{ padding: 2,  margin: 10, textAlign: 'left', opacity: 0.9 }}>
-                            <Button  color="inherit">
+                        
+                          
                                 <h1>{this.state.client.username}</h1>
-                            </Button>
-                            </Paper>
+                           
                         <form className={classes.container} noValidate autoComplete="off">
                          <DateSelector 
-                         value={this.state.date}  
-                         onChange={this.handleChange('date')} />
+                         value={this.state.date}
+                         updateDate={this.updateDate}
+                          />
                         <TextField className={classes.root}
                             select
                             className={classNames(classes.margin, classes.textField)}
