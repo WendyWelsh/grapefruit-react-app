@@ -15,8 +15,12 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { Grid } from '@material-ui/core';
 
 const styles = theme => ({
+  button:{
+    fontFamily:'Poiret One'
+  },
   main: {
     width: 'auto',
+    // fontFamily:'Comic Sans',
     display: 'block', // Fix IE 11 issue.
     marginLeft: theme.spacing.unit * 3,
     marginRight: theme.spacing.unit * 3,
@@ -154,7 +158,10 @@ class Login extends React.Component {
             <Avatar className={classes.avatar} >
               <LockOutlinedIcon />
             </Avatar>
-            <InputLabel>
+            <InputLabel
+  
+    
+            >
               Login
            </InputLabel> 
             <form onSubmit={this.handleSubmit} className={this.props.classes.form}>
@@ -195,6 +202,9 @@ class Login extends React.Component {
                 variant="contained"
                 color="primary"
                 className={this.props.classes.submit}
+                classes={{
+                  root:this.props.classes.button
+                }}
               >
                 Submit
           </Button>

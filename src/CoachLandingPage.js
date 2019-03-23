@@ -9,13 +9,13 @@ const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
     transition: theme.transitions.create('opacity'),
-   
-
+    fontFamily:'Poiret One'
   },
+
   input: {
     display: 'none',
-    
   },
+  
 });
 
 
@@ -68,6 +68,8 @@ class CoachLandingPage extends React.Component {
   render() {
     return (
       <div className="CoachLandingPage">
+      
+      
         <Grid container>
           <Grid item md>
             <Paper style={{ padding: 20, margin: 100, textAlign: 'center', opacity: 0.8 }}>
@@ -98,6 +100,7 @@ class CoachLandingPage extends React.Component {
           <Grid item sm>
 
             <Paper style={{ padding: 20, margin: 100, textAlign: 'center',  opacity: 0.8 }}>
+          
               <Button onClick={this.directToWorkoutList} variant="outlined" color="inherit" >
                 Workouts
               </Button>

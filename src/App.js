@@ -13,6 +13,7 @@ import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import NavBar from "./NavBar";
 import { BrowserRouter as Router, Route, } from "react-router-dom";
 
+
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -27,14 +28,26 @@ const theme = createMuiTheme({
       dark: "#1613FF",
       contrastText: "000000"
     },
+    overrides:{
+      MuiButton:{
+        text:{
+          fontFamily:'Comic Sans',
+          color:'green'
+        }
+      }
+    },
     button: {
       backgroundColor: "#B0BEC5", //light grey
       textColor: "000000",
+      fontFamily:'Comic Sans',
       height: 50,
+      fontFamily:'Comic Sans',
       width: 100,
       // borderRadius: 55,
       opacity: 50,
-      
+    },
+    typography: {
+      fontFamily: ['Comic Sans', 'Arial', '"Helvetica Neue"'].join(','),
     }
   }
 });
