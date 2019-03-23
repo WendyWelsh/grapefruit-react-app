@@ -37,7 +37,7 @@ class WorkoutList extends React.Component {
         this.state = {
             date: moment().format('YYYY-MM-DD'),
             workoutMuscleGroup: '',
-            workout: '',
+            exerciseName: '',
             sets: '1',
             reps: '1',
             rpe: '1',
@@ -50,8 +50,8 @@ class WorkoutList extends React.Component {
             clientWorkouts: []
 
         };
-this.handleSubmit=this.handleSubmit.bind(this)
-this.updateDate=this.updateDate.bind(this)
+// this.handleSubmit=this.handleSubmit.bind(this)
+// this.updateDate=this.updateDate.bind(this)
 
     };
 
@@ -62,11 +62,11 @@ this.updateDate=this.updateDate.bind(this)
 
     }
 
-    handleSubmit = () => {
+    addWorkout = () => {
         let selectedWorkout = {
             date: this.state.date,
             muscleGroup: this.state.workoutMuscleGroup,
-            workout: this.state.workout,
+            exerciseName: this.state.exerciseName,
             sets: this.state.sets,
             reps: this.state.reps,
             rpe: this.state.rpe
@@ -114,6 +114,26 @@ this.updateDate=this.updateDate.bind(this)
 
     }
 
+    submitWorkoutForm = () => {
+        console.log(this.props)
+        const { formRowInput } = this.state;
+        let clientId = this.props.match.params.id
+        let exercises = this.state.clientWorkouts
+        console.log(this.state)
+       axios
+         .post("/workouts", {date: this.state.date, clientId, exercises},
+           
+          {
+           headers: {
+             Authorization: localStorage.getItem("grapefruit-jwt")
+           }
+         })
+         .then(response => {
+           //this.props.history.push('/coach/client/' + this.props.match.params.id)
+           console.log(response.data)
+         });
+     };
+
 
 
 
@@ -160,15 +180,15 @@ this.updateDate=this.updateDate.bind(this)
                             select
                             className={classNames(classes.margin, classes.textField)}
                             variant="outlined"
-                            value={this.state.workout}
-                            onChange={this.handleChange('workout')}
+                            value={this.state.exerciseName}
+                            onChange={this.handleChange('exerciseName')}
                             InputProps={{
-                                startAdornment: <InputAdornment position="start">Workout</InputAdornment>,
+                                startAdornment: <InputAdornment position="start">Exercise Name</InputAdornment>,
                             }}
                         >
-                            {allWorkouts.map(workout => (
-                                <MenuItem key={workout.title} value={workout.title}>
-                                    {workout.title}
+                            {allWorkouts.map(exerciseName => (
+                                <MenuItem key={exerciseName.title} value={exerciseName.title}>
+                                    {exerciseName.title}
                                 </MenuItem>
                             ))}
                         </TextField>
@@ -222,7 +242,7 @@ this.updateDate=this.updateDate.bind(this)
                         </TextField>
                        
                         <Button
-                            onClick={this.handleSubmit}
+                            onClick={this.addWorkout}
                             variant="outlined"
                             size="large"
                             color="primary"
@@ -241,9 +261,19 @@ this.updateDate=this.updateDate.bind(this)
                         <WorkoutForm 
                         workouts={this.state.clientWorkouts} 
                         clientId={this.props.match.params.id}/>
-                    </Grid>
-                </Grid>
-
+                         
+                        </Grid>
+                        
+                        </Grid>
+                        <Button
+                        onClick={this.submitWorkoutForm}
+                        variant="outlined"
+                        size="large"
+                        color="primary"
+                        className={classes.margin}
+                      >
+                        Submit Workout
+                      </Button>
             </div>
         );
     }

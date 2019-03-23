@@ -12,6 +12,7 @@ import WorkoutList from './WorkoutList'
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import NavBar from "./NavBar";
 import { BrowserRouter as Router, Route, } from "react-router-dom";
+import clientWorkoutView from "./clientWorkoutView";
 
 const theme = createMuiTheme({
   palette: {
@@ -62,6 +63,7 @@ class App extends Component {
               <Route path="/coachworkoutselector" component={CoachWorkoutSelector} />
               {/* <Route path="/messageboard" component={MessageBoard}/> */}
               <Route path="/client" component={UserLandingPage} />
+              <Route path="/clientWorkoutView" component={clientWorkoutView} />
               <Route exact path="/coach/client/:id" component={CoachLandingPage} />
             </div>
           </MuiThemeProvider>

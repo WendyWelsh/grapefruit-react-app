@@ -8,6 +8,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { withRouter } from "react-router-dom";
+import axios from 'axios'
 
 const styles = theme => ({
   root: {
@@ -22,18 +23,48 @@ const styles = theme => ({
   
 });
 
-class WorkoutForm extends React.Component {
+class clientWorkoutView extends React.Component {
   constructor(props) {
     super(props);
-  }
+    this.state = {
+        fullWorkout: []
+        }
+
+    }
+  
 
   
+
+
+  componentDidMount() {
+
+    axios.get('/workouts',
+        {
+            headers: {
+                Authorization: localStorage.getItem('grapefruit-jwt')
+            }
+        }).then((response) => {
+            // const fullWorkout = response.exercises;
+            //  this.setState({ fullWorkout })
+            console.log(response)
+
+        })
+
+}
+
+
+
+
+
+
+
+
 
   render() {
     const { classes } = this.props;
 
     return (
-      <div className="workoutform">
+      <div className="clientWorkoutView">
         <Paper style={{ opacity: 0.95 }}>
           <Table className={classes.table}>
             <TableHead>
@@ -48,18 +79,18 @@ class WorkoutForm extends React.Component {
             </TableHead>
 
             <TableBody>
-              {this.props.workouts.map(workout => (
-                <TableRow key={workout.id}>
+              
+                <TableRow>
                   <TableCell component="th" scope="row">
-                    {workout.date}
                   </TableCell>
-                  <TableCell align="right">{workout.muscleGroup}</TableCell>
-                  <TableCell align="right">{workout.exerciseName}</TableCell>
-                  <TableCell align="right">{workout.sets}</TableCell>
-                  <TableCell align="right">{workout.reps}</TableCell>
-                  <TableCell align="right">{workout.rpe}</TableCell>
+                
+                  <TableCell align="right"></TableCell>
+                  <TableCell align="right"></TableCell>
+                  <TableCell align="right"></TableCell>
+                  <TableCell align="right"></TableCell>
+                  <TableCell align="right"></TableCell>
                 </TableRow>
-              ))}
+              
             </TableBody>
           </Table>
          
@@ -70,8 +101,8 @@ class WorkoutForm extends React.Component {
   }
 }
 
-WorkoutForm.propTypes = {
+clientWorkoutView.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withRouter(withStyles(styles)(WorkoutForm));
+export default withRouter(withStyles(styles)(clientWorkoutView));
