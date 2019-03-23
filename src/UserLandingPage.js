@@ -2,6 +2,7 @@ import React from "react";
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import MessageBoard from "./MessageBoard";
 
 const styles = theme => ({
   button: {
@@ -12,6 +13,31 @@ const styles = theme => ({
     display: 'none',
   },
 });
+
+const buttonStyle = {
+  borderRadius: '10em',
+  boxShadow: '2px 2px 0.5px white',
+  fontSize: '16px',
+  fontWeight: 'bold',
+  fontFamily: 'Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif',
+  border: '9px',
+  color: 'red'
+}
+
+const paper = {
+  padding: 180, 
+  marginLeft: '10px', 
+  maxWidth: '150px',
+  textAlign: 'center',
+  margin: 'auto',
+  borderRadius: '8px',
+  height: 'auto',
+  backgroundColor: 'lightgray',
+  boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+}
+
+  
+
 
 
 class UserLandingPage extends React.Component {
@@ -50,29 +76,21 @@ class UserLandingPage extends React.Component {
   render() {
     return (
       <div className="UserLandingPage">
-        <Grid container>
-          <Grid item sm>
-            <Paper style={{ padding: 20, margin: 100, textAlign: 'center', }}>
-              <Button onClick = {this.directToMessageBoard} variant="outlined" color="inherit">
-                Coach Messages
-              </Button>
-            </Paper>
-          </Grid>
-          <Grid item sm>
-            <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
-              <Button  onClick = {this.directToWorkoutForm} variant="outlined" color="inherit">
+         {/* <Grid container>
+    */}
+          {/* <Grid item xs={6} sm={3}>
+           */} 
+            <Paper style={paper}>
+            <Button style={buttonStyle} onClick = {this.directToWorkoutForm} variant="outlined" color="inherit">
                 Workout Log
               </Button>
-            </Paper>
-          </Grid>
-          <Grid item sm>
-            <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
-              <Button  onClick = {this.directToMacroForm} variant="outlined" color="inherit">
+              <Button style={buttonStyle} onClick = {this.directToMacroForm} variant="outlined" color="inherit">
                 Macro Track Log
               </Button>
             </Paper>
-          </Grid>
-        </Grid>
+          {/* </Grid> */}
+        {/* </Grid> */}
+        <MessageBoard sender="Wendy" receiver="Matt"/>
       </div>
     )
   }

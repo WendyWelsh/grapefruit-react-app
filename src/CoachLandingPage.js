@@ -60,7 +60,7 @@ class CoachLandingPage extends React.Component {
   }
 
   directToMacroList() {
-    this.props.history.push("/macroList");
+    this.props.history.push("/coach/client/" + this.props.match.params.id + "/macroList");
   }
   directToWorkoutList() {
     this.props.history.push("/coach/client/" + this.props.match.params.id + "/workout");
@@ -104,7 +104,8 @@ class CoachLandingPage extends React.Component {
             </Paper>
           </Grid>
         </Grid>
-        <MessageBoard/>
+        {/* <MessageBoard sender="lincoln" receiver={this.state.client.username}/> */}
+        <MessageBoard sender="lincoln" receiver="bob"/>
       </div>
     )
   }

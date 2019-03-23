@@ -23,10 +23,18 @@ const styles = theme => ({
 });
 
 
+
 class MacroForm extends React.Component {
     constructor(props) {
         super(props)
     }
+
+
+
+
+
+
+    
     render() {
         const { classes } = this.props;
         return (
@@ -36,7 +44,8 @@ class MacroForm extends React.Component {
                     <Table className={classes.table}>
                         <TableHead>
                             <TableRow>
-                                <TableCell>Carbohydrates (g)</TableCell>
+                                <TableCell>Date</TableCell>
+                                <TableCell align="right">Carbohydrates (g)</TableCell>
                                 <TableCell align="right">Protein (g)</TableCell>
                                 <TableCell align="right">Fat (g)</TableCell>
                                 <TableCell align="right">Total Daily Calories (g)</TableCell>
@@ -46,8 +55,10 @@ class MacroForm extends React.Component {
                             {this.props.macrosToSend.map(macros => (
                                 <TableRow key={macros.id}>
                                     <TableCell component="th" scope="row">
-                                        {macros.carbsSelected}
+                                        {macros.date}
+                                    
                                     </TableCell>
+                                    <TableCell align="right">{macros.carbsSelected}</TableCell>
                                     <TableCell align="right">{macros.proteinSelected}</TableCell>
                                     <TableCell align="right">{macros.fatSelected}</TableCell>
 
