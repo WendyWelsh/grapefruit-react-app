@@ -42,9 +42,11 @@ const styles = theme => ({
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing.unit,
+    fontFamily: 'Poiret One'
   },
   submit: {
     marginTop: theme.spacing.unit * 3,
+    fontFamily: 'Poiret One'
   },
 });
 
@@ -130,9 +132,7 @@ class Register extends React.Component {
 
     }
     this.setState({ formErrors, [name]: value }, () => console.log(this.state))
-
   }
-
 
   render() {
     const { classes } = this.props;
@@ -144,14 +144,17 @@ class Register extends React.Component {
           <CssBaseline />
           <Paper className={classes.paper}>
             <Avatar className={classes.avatar} >
+            
               <LockOutlinedIcon />
             </Avatar>
             <div>
+              
               Register
             </div>
             <form className={classes.form} onSubmit={this.handleSubmit} noValidate>
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="username">UserName</InputLabel>
+                
                 <Input
                   onChange={this.handleChange}
                   id="username"
@@ -222,6 +225,9 @@ class Register extends React.Component {
                 variant="contained"
                 color="primary"
                 className={classes.submit}
+                classes={{
+                  root: this.props.classes.button
+                }}
               >
                 Register
           </Button>

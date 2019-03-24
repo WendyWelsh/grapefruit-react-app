@@ -13,8 +13,11 @@ import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import NavBar from "./NavBar";
 import { BrowserRouter as Router, Route, } from "react-router-dom";
 
-
 const theme = createMuiTheme({
+  typography: {
+    useNextVariants: true,
+    fontFamily: 'Poiret One',
+},
   palette: {
     primary: {
       light: "#9242f4",
@@ -28,27 +31,17 @@ const theme = createMuiTheme({
       dark: "#1613FF",
       contrastText: "000000"
     },
-    overrides:{
-      MuiButton:{
-        text:{
-          fontFamily:'Comic Sans',
-          color:'green'
-        }
-      }
-    },
+    
     button: {
       backgroundColor: "#B0BEC5", //light grey
       textColor: "000000",
-      fontFamily:'Comic Sans',
       height: 50,
-      fontFamily:'Comic Sans',
+      fontFamily:"Poiret One",
       width: 100,
       // borderRadius: 55,
       opacity: 50,
     },
-    typography: {
-      fontFamily: ['Comic Sans', 'Arial', '"Helvetica Neue"'].join(','),
-    }
+  
   }
 });
 
@@ -64,6 +57,8 @@ class App extends Component {
       <Router>
         <div>
           <MuiThemeProvider theme={theme}>
+       
+        
             <NavBar />
             <div className="content">
               <Route exact path="/" component={Login} />
@@ -77,6 +72,7 @@ class App extends Component {
               <Route path="/client" component={UserLandingPage} />
               <Route exact path="/coach/client/:id" component={CoachLandingPage} />
             </div>
+            
           </MuiThemeProvider>
         </div>
         </Router>
