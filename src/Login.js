@@ -12,7 +12,6 @@ import axios from "axios"
 import Avatar from '@material-ui/core/Avatar';
 import ButtonNavigation from './ButtonNavigation';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { Grid } from '@material-ui/core';
 
 const styles = theme => ({
   main: {

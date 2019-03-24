@@ -112,7 +112,6 @@ class WorkoutList extends React.Component {
     }
 
     submitWorkoutForm = () => {
-        const { formRowInput } = this.state;
         let clientId = this.props.match.params.id
         let exercises = this.state.clientWorkouts
        axios

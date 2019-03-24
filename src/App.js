@@ -16,6 +16,11 @@ import clientWorkoutView from "./clientWorkoutView";
 import clientMacroView from "./clientMacroView";
 
 const theme = createMuiTheme({
+  typography: {
+    useNextVariants: true,
+    fontFamily: 'Poiret One',
+    
+},
   palette: {
     primary: {
       light: "#9242f4",
@@ -29,15 +34,18 @@ const theme = createMuiTheme({
       dark: "#1613FF",
       contrastText: "000000"
     },
+    
     button: {
       backgroundColor: "#B0BEC5", //light grey
-      textColor: "000000",
+      textColor: "black",
       height: 50,
+      fontFamily:"Poiret One",
       width: 100,
       // borderRadius: 55,
       opacity: 50,
-      
-    }
+    },
+    
+  
   }
 });
 
@@ -53,6 +61,8 @@ class App extends Component {
       <Router>
         <div>
           <MuiThemeProvider theme={theme}>
+       
+        
             <NavBar />
             <div className="content">
               <Route exact path="/" component={Login} />
@@ -68,6 +78,7 @@ class App extends Component {
               <Route path="/macros" component={clientMacroView} />
               <Route exact path="/coach/client/:id" component={CoachLandingPage} />
             </div>
+            
           </MuiThemeProvider>
         </div>
         </Router>

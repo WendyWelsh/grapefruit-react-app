@@ -24,11 +24,11 @@ const themes = {
   myTheme: {
     TitleBar: {
       css: {
-        backgroundColor: "red",
+        backgroundColor: "black",
         borderRadius: "10em",
-        fontSize:38,
+        fontSize:30,
         color: "white",
-        fontFamily: "Lucida Console",
+        fontFamily: "Poiret One",
         borderWidth: "2px",
       },
       IconButton: {
@@ -45,11 +45,11 @@ const themes = {
         borderWidth: "2px",
         borderColor: "gray",
         borderStyle: "solid",
-        backgroundColor: "slategray",
+        backgroundColor: "lightgray",
         borderRadius: "1em",
         textAlign: "justify",
-        fontFamily: "Lucida Console",
-        fontSize: '23px'
+        fontFamily: "Poiret One",
+        fontSize: '20px'
       }
     },
     TextComposer: {css: {marginTop: "1em"}}
@@ -79,21 +79,18 @@ class MessageBoard extends Component {
   }
 
   componentDidMount() {
-    // this.createRoom(this.state.sender, this.state.receiver);
     this.setState({isPropsLoaded: false})
   }
 
   componentDidUpdate() {
     if (this.props.sender && this.props.sender !== this.state.sender && this.props.receiver !== this.state.receiver) {
-      // console.log(this.props.sender, this.props.receiver)
         this.setState({sender: this.props.sender})
       this.setState({receiver: this.props.receiver})
       this.setState({isPropsLoaded: true})
     }
     if (this.state.isPropsLoaded && !this.state.hasRunOnce)
     {
-      // console.log("Message room " + this.state.sender +" and "+ this.state.receiver)
-      this.createRoom(this.state.sender, this.state.receiver);
+       this.createRoom(this.state.sender, this.state.receiver);
       this.setState({hasRunOnce: true}) 
     }
   }
@@ -105,7 +102,6 @@ class MessageBoard extends Component {
         inspector_id: receiver
       })
       .then(response => {
-        // console.log(response.data)
         this.setState({ 
           room: response.data.room_id.toString() ,
           roomName: response.data.room_name.toString()
@@ -262,13 +258,14 @@ const Minimized = ({ maximize }) => (
       justifyContent: "center",
       width: "60px",
       height: "60px",
-      background: "rgb(0,206,210)",
+      background: "mediumSeaGreen",
       color: "#fff",
       borderRadius: "50%",
       borderStyle: 'solid',
-      borderWidth: "2px",
+      borderWidth: "1.8px",
       borderColor: "black",
-      cursor: "pointer"
+      cursor: "pointer",
+
     }}
   >
     <IconButton onClick={maximize}>
