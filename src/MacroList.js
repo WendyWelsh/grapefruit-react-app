@@ -10,6 +10,7 @@ import DateSelector from './DateSelector';
 import Paper from '@material-ui/core/Paper';
 import axios from 'axios';
 import moment from 'moment';
+import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
     container: {
@@ -37,12 +38,13 @@ const styles = theme => ({
 
 class MacroList extends React.Component {
     constructor(prop) {
-        super(prop)     
+        super(prop)
         this.state = {
             date: moment().format('YYYY-MM-DD'),
             carbohydrates: '',
             protein: '',
             fat: '',
+            totalDailyCalories: 1000,
             client: {
                 username: "",
                 date: []
@@ -59,7 +61,7 @@ class MacroList extends React.Component {
                     Authorization: localStorage.getItem('grapefruit-jwt')
                 }
             }).then((response) => {
-        
+
                 this.setState({ client: response.data.data[0].client })
                 console.log(response)
 
@@ -69,29 +71,28 @@ class MacroList extends React.Component {
 
     updateDate = (newDate) => {
         console.log(newDate)
-        this.setState({date: newDate})
+        this.setState({ date: newDate })
 
     }
 
 
     handleSubmit = () => {
-       
+
         let selectedMacros = {
-            date:this.state.date,
-            dateSelected:this.state.date,
+            date: this.state.date,
             carbsSelected: this.state.carbohydrates,
             proteinSelected: this.state.protein,
             fatSelected: this.state.fat,
-             
+            totalDailyCalories: 1000
         }
-            let newMacroArray = this.state.clientMacros.slice();
-            newMacroArray.push(selectedMacros);
-            this.setState({clientMacros:newMacroArray})
+        let newMacroArray = this.state.clientMacros.slice();
+        newMacroArray.push(selectedMacros);
+        this.setState({ clientMacros: newMacroArray })
 
 
     }
 
-    
+
 
     handleChange = name => event => {
         this.setState({
@@ -99,7 +100,24 @@ class MacroList extends React.Component {
         });
     };
 
-
+    submitMacroForm = () => {
+        console.log(this.props)
+        const { formRowInput } = this.state;
+        let clientId = this.props.match.params.id
+        console.log(this.state)
+       axios
+         .post("/macros", { clientId, macros: this.state.clientMacros },
+           
+          {
+           headers: {
+             Authorization: localStorage.getItem("grapefruit-jwt")
+           }
+         })
+         .then(response => {
+           //this.props.history.push('/coach/client/' + this.props.match.params.id)
+           console.log(response.data)
+         });
+     };
 
 
     render() {
@@ -107,76 +125,91 @@ class MacroList extends React.Component {
 
         return (
             <div className='macrolist'>
+            <div className={classes.root}>
+                <Paper style={{ opacity: 0.95, padding: 20 }}>
+                    <Typography 
+                    style={{ margin: 4 }}              
+                    variant="display1"
+                    gutterBottom align='left'>
+                    {this.state.client.username} 
+                    </Typography>
+                    <Grid container>
+                        <Grid item sm>
+                            <form className={classes.container} noValidate autoComplete="off">
+                                <DateSelector
+                                    value={this.state.date}
+                                    updateDate={this.updateDate} />
+                                <TextField
+                                    id="filled-number"
+                                    label="Carbohydrates"
+                                    value={this.state.carbohydrates}
+                                    onChange={this.handleChange('carbohydrates')}
+                                    type="number"
+                                    className={classes.textField}
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                    margin="normal"
+                                    variant="filled"
+                                />
 
-            <Paper style={{ opacity: 0.95 }}>
-            <h1>{this.state.client.username}</h1>
-            <Grid container>
-                    <Grid item sm>
-                        <form className={classes.container} noValidate autoComplete="off">
-                        <DateSelector 
-                        value={this.state.date}  
-                        updateDate={this.updateDate}/>
-                            <TextField
-                                id="filled-number"
-                                label="Carbohydrates"
-                                value={this.state.carbohydrates}
-                                onChange={this.handleChange('carbohydrates')}
-                                type="number"
-                                className={classes.textField}
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
-                                margin="normal"
-                                variant="filled"
-                            />
-
-                            <TextField
-                                id="filled-number"
-                                label="Protein"
-                                value={this.state.protein}
-                                onChange={this.handleChange('protein')}
-                                type="number"
-                                className={classes.textField}
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
-                                margin="normal"
-                                variant="filled"
-                            />
-                            <TextField
-                                id="filled-number"
-                                label="Fat"
-                                value={this.state.fat}
-                                onChange={this.handleChange('fat')}
-                                type="number"
-                                className={classes.textField}
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
-                                margin="normal"
-                                variant="filled"
-                            />
+                                <TextField
+                                    id="filled-number"
+                                    label="Protein"
+                                    value={this.state.protein}
+                                    onChange={this.handleChange('protein')}
+                                    type="number"
+                                    className={classes.textField}
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                    margin="normal"
+                                    variant="filled"
+                                />
+                                <TextField
+                                    id="filled-number"
+                                    label="Fat"
+                                    value={this.state.fat}
+                                    onChange={this.handleChange('fat')}
+                                    type="number"
+                                    className={classes.textField}
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                    margin="normal"
+                                    variant="filled"
+                                />
 
 
 
-                            <Button
-                                onClick={this.handleSubmit}
-                                variant="contained"
-                                size="small"
-                                color="primary"
-                                className={classes.margin}>
-                                ADD
-
+                                <Button
+                                    onClick={this.handleSubmit}
+                                    variant="contained"
+                                    size="small"
+                                    color="primary"
+                                    className={classes.margin}>
+                                    ADD
+    
                             </Button>
-                        </form>
+                            </form>
+                        </Grid>
                     </Grid>
-                </Grid>
-                <Grid container>
-                    <Grid item sm>
-                        <MacroForm macrosToSend={this.state.clientMacros}/>
+                    <Grid container>
+                        <Grid item sm>
+                            <MacroForm macrosToSend={this.state.clientMacros} />
+                        </Grid>
+                        <Button
+                        onClick={this.submitMacroForm}
+                        variant="outlined"
+                        size="large"
+                        color="primary"
+                        className={classes.margin}
+                      >
+                        Submit Macros
+                      </Button>
                     </Grid>
-                </Grid>
                 </Paper>
+            </div>
             </div>
         );
     }

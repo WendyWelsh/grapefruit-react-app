@@ -67,11 +67,11 @@ class UserLandingPage extends React.Component {
   }
 
   directToMacroForm() {
-    this.props.history.push("/macroform")
+    this.props.history.push("/macros")
   }
 
   directToWorkoutForm() {
-    this.props.history.push("/workoutform")
+    this.props.history.push("/workout")
   }
 
   render() {
