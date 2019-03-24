@@ -181,6 +181,15 @@ class MacroList extends React.Component {
                         <Grid item sm>
                             <MacroForm macrosToSend={this.state.clientMacros} />
                         </Grid>
+                        <Button
+                        onClick={this.submitWorkoutForm}
+                        variant="outlined"
+                        size="large"
+                        color="primary"
+                        className={classes.margin}
+                      >
+                        Submit Macros
+                      </Button>
                     </Grid>
                 </Paper>
             </div>

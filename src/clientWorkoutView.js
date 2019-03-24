@@ -20,45 +20,33 @@ const styles = theme => ({
   table: {
     minWidth: 700
   }
-  
+
 });
 
 class clientWorkoutView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        fullWorkout: []
-        }
-
+      fullWorkout: []
     }
-  
 
-  
-
+  }
 
   componentDidMount() {
 
     axios.get('/workouts',
-        {
-            headers: {
-                Authorization: localStorage.getItem('grapefruit-jwt')
-            }
-        }).then((response) => {
-            // const fullWorkout = response.exercises;
-            //  this.setState({ fullWorkout })
-            console.log(response)
-
-        })
-
-}
+      {
+        headers: {
+          Authorization: localStorage.getItem('grapefruit-jwt')
+        }
+      }).then((response) => {
+        const fullWorkout = response.data;
+        this.setState({ fullWorkout })
 
 
+      })
 
-
-
-
-
-
+  }
 
   render() {
     const { classes } = this.props;
@@ -68,34 +56,58 @@ class clientWorkoutView extends React.Component {
         <Paper style={{ opacity: 0.95 }}>
           <Table className={classes.table}>
             <TableHead>
-              <TableRow>
-                <TableCell>Date</TableCell>
-                <TableCell align="right">Muscle Group</TableCell>
-                <TableCell align="right">Exercise Name</TableCell>
-                <TableCell align="right">Sets</TableCell>
-                <TableCell align="right">Reps</TableCell>
-                <TableCell align="right">RPE</TableCell>
-              </TableRow>
+
+              <TableCell>Date</TableCell>
+              <TableCell align="right">Muscle Group</TableCell>
+              <TableCell align="right">Exercise Name</TableCell>
+              <TableCell align="right">Sets</TableCell>
+              <TableCell align="right">Reps</TableCell>
+              <TableCell align="right">RPE</TableCell>
+
             </TableHead>
 
             <TableBody>
-              
-                <TableRow>
-                  <TableCell component="th" scope="row">
-                  </TableCell>
-                
-                  <TableCell align="right"></TableCell>
-                  <TableCell align="right"></TableCell>
-                  <TableCell align="right"></TableCell>
-                  <TableCell align="right"></TableCell>
-                  <TableCell align="right"></TableCell>
-                </TableRow>
-              
+              {this.state.fullWorkout.map(workout => (
+                <>
+                  {workout.exercises.map(exercise => (
+
+                    <TableRow>
+                      <TableCell component="th" scope="row">
+                        {workout.date}
+                      </TableCell>
+
+                      <TableCell align="right">
+                        {exercise.muscle_group}
+                      </TableCell>
+
+                      <TableCell align="right">
+                        {exercise.name}
+                      </TableCell>
+
+                      <TableCell align="right">
+                        {exercise.sets}
+                      </TableCell>
+
+                      <TableCell align="right">
+                        {exercise.repititions}
+                      </TableCell>
+
+                      <TableCell align="right">
+                        {exercise.rpe}
+                      </TableCell>
+
+
+                    </TableRow>
+                  ))}
+                </>
+              ))}
+
+
             </TableBody>
           </Table>
-         
+
         </Paper>
-     
+
       </div>
     );
   }

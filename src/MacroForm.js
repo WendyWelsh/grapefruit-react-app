@@ -67,9 +67,7 @@ class MacroForm extends React.Component {
                         </TableBody>
                     </Table>
                 </Paper>
-                <Button variant="outlined" size="large" color="primary" className={classes.margin}>
-                    Submit Macros
-    </Button>
+                
             </div>
         );
     }

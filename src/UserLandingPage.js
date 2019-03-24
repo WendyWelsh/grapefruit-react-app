@@ -70,7 +70,7 @@ class UserLandingPage extends React.Component {
   }
 
   directToWorkoutForm() {
-    this.props.history.push("/clientWorkoutView")
+    this.props.history.push("/workout")
   }
 
   render() {
