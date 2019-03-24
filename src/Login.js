@@ -155,12 +155,7 @@ class Login extends React.Component {
             <Avatar className={classes.avatar}>
               <LockOutlinedIcon />
             </Avatar>
-            
-            <InputLabel
-              // classes={{
-              //   root: this.props.classes.button
-              // }}
-            >
+            <InputLabel>
               Login
             </InputLabel>
             <form
