@@ -7,9 +7,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import Button from "@material-ui/core/Button";
 import { withRouter } from "react-router-dom";
-import axios from 'axios';
 
 const styles = theme => ({
   root: {
@@ -29,18 +27,7 @@ class WorkoutForm extends React.Component {
     super(props);
   }
 
-  handleSubmit = () => {
-    // const { formRowInput } = this.state;
-    axios
-      .post("/coach/clients/" + this.props.match.params.id + "/workout", {
-        headers: {
-          Authorization: localStorage.getItem("grapefruit-jwt")
-        }
-      })
-      .then(response => {
-        this.props.history.push('/coach/client/' + this.props.match.params.id)
-      });
-  };
+  
 
   render() {
     const { classes } = this.props;
@@ -53,7 +40,7 @@ class WorkoutForm extends React.Component {
               <TableRow>
                 <TableCell>Date</TableCell>
                 <TableCell align="right">Muscle Group</TableCell>
-                <TableCell align="right">Workout</TableCell>
+                <TableCell align="right">Exercise Name</TableCell>
                 <TableCell align="right">Sets</TableCell>
                 <TableCell align="right">Reps</TableCell>
                 <TableCell align="right">RPE</TableCell>
@@ -67,7 +54,7 @@ class WorkoutForm extends React.Component {
                     {workout.date}
                   </TableCell>
                   <TableCell align="right">{workout.muscleGroup}</TableCell>
-                  <TableCell align="right">{workout.workout}</TableCell>
+                  <TableCell align="right">{workout.exerciseName}</TableCell>
                   <TableCell align="right">{workout.sets}</TableCell>
                   <TableCell align="right">{workout.reps}</TableCell>
                   <TableCell align="right">{workout.rpe}</TableCell>
@@ -75,15 +62,7 @@ class WorkoutForm extends React.Component {
               ))}
             </TableBody>
           </Table>
-          <Button
-          onClick={this.handleSubmit}
-          variant="outlined"
-          size="large"
-          color="primary"
-          className={classes.margin}
-        >
-          Submit Workout
-        </Button>
+         
         </Paper>
      
       </div>

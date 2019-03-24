@@ -1,76 +1,83 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import FormControl from '@material-ui/core/FormControl';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import Paper from '@material-ui/core/Paper';
-import withStyles from '@material-ui/core/styles/withStyles';
-import { withRouter } from 'react-router-dom';
-import axios from "axios"
-import Avatar from '@material-ui/core/Avatar';
-import ButtonNavigation from './ButtonNavigation';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { Grid } from '@material-ui/core';
+import React from "react";
+import PropTypes from "prop-types";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import FormControl from "@material-ui/core/FormControl";
+import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
+import Paper from "@material-ui/core/Paper";
+import withStyles from "@material-ui/core/styles/withStyles";
+import { withRouter } from "react-router-dom";
+import axios from "axios";
+import Avatar from "@material-ui/core/Avatar";
+import ButtonNavigation from "./ButtonNavigation";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import { Grid } from "@material-ui/core";
 
 const styles = theme => ({
+  button: {
+    fontFamily: "Poiret One"
+  },
+
   main: {
-    width: 'auto',
-    display: 'block', // Fix IE 11 issue.
+    width: "auto",
+    fontFamily:'Poiret One',
+    display: "block", // Fix IE 11 issue.
     marginLeft: theme.spacing.unit * 3,
     marginRight: theme.spacing.unit * 3,
     [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
       width: 400,
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      // paddingTop: '150px', 
-    },
+      marginLeft: "auto",
+      marginRight: "auto"
+      // paddingTop: '150px',
+    }
   },
   paper: {
     // marginTop: theme.spacing.unit * 8,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
     opacity: "0.8",
-    padding: `${theme.spacing.unit * 5}px ${theme.spacing.unit * 5}px ${theme.spacing.unit * 5}px`,
+    padding: `${theme.spacing.unit * 5}px ${theme.spacing.unit * 5}px ${theme
+      .spacing.unit * 5}px`
   },
   avatar: {
     margin: theme.spacing.unit,
     backgroundColor: theme.palette.primary.main,
+
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing.unit,
-    backgroundColor: 'transparent',
-    boxShadow: 'none',
+    backgroundColor: "transparent",
+    boxShadow: "none",
   },
   submit: {
     marginTop: theme.spacing.unit * 5,
-  },
-
+    fontFamily: 'Poiret One'
+    
+  }
 });
 
-
 const formValid = ({ formErrors, ...rest }) => {
-  let valid = true
+  let valid = true;
 
   //validate form errors being empty
   Object.values(formErrors).forEach(val => {
-    val.length > 0 && (valid = false)
-  })
+    val.length > 0 && (valid = false);
+  });
 
   //validate the form was filled out
   Object.values(rest).forEach(val => {
-    val === null && (valid = false)
-  })
+    val === null && (valid = false);
+  });
 
-  return valid
-}
+  return valid;
+};
 
 class Login extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       email: null,
       password: null,
@@ -79,85 +86,87 @@ class Login extends React.Component {
       formErrors: {
         email: "",
         password: "",
-        logged_in: false,
+        logged_in: false
       }
-    }
+    };
 
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
 
     //{username, password})
 
-    axios.post("/login",
+    axios
+      .post(
+        "/login",
 
-      {
-        email: this.state.email,
-        password: this.state.password,
-
-      }
-    ).then((response) => {
-      localStorage.setItem("grapefruit-jwt", `Bearer ${response.data.data.token}`);
-      if (response.data.role === 0) {
-        this.props.history.push('/coach/clientlist')
-      } else {
-        this.props.history.push('/client')
-      }
-
-
-    })
-
-
+        {
+          email: this.state.email,
+          password: this.state.password
+        }
+      )
+      .then(response => {
+        localStorage.setItem(
+          "grapefruit-jwt",
+          `Bearer ${response.data.data.token}`
+        );
+        if (response.data.role === 0) {
+          this.props.history.push("/coach/clientlist");
+        } else {
+          this.props.history.push("/client");
+        }
+      });
   }
 
-
   handleChange = e => {
-    e.preventDefault()
-    const { name, value } = e.target
-    let formErrors = this.state.formErrors
+    e.preventDefault();
+    const { name, value } = e.target;
+    let formErrors = this.state.formErrors;
 
     switch (name) {
       case "email":
         formErrors.email =
-          value.length < 6
-            ? 'minimum 6 characters required' : ""
+          value.length < 6 ? "minimum 6 characters required" : "";
         break;
       case "password":
         formErrors.password =
-          value.length < 6
-            ? 'minimum 6 characters required' : ""
+          value.length < 6 ? "minimum 6 characters required" : "";
         break;
       default:
         break;
-
     }
 
-    this.setState({ formErrors, [name]: value })
-
-  }
+    this.setState({ formErrors, [name]: value });
+  };
 
   render() {
-    const { formErrors } = this.state
+    const { formErrors } = this.state;
 
     const { classes } = this.props;
     return (
-      <div className="Login">
-       
-     <ButtonNavigation />
+      <div className="Login" className={classes.root}>
+        <ButtonNavigation />
         <main className={this.props.classes.main}>
-
           <CssBaseline />
           <Paper className={this.props.classes.paper}>
-            <Avatar className={classes.avatar} >
+            <Avatar className={classes.avatar}>
               <LockOutlinedIcon />
             </Avatar>
-            <InputLabel>
+            
+            <InputLabel
+              // classes={{
+              //   root: this.props.classes.button
+              // }}
+            >
               Login
-           </InputLabel> 
-            <form onSubmit={this.handleSubmit} className={this.props.classes.form}>
+            </InputLabel>
+            <form
+              onSubmit={this.handleSubmit}
+              className={this.props.classes.form}
+            >
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="email">Email Address</InputLabel>
                 <Input
@@ -186,7 +195,6 @@ class Login extends React.Component {
                 {formErrors.password.length > 0 && (
                   <span className="errorMessage">{formErrors.password}</span>
                 )}
-
               </FormControl>
 
               <Button
@@ -195,22 +203,22 @@ class Login extends React.Component {
                 variant="contained"
                 color="primary"
                 className={this.props.classes.submit}
+                classes={{
+                  root: this.props.classes.button
+                }}
               >
                 Submit
-          </Button>
-
+              </Button>
             </form>
           </Paper>
         </main>
-      
-      </div >
-      
+      </div>
     );
   }
 }
 
 Login.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withRouter(withStyles(styles)(Login));

@@ -12,8 +12,15 @@ import WorkoutList from './WorkoutList'
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import NavBar from "./NavBar";
 import { BrowserRouter as Router, Route, } from "react-router-dom";
+import clientWorkoutView from "./clientWorkoutView";
+import clientMacroView from "./clientMacroView";
 
 const theme = createMuiTheme({
+  typography: {
+    useNextVariants: true,
+    fontFamily: 'Poiret One',
+    
+},
   palette: {
     primary: {
       light: "#9242f4",
@@ -27,15 +34,18 @@ const theme = createMuiTheme({
       dark: "#1613FF",
       contrastText: "000000"
     },
+    
     button: {
       backgroundColor: "#B0BEC5", //light grey
-      textColor: "000000",
+      textColor: "black",
       height: 50,
+      fontFamily:"Poiret One",
       width: 100,
       // borderRadius: 55,
       opacity: 50,
-      
-    }
+    },
+    
+  
   }
 });
 
@@ -51,6 +61,8 @@ class App extends Component {
       <Router>
         <div>
           <MuiThemeProvider theme={theme}>
+       
+        
             <NavBar />
             <div className="content">
               <Route exact path="/" component={Login} />
@@ -62,8 +74,11 @@ class App extends Component {
               <Route path="/coachworkoutselector" component={CoachWorkoutSelector} />
               {/* <Route path="/messageboard" component={MessageBoard}/> */}
               <Route path="/client" component={UserLandingPage} />
+              <Route path="/workout" component={clientWorkoutView} />
+              <Route path="/macros" component={clientMacroView} />
               <Route exact path="/coach/client/:id" component={CoachLandingPage} />
             </div>
+            
           </MuiThemeProvider>
         </div>
         </Router>

@@ -7,7 +7,7 @@ import MessageBoard from "./MessageBoard";
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
-
+    fontFamily: "Poiret One"
   },
   input: {
     display: 'none',
@@ -19,7 +19,7 @@ const buttonStyle = {
   boxShadow: '2px 2px 0.5px white',
   fontSize: '16px',
   fontWeight: 'bold',
-  fontFamily: 'Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif',
+  fontFamily: "Poiret One",
   border: '9px',
   color: 'red'
 }
@@ -27,6 +27,7 @@ const buttonStyle = {
 const paper = {
   padding: 180, 
   marginLeft: '10px', 
+  opacity: '0.85',
   maxWidth: '150px',
   textAlign: 'center',
   margin: 'auto',
@@ -66,11 +67,11 @@ class UserLandingPage extends React.Component {
   }
 
   directToMacroForm() {
-    this.props.history.push("/macroform")
+    this.props.history.push("/macros")
   }
 
   directToWorkoutForm() {
-    this.props.history.push("/workoutform")
+    this.props.history.push("/workout")
   }
 
   render() {
@@ -81,10 +82,10 @@ class UserLandingPage extends React.Component {
           {/* <Grid item xs={6} sm={3}>
            */} 
             <Paper style={paper}>
-            <Button style={buttonStyle} onClick = {this.directToWorkoutForm} variant="outlined" color="inherit">
+            <Button style={buttonStyle} onClick = {this.directToWorkoutForm} variant="outlined" color="inherit" fontFamily="Poiret One">
                 Workout Log
               </Button>
-              <Button style={buttonStyle} onClick = {this.directToMacroForm} variant="outlined" color="inherit">
+              <Button style={buttonStyle} onClick = {this.directToMacroForm} variant="outlined" color="inherit" fontFamily="Poiret One">
                 Macro Track Log
               </Button>
             </Paper>
