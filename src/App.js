@@ -17,6 +17,7 @@ const theme = createMuiTheme({
   typography: {
     useNextVariants: true,
     fontFamily: 'Poiret One',
+    
 },
   palette: {
     primary: {
@@ -34,13 +35,14 @@ const theme = createMuiTheme({
     
     button: {
       backgroundColor: "#B0BEC5", //light grey
-      textColor: "000000",
+      textColor: "black",
       height: 50,
       fontFamily:"Poiret One",
       width: 100,
       // borderRadius: 55,
       opacity: 50,
     },
+    
   
   }
 });

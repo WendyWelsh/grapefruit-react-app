@@ -27,6 +27,7 @@ const buttonStyle = {
 const paper = {
   padding: 180, 
   marginLeft: '10px', 
+  opacity: '0.85',
   maxWidth: '150px',
   textAlign: 'center',
   margin: 'auto',
