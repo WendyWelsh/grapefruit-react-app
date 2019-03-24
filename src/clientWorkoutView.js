@@ -8,6 +8,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { withRouter } from "react-router-dom";
+import moment from 'moment';
+import 'moment-timezone';
 import axios from 'axios'
 
 const styles = theme => ({
@@ -53,28 +55,30 @@ class clientWorkoutView extends React.Component {
 
     return (
       <div className="clientWorkoutView">
-        <Paper style={{ opacity: 0.95 }}>
+         
           <Table className={classes.table}>
-            <TableHead>
-
-              <TableCell>Date</TableCell>
-              <TableCell align="right">Muscle Group</TableCell>
-              <TableCell align="right">Exercise Name</TableCell>
-              <TableCell align="right">Sets</TableCell>
-              <TableCell align="right">Reps</TableCell>
-              <TableCell align="right">RPE</TableCell>
-
-            </TableHead>
+           
 
             <TableBody>
+
+            
               {this.state.fullWorkout.map(workout => (
-                <>
+                <Paper>
+                <h3>Workout For: {moment(workout.date).format('LL')}</h3>
+                <TableHead>
+
+                
+                <TableCell align="right">Muscle Group</TableCell>
+                <TableCell align="right">Exercise Name</TableCell>
+                <TableCell align="right">Sets</TableCell>
+                <TableCell align="right">Reps</TableCell>
+                <TableCell align="right">RPE</TableCell>
+  
+              </TableHead>
                   {workout.exercises.map(exercise => (
 
                     <TableRow>
-                      <TableCell component="th" scope="row">
-                        {workout.date}
-                      </TableCell>
+                     
 
                       <TableCell align="right">
                         {exercise.muscle_group}
@@ -99,14 +103,14 @@ class clientWorkoutView extends React.Component {
 
                     </TableRow>
                   ))}
-                </>
+                </Paper>
               ))}
 
 
             </TableBody>
           </Table>
 
-        </Paper>
+       
 
       </div>
     );

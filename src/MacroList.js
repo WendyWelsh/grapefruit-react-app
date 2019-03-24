@@ -44,6 +44,7 @@ class MacroList extends React.Component {
             carbohydrates: '',
             protein: '',
             fat: '',
+            totalDailyCalories: 1000,
             client: {
                 username: "",
                 date: []
@@ -79,11 +80,10 @@ class MacroList extends React.Component {
 
         let selectedMacros = {
             date: this.state.date,
-            dateSelected: this.state.date,
             carbsSelected: this.state.carbohydrates,
             proteinSelected: this.state.protein,
             fatSelected: this.state.fat,
-
+            totalDailyCalories: 1000
         }
         let newMacroArray = this.state.clientMacros.slice();
         newMacroArray.push(selectedMacros);
@@ -100,7 +100,24 @@ class MacroList extends React.Component {
         });
     };
 
-
+    submitMacroForm = () => {
+        console.log(this.props)
+        const { formRowInput } = this.state;
+        let clientId = this.props.match.params.id
+        console.log(this.state)
+       axios
+         .post("/macros", { clientId, macros: this.state.clientMacros },
+           
+          {
+           headers: {
+             Authorization: localStorage.getItem("grapefruit-jwt")
+           }
+         })
+         .then(response => {
+           //this.props.history.push('/coach/client/' + this.props.match.params.id)
+           console.log(response.data)
+         });
+     };
 
 
     render() {
@@ -182,7 +199,7 @@ class MacroList extends React.Component {
                             <MacroForm macrosToSend={this.state.clientMacros} />
                         </Grid>
                         <Button
-                        onClick={this.submitWorkoutForm}
+                        onClick={this.submitMacroForm}
                         variant="outlined"
                         size="large"
                         color="primary"
