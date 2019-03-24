@@ -68,7 +68,7 @@ class ButtonNavigation extends React.Component {
         return (
                 <div className={classes.root}>
                     <AppBar position="static" >
-                        <Tabs variant="fullWidth" value={value} onChange={this.handleChange}>
+                        <Tabs variant="fullWidth" onChange={this.handleChange}>
                             {/* here's the login and register buttons */}
                             <Button onClick={this.directToLogin}>Login</Button>
                             <Button onClick={this.directToRegister}>Register</Button>
