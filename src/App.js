@@ -19,15 +19,16 @@ const theme = createMuiTheme({
   typography: {
     useNextVariants: true,
     fontFamily: 'Poiret One',
-    
 },
+
   palette: {
     primary: {
       light: "#9242f4",
-      main: "#607D8B", // green* "8FBF1A",slate blue #607D8B, orange/red "dd4b39", green #24AF9E
+      main: "#ec3a3a", // green* "8FBF1A",slate blue #607D8B, orange/red "dd4b39", green #24AF9E
       dark: "#B0BEC5", //bright blue
       contrastText: "#000000"
     },
+
     secondary: {
       light: "#1613FF",
       main: "#B0BEC5",  //#1D14BF, grey 5B7DFF
@@ -36,7 +37,7 @@ const theme = createMuiTheme({
     },
     
     button: {
-      backgroundColor: "#B0BEC5", //light grey
+      backgroundColor: "black", //light grey
       textColor: "black",
       height: 50,
       fontFamily:"Poiret One",
@@ -61,8 +62,6 @@ class App extends Component {
       <Router>
         <div>
           <MuiThemeProvider theme={theme}>
-       
-        
             <NavBar />
             <div className="content">
               <Route exact path="/" component={Login} />
@@ -78,7 +77,6 @@ class App extends Component {
               <Route path="/macros" component={clientMacroView} />
               <Route exact path="/coach/client/:id" component={CoachLandingPage} />
             </div>
-            
           </MuiThemeProvider>
         </div>
         </Router>

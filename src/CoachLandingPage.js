@@ -69,7 +69,6 @@ class CoachLandingPage extends React.Component {
     return (
       <div className="CoachLandingPage">
       
-      
         <Grid container>
           <Grid item md>
             <Paper style={{ padding: 20, margin: 100, textAlign: 'center', opacity: 0.8 }}>

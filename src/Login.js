@@ -15,9 +15,6 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { Grid } from "@material-ui/core";
 
 const styles = theme => ({
-  button: {
-    fontFamily: "Poiret One"
-  },
 
   main: {
     width: "auto",
@@ -54,8 +51,6 @@ const styles = theme => ({
   },
   submit: {
     marginTop: theme.spacing.unit * 5,
-    fontFamily: 'Poiret One'
-    
   }
 });
 
@@ -147,7 +142,7 @@ class Login extends React.Component {
 
     const { classes } = this.props;
     return (
-      <div className="Login" className={classes.root}>
+      <div className="Login">
         <ButtonNavigation />
         <main className={this.props.classes.main}>
           <CssBaseline />
