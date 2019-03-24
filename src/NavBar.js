@@ -46,7 +46,6 @@ class NavBar extends React.Component {
   directToLogin() {
     this.props.history.push("/");
     localStorage.removeItem("grapefruit-jwt");
-    console.log("pushed")
   };
   render() {
 

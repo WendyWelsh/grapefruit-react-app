@@ -120,7 +120,6 @@ class ButtonBases extends React.Component {
   }
 
   handleRemoveCoach(id) {
-    console.log(id)
   }
 
   handleClick = event => {
@@ -139,10 +138,10 @@ class ButtonBases extends React.Component {
     
     const { classes } = this.props;
     const { coaches } = this.state;
-       // const {removeClient } = this.props;
+      
     return (
       <div className="ClientList">
-        {/* removeClient={this.removeClient.bind(this)} person={person} */}
+       
         <div className={classes.root} >
           {coaches.map(image => (
             <>
@@ -173,14 +172,6 @@ class ButtonBases extends React.Component {
                     {image.title}
                     <span className={classes.imageMarked} />
                   </Typography>
-                  {/* <Paper style={{ padding: 3, margin: 3, textAlign: 'center' }}>
-                  <Button variant="outlined" color="none">
-                    Remove
-                  </Button>
-                  <Button variant="outlined" color="none">
-                    Add
-                  </Button>
-                </Paper> */}
                 </span>
               </ButtonBase>
               <Button id={image.id} onClick={() => this.handleRemoveCoach(image.id)} variant="outlined" color="primary" className={classes.button}>

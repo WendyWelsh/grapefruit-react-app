@@ -57,7 +57,6 @@ class WorkoutList extends React.Component {
 
 
     updateDate = (newDate) => {
-        console.log(newDate)
         this.setState({date: newDate})
 
     }
@@ -88,8 +87,6 @@ class WorkoutList extends React.Component {
                 }
             }).then((response) => {
                 this.setState({ client: response.data.data[0].client })
-                console.log(response)
-
             })
 
     }
@@ -115,11 +112,9 @@ class WorkoutList extends React.Component {
     }
 
     submitWorkoutForm = () => {
-        console.log(this.props)
         const { formRowInput } = this.state;
         let clientId = this.props.match.params.id
         let exercises = this.state.clientWorkouts
-        console.log(this.state)
        axios
          .post("/workouts", {date: this.state.date, clientId, exercises},
            
@@ -130,7 +125,6 @@ class WorkoutList extends React.Component {
          })
          .then(response => {
            //this.props.history.push('/coach/client/' + this.props.match.params.id)
-           console.log(response.data)
          });
      };
 
@@ -139,7 +133,6 @@ class WorkoutList extends React.Component {
 
 
     render() {
-        console.log(this.getExercisesByMuscles())
 
 
         const { classes } = this.props;
