@@ -106,7 +106,6 @@ class Register extends React.Component {
     e.preventDefault()
     const { name, value } = e.target
     let formErrors = this.state.formErrors
-    console.log("I'm working!")
     //switch is a cleaner else if statement
     //using ternary operator which is the ? so if value.length is less than 2 first string is executed if not second
 

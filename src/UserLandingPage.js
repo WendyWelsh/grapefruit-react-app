@@ -1,5 +1,4 @@
 import React from "react";
-import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import MessageBoard from "./MessageBoard";
@@ -77,10 +76,6 @@ class UserLandingPage extends React.Component {
   render() {
     return (
       <div className="UserLandingPage">
-         {/* <Grid container>
-    */}
-          {/* <Grid item xs={6} sm={3}>
-           */} 
             <Paper style={paper}>
             <Button style={buttonStyle} onClick = {this.directToWorkoutForm} variant="outlined" color="inherit" fontFamily="Poiret One">
                 Workout Log
@@ -89,8 +84,6 @@ class UserLandingPage extends React.Component {
                 Macro Track Log
               </Button>
             </Paper>
-          {/* </Grid> */}
-        {/* </Grid> */}
         <MessageBoard sender="Wendy" receiver="Matt"/>
       </div>
     )

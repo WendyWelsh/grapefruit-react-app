@@ -64,7 +64,6 @@ class NavBarButton extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-    {/* <MenuItem onClick={this.directToUserLandingPage}>Home</MenuItem>*/}
           <MenuItem onClick={this.directToWorkoutForm}>Workouts</MenuItem>
           <MenuItem onClick={this.directToMacroForm}>Macros</MenuItem>
           <MenuItem onClick={this.directToClientList}>Clients</MenuItem>

@@ -34,7 +34,7 @@ class NavBar extends React.Component {
     };
     this.directToLogin = this.directToLogin.bind(this)
   }
-  
+
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
@@ -46,7 +46,6 @@ class NavBar extends React.Component {
   directToLogin() {
     this.props.history.push("/");
     localStorage.removeItem("grapefruit-jwt");
-    console.log("pushed")
   };
   render() {
 
@@ -55,18 +54,8 @@ class NavBar extends React.Component {
       <div className={classes.root}>
         <AppBar className="logo" position="static">
           <Toolbar  >
-            {/* <IconButton className="{classes.menuButton}" color="inherit" aria-label="Menu">       
-         <NavBarButton/>
-          </IconButton> */}
-            {/* <div className="icon" ></div> */}
             <Typography className={classes.grow}>
 
-              {/* Grapefruit */}
-              {/* <GrapefruitLogo /> */}
-              {/* <svgIcon width="568" height="150" viewBox="0 0 568 150" fill="none" xmlns="http://www.w3.org/2000/svg"
-            ></svgIcon> */}
-
-              {/* <img src='images/grapfruitlogo.jpg' variant="h6" color="inherit" width="80" height="50"/> */}
 
             </Typography>
             <Button
