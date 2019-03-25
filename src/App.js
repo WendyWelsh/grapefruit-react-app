@@ -19,12 +19,14 @@ const theme = createMuiTheme({
   typography: {
     useNextVariants: true,
     fontFamily: 'Poiret One',
+    fontWeightMedium: 900,
+    fontSize: '44px'
 },
 
   palette: {
     primary: {
       light: "#9242f4",
-      main: "#ec3a3a", // green* "8FBF1A",slate blue #607D8B, orange/red "dd4b39", green #24AF9E
+      main: "#607D8B", // green* "8FBF1A",slate blue #607D8B, orange/red "dd4b39", green #24AF9E
       dark: "#B0BEC5", //bright blue
       contrastText: "#000000"
     },
