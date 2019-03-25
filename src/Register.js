@@ -12,9 +12,14 @@ import ButtonNavigation from './ButtonNavigation';
 import { withRouter } from 'react-router-dom';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
-import axios from "axios"
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Avatar from '@material-ui/core/Avatar';
+import axios from "axios"
+let host;
+if (process.env.NODE_ENV === 'production') {
+    host = 'https://grapefruit-server.herokuapp.com/'
+} else { host = 'http://localhost:3000' }
+
 const styles = theme => ({
   main: {
     width: 'auto',
@@ -81,7 +86,7 @@ class Register extends React.Component {
     e.preventDefault()
 
     //{username, email, password})
-    axios.post("/create",
+    axios.post(`${host}/create`,
       {
         username: this.state.username,
         email: this.state.email,

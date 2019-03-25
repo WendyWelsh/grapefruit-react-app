@@ -1,6 +1,4 @@
-
 import React, { Component } from "react";
-import axios from "axios";
 import Chatkit from "@pusher/chatkit-client";
 import {
   ThemeProvider,
@@ -19,6 +17,11 @@ import {
   IconButton,
   SendButton
 } from "@livechat/ui-kit";
+import axios from "axios";
+let host;
+if (process.env.NODE_ENV === 'production') {
+    host = 'https://grapefruit-server.herokuapp.com/'
+} else { host = 'http://localhost:3000' }
 
 const themes = {
   myTheme: {
@@ -100,7 +103,7 @@ class MessageBoard extends Component {
 
   createRoom(sender, receiver) {
     axios
-      .post(`/chatCreateRoom`, {
+      .post(`${host}/chatCreateRoom`, {
         user_id: sender,
         inspector_id: receiver
       })
@@ -183,7 +186,7 @@ class MessageBoard extends Component {
 
   sendMessage(sender, room, input) {
     if (input.length) {
-      axios.post(`/chatSendMessage`, {
+      axios.post(`${host}/chatSendMessage`, {
         sender_id: sender,
         room_id: room,
         message: input

@@ -8,9 +8,13 @@ import MacroForm from './MacroForm'
 import Button from '@material-ui/core/Button';
 import DateSelector from './DateSelector';
 import Paper from '@material-ui/core/Paper';
-import axios from 'axios';
 import moment from 'moment';
 import Typography from '@material-ui/core/Typography';
+import axios from 'axios';
+let host;
+if (process.env.NODE_ENV === 'production') {
+    host = 'https://grapefruit-server.herokuapp.com/'
+} else { host = 'http://localhost:3000' }
 
 const styles = theme => ({
     container: {
@@ -55,7 +59,7 @@ class MacroList extends React.Component {
 
     componentDidMount() {
 
-        axios.get('/coach/clients/' + this.props.match.params.id,
+        axios.get(`${host}/coach/clients/` + this.props.match.params.id,
             {
                 headers: {
                     Authorization: localStorage.getItem('grapefruit-jwt')
@@ -106,7 +110,7 @@ class MacroList extends React.Component {
         let clientId = this.props.match.params.id
         console.log(this.state)
        axios
-         .post("/macros", { clientId, macros: this.state.clientMacros },
+         .post(`${host}/macros`, { clientId, macros: this.state.clientMacros },
            
           {
            headers: {

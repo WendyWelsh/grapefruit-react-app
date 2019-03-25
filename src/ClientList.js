@@ -8,6 +8,10 @@ import { spacing } from '@material-ui/system';
 import axios from "axios"
 // import RaisedButton from '@material-ui/core/RaisedButton';
 import Button from '@material-ui/core/Button';
+let host;
+if (process.env.NODE_ENV === 'production') {
+ host = 'https://grapefruit-server.herokuapp.com/'
+}else {host = 'http://localhost:3000'}
 
 
 
@@ -134,7 +138,7 @@ class ButtonBases extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("/coach/clients",
+    axios.get(`${host}/coach/clients`,
       {
         headers: {
           Authorization: localStorage.getItem('grapefruit-jwt')

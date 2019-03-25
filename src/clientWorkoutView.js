@@ -11,6 +11,10 @@ import { withRouter } from "react-router-dom";
 import moment from 'moment';
 import 'moment-timezone';
 import axios from 'axios'
+let host;
+if (process.env.NODE_ENV === 'production') {
+    host = 'https://grapefruit-server.herokuapp.com/'
+} else { host = 'http://localhost:3000' }
 
 const styles = theme => ({
   root: {
@@ -36,7 +40,7 @@ class clientWorkoutView extends React.Component {
 
   componentDidMount() {
 
-    axios.get('/workouts',
+    axios.get(`${host}/workouts`,
       {
         headers: {
           Authorization: localStorage.getItem('grapefruit-jwt')
