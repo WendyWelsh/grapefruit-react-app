@@ -23,24 +23,24 @@ const styles = theme => ({
 });
 
 const buttonStyle = {
-  borderRadius: '10em',
+  borderRadius: '20px',
   // boxShadow: '2px 2px 0.5px white',
-  fontSize: '26px',
+  fontSize: '22px',
   fontFamily: "Poiret One",
-  border: "black solid 1px",  
-  color: 'red'
+  border: "gray solid 1px",  
+  color: 'gray'
 }
 const nameStyle = {
   borderRadius: '20px',
   // boxShadow: '2px 2px 0.5px white',
-  fontSize: '20px',
+  fontSize: '40px',
   fontFamily: "Poiret One",
-  border: '9px',
-  color: 'green'
+  // border: '9px',
+  color: 'gray'
 }
 
 const paper = {
-  padding: 180, 
+  padding: 140, 
   marginLeft: '10px', 
   opacity: '0.85',
   maxWidth: '150px',
@@ -104,11 +104,11 @@ class CoachLandingPage extends React.Component {
       
         <Grid container>
           <Grid item md>
-            <Paper style={{ padding: 20, margin: 0,paddingBottom: 80, paddingTop: 80, textAlign: 'center', opacity: 0.8 }}>
+            <Paper style={{borderRadius: 20, paddingBottom: 60, paddingTop: 60, marginRight: 400, marginLeft: 400, marginTop: 50, marginBottom: 50, textAlign: 'center', opacity: 0.8 }}>
               
-              <Button style={nameStyle} color="inherit">
+              <div style={nameStyle} color="inherit">
               <div>{this.state.client.username}</div>
-              </Button>
+              </div>
             </Paper>
           </Grid>
         </Grid>
@@ -118,7 +118,8 @@ class CoachLandingPage extends React.Component {
               <Button style={buttonStyle} onClick={this.directToMacroList}  color="inherit">
                 Macros
               </Button>
-              
+              <div style={{paddingBottom:'30px'}}></div>
+
               <Button style={buttonStyle} onClick={this.directToWorkoutList} color="inherit" >
                 Workouts
               </Button>
