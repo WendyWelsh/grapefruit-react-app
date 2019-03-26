@@ -18,7 +18,7 @@ import clientMacroView from "./clientMacroView";
 const theme = createMuiTheme({
   typography: {
     useNextVariants: true,
-    fontFamily: 'Poiret One',
+    fontFamily: 'Ubuntu',
     
 },
   palette: {
