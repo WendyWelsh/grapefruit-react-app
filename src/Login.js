@@ -109,7 +109,7 @@ class Login extends React.Component {
           "grapefruit-jwt",
           `Bearer ${response.data.data.token}`
         );
-        if (response.data.role === 0) {
+        if (response.data.role === 'coach') {
           this.props.history.push("/coach/clientlist");
         } else {
           this.props.history.push("/client");
