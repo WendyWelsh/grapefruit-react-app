@@ -20,7 +20,7 @@ const buttonStyle = {
   border: "black solid 1px",
   fontSize: "20px",
   fontFamily: "Poiret One",
-  color: "red"
+  color: "slate gray"
 };
 
 const paper = {
@@ -34,7 +34,7 @@ const paper = {
   textAlign: "center",
   margin: "auto",
   borderRadius: "20px",
-  backgroundColor: "lightgray",
+  backgroundColor: "white",
 
   // boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
 };

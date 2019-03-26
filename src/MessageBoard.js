@@ -261,7 +261,7 @@ const Minimized = ({ maximize }) => (
       justifyContent: "center",
       width: "60px",
       height: "60px",
-      background: "mediumSeaGreen",
+      background: "red",
       color: "#fff",
       borderRadius: "50%",
       borderStyle: 'solid',
