@@ -17,6 +17,7 @@
   background-size: cover;
   margin: 0;
   padding: 0;
+  filter: brightness(150%);
   height: 100vh;
 }
 
