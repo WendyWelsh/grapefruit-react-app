@@ -27,19 +27,17 @@ const buttonStyle = {
   // boxShadow: '2px 2px 0.5px white',
   fontSize: '26px',
   fontFamily: "Poiret One",
-  border: '9px',
+  border: "black solid 1px",  
   color: 'red'
 }
 const nameStyle = {
-  borderRadius: '10em',
+  borderRadius: '20px',
   // boxShadow: '2px 2px 0.5px white',
-  fontSize: '26px',
+  fontSize: '20px',
   fontFamily: "Poiret One",
   border: '9px',
   color: 'green'
 }
-
-
 
 const paper = {
   padding: 180, 
@@ -48,13 +46,11 @@ const paper = {
   maxWidth: '150px',
   textAlign: 'center',
   margin: 'auto',
-  borderRadius: '8px',
+  borderRadius: '20px',
   height: 'auto',
   backgroundColor: 'lightgray',
   // boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
 }
-
-
 
 
 class CoachLandingPage extends React.Component {
