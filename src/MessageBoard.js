@@ -82,21 +82,18 @@ class MessageBoard extends Component {
   }
 
   componentDidMount() {
-    // this.createRoom(this.state.sender, this.state.receiver);
     this.setState({isPropsLoaded: false})
   }
 
   componentDidUpdate() {
     if (this.props.sender && this.props.sender !== this.state.sender && this.props.receiver !== this.state.receiver) {
-      // console.log(this.props.sender, this.props.receiver)
         this.setState({sender: this.props.sender})
       this.setState({receiver: this.props.receiver})
       this.setState({isPropsLoaded: true})
     }
     if (this.state.isPropsLoaded && !this.state.hasRunOnce)
     {
-      // console.log("Message room " + this.state.sender +" and "+ this.state.receiver)
-      this.createRoom(this.state.sender, this.state.receiver);
+       this.createRoom(this.state.sender, this.state.receiver);
       this.setState({hasRunOnce: true}) 
     }
   }
@@ -108,7 +105,6 @@ class MessageBoard extends Component {
         inspector_id: receiver
       })
       .then(response => {
-        // console.log(response.data)
         this.setState({ 
           room: response.data.room_id.toString() ,
           roomName: response.data.room_name.toString()

@@ -9,7 +9,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { withRouter } from "react-router-dom";
 import moment from 'moment';
-import 'moment-timezone';
+// import 'moment-timezone';
 import axios from 'axios'
 let host;
 if (process.env.NODE_ENV === 'production') {
@@ -28,6 +28,10 @@ const styles = theme => ({
   }
 
 });
+
+const paper= {
+  opacity: "0.85",
+}
 
 class clientWorkoutView extends React.Component {
   constructor(props) {
@@ -59,7 +63,7 @@ class clientWorkoutView extends React.Component {
 
     return (
       <div className="clientWorkoutView">
-         
+  
           <Table className={classes.table}>
            
 
@@ -67,7 +71,7 @@ class clientWorkoutView extends React.Component {
 
             
               {this.state.fullWorkout.map(workout => (
-                <Paper>
+                <Paper style ={paper} >
                 <h3>Workout For: {moment(workout.date).format('LL')}</h3>
                 <TableHead>
 
@@ -97,7 +101,7 @@ class clientWorkoutView extends React.Component {
                       </TableCell>
 
                       <TableCell align="right">
-                        {exercise.repititions}
+                        {exercise.repetitions}
                       </TableCell>
 
                       <TableCell align="right">

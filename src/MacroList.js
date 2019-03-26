@@ -38,6 +38,7 @@ const styles = theme => ({
     },
 });
 
+//fats is * 9, carbs * 4, protein * 4
 
 
 class MacroList extends React.Component {
@@ -67,14 +68,12 @@ class MacroList extends React.Component {
             }).then((response) => {
 
                 this.setState({ client: response.data.data[0].client })
-                console.log(response)
 
             })
 
     }
 
     updateDate = (newDate) => {
-        console.log(newDate)
         this.setState({ date: newDate })
 
     }
@@ -97,7 +96,6 @@ class MacroList extends React.Component {
     }
 
 
-
     handleChange = name => event => {
         this.setState({
             [name]: event.target.value,
@@ -105,10 +103,7 @@ class MacroList extends React.Component {
     };
 
     submitMacroForm = () => {
-        console.log(this.props)
-        const { formRowInput } = this.state;
         let clientId = this.props.match.params.id
-        console.log(this.state)
        axios
          .post(`${host}/macros`, { clientId, macros: this.state.clientMacros },
            
@@ -119,7 +114,6 @@ class MacroList extends React.Component {
          })
          .then(response => {
            //this.props.history.push('/coach/client/' + this.props.match.params.id)
-           console.log(response.data)
          });
      };
 
@@ -202,6 +196,7 @@ class MacroList extends React.Component {
                         <Grid item sm>
                             <MacroForm macrosToSend={this.state.clientMacros} />
                         </Grid>
+                        </Grid>
                         <Button
                         onClick={this.submitMacroForm}
                         variant="outlined"
@@ -211,7 +206,6 @@ class MacroList extends React.Component {
                       >
                         Submit Macros
                       </Button>
-                    </Grid>
                 </Paper>
             </div>
             </div>

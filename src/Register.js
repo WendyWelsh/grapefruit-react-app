@@ -96,7 +96,7 @@ class Register extends React.Component {
       }
     ).then((response) => {
       localStorage.setItem("grapefruit-jwt", `Bearer ${response.data.data.token}`);
-      if (response.data.role === 0) {
+      if (response.data.role === 'coach') {
         this.props.history.push('/coach/clientlist')
       } else {
         this.props.history.push('/client')
@@ -111,7 +111,6 @@ class Register extends React.Component {
     e.preventDefault()
     const { name, value } = e.target
     let formErrors = this.state.formErrors
-    console.log("I'm working!")
     //switch is a cleaner else if statement
     //using ternary operator which is the ? so if value.length is less than 2 first string is executed if not second
 
@@ -211,13 +210,13 @@ class Register extends React.Component {
                 onChange={this.handleChange}
               >
                 <FormControlLabel
-                  value="0"
+                  value="coach"
                   control={<Radio color="primary" />}
                   label="Coach"
 
                 />
                 <FormControlLabel
-                  value="1"
+                  value="client"
                   control={<Radio color="primary" />}
                   label="Client"
 

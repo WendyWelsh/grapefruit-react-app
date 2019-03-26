@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === 'production') {
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
-    transition: theme.transitions.create('opacity'),
+    // transition: theme.transitions.create('opacity'),
     fontFamily:'Poiret One'
   },
 
@@ -21,6 +21,40 @@ const styles = theme => ({
   },
   
 });
+
+const buttonStyle = {
+  borderRadius: '10em',
+  // boxShadow: '2px 2px 0.5px white',
+  fontSize: '26px',
+  fontFamily: "Poiret One",
+  border: '9px',
+  color: 'red'
+}
+const nameStyle = {
+  borderRadius: '10em',
+  // boxShadow: '2px 2px 0.5px white',
+  fontSize: '26px',
+  fontFamily: "Poiret One",
+  border: '9px',
+  color: 'green'
+}
+
+
+
+const paper = {
+  padding: 180, 
+  marginLeft: '10px', 
+  opacity: '0.85',
+  maxWidth: '150px',
+  textAlign: 'center',
+  margin: 'auto',
+  borderRadius: '8px',
+  height: 'auto',
+  backgroundColor: 'lightgray',
+  // boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+}
+
+
 
 
 class CoachLandingPage extends React.Component {
@@ -46,8 +80,6 @@ class CoachLandingPage extends React.Component {
         }
       }).then((response) => {
         this.setState({ client: response.data.data[0].client })
-        console.log(response)
-
       })
   }
 
@@ -69,50 +101,33 @@ class CoachLandingPage extends React.Component {
   directToWorkoutList() {
     this.props.history.push("/coach/client/" + this.props.match.params.id + "/workout");
   }
+  
   render() {
     return (
       <div className="CoachLandingPage">
       
-      
         <Grid container>
           <Grid item md>
-            <Paper style={{ padding: 20, margin: 100, textAlign: 'center', opacity: 0.8 }}>
-              {/* <h1>{this.state.client.username}</h1> */}
-              <Button  variant="outlined" color="inherit">
+            <Paper style={{ padding: 20, margin: 0,paddingBottom: 80, paddingTop: 80, textAlign: 'center', opacity: 0.8 }}>
+              
+              <Button style={nameStyle} color="inherit">
               <div>{this.state.client.username}</div>
               </Button>
             </Paper>
           </Grid>
         </Grid>
 
-        <Grid container>
-          {/* <Grid item sm>
-            <Paper style={{ padding: 20, margin: 100, textAlign: 'center' }}>
-              <Button onClick={this.directToMessageBoard} variant="outlined" color="inherit">
-                Messages
-              </Button>
-            </Paper>
-          </Grid> */}
-          <Grid item sm>
-
-            <Paper style={{ padding: 20, margin: 100, textAlign: 'center',  opacity: 0.8 }}>
-              <Button onClick={this.directToMacroList} variant="outlined" color="inherit">
+      
+            <Paper style={paper}>
+              <Button style={buttonStyle} onClick={this.directToMacroList}  color="inherit">
                 Macros
               </Button>
-            </Paper>
-          </Grid>
-          <Grid item sm>
-
-            <Paper style={{ padding: 20, margin: 100, textAlign: 'center',  opacity: 0.8 }}>
-          
-              <Button onClick={this.directToWorkoutList} variant="outlined" color="inherit" >
+              
+              <Button style={buttonStyle} onClick={this.directToWorkoutList} color="inherit" >
                 Workouts
               </Button>
-            </Paper>
-          </Grid>
-        </Grid>
-        {/* <MessageBoard sender="lincoln" receiver={this.state.client.username}/> */}
-        <MessageBoard sender="lincoln" receiver="bob"/>
+          </Paper>
+        <MessageBoard sender="Michael" receiver="Ange"/>
       </div>
     )
   }
