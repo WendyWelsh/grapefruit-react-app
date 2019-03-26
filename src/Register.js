@@ -80,7 +80,7 @@ class Register extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
 
-    //{username, email, password})
+    //{username, email, password}
     axios.post("/create",
       {
         username: this.state.username,
@@ -91,7 +91,7 @@ class Register extends React.Component {
       }
     ).then((response) => {
       localStorage.setItem("grapefruit-jwt", `Bearer ${response.data.data.token}`);
-      if (response.data.role === 0) {
+      if (response.data.role === 'coach') {
         this.props.history.push('/coach/clientlist')
       } else {
         this.props.history.push('/client')
@@ -205,13 +205,13 @@ class Register extends React.Component {
                 onChange={this.handleChange}
               >
                 <FormControlLabel
-                  value="0"
+                  value="coach"
                   control={<Radio color="primary" />}
                   label="Coach"
 
                 />
                 <FormControlLabel
-                  value="1"
+                  value="client"
                   control={<Radio color="primary" />}
                   label="Client"
 

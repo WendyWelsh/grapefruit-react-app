@@ -9,7 +9,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { withRouter } from "react-router-dom";
 import moment from 'moment';
-import 'moment-timezone';
+// import 'moment-timezone';
 import axios from 'axios'
 
 const styles = theme => ({
@@ -93,7 +93,7 @@ class clientWorkoutView extends React.Component {
                       </TableCell>
 
                       <TableCell align="right">
-                        {exercise.repititions}
+                        {exercise.repetitions}
                       </TableCell>
 
                       <TableCell align="right">
