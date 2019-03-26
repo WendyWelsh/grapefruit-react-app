@@ -17,6 +17,7 @@
   background-size: cover;
   margin: 0;
   padding: 0;
+  filter: brightness(150%);
   height: 100vh;
 }
 
@@ -64,6 +65,14 @@
 }
 .logo {
   background: url("images/grapefruitlogored.svg")  no-repeat ;
+}
+
+.clientWorkoutView {
+  background: url("images/handstand.jpg") no-repeat center center fixed; 
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
 }
 
 
