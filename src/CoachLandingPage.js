@@ -6,7 +6,7 @@ import MessageBoard from "./MessageBoard";
 import axios from "axios";
 let host;
 if (process.env.NODE_ENV === 'production') {
-    host = 'https://grapefruit-server.herokuapp.com/'
+    host = 'https://grapefruit-server.herokuapp.com'
 } else { host = 'http://localhost:3000' }
 
 const styles = theme => ({
