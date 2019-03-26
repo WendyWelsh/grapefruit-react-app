@@ -67,6 +67,14 @@
   background: url("images/grapefruitlogored.svg")  no-repeat ;
 }
 
+.clientWorkoutView {
+  background: url("images/handstand.jpg") no-repeat center center fixed; 
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
 
 /* .Login{
   background: url(images/ropeclimbresize.jpg) no-repeat center center fixed; 

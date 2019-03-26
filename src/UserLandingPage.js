@@ -20,7 +20,6 @@ const buttonStyle = {
   border: "black solid 1px",
   fontSize: "20px",
   fontFamily: "Poiret One",
-
   color: "red"
 };
 

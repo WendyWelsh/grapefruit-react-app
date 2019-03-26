@@ -104,7 +104,7 @@ class CoachLandingPage extends React.Component {
       
         <Grid container>
           <Grid item md>
-            <Paper style={{ padding: 20, margin: 50,paddingBottom: 80, paddingTop: 80, textAlign: 'center', opacity: 0.8 }}>
+            <Paper style={{ padding: 20, margin: 0,paddingBottom: 80, paddingTop: 80, textAlign: 'center', opacity: 0.8 }}>
               
               <Button style={nameStyle} color="inherit">
               <div>{this.state.client.username}</div>
