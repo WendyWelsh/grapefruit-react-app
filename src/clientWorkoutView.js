@@ -11,13 +11,16 @@ import { withRouter } from "react-router-dom";
 import moment from 'moment';
 import 'moment-timezone';
 import axios from 'axios'
+import Typography from "@material-ui/core/Typography";
+
+
 
 const styles = theme => ({
   root: {
     width: "100%",
     marginTop: theme.spacing.unit * 3,
     overflowX: "auto",
-    opacity: 0.9
+   
   },
   table: {
     minWidth: 700
@@ -63,8 +66,14 @@ class clientWorkoutView extends React.Component {
 
             
               {this.state.fullWorkout.map(workout => (
-                <Paper>
-                <h3>Workout For: {moment(workout.date).format('LL')}</h3>
+                <Paper style={{ opacity: 0.8, padding: 20, }}>
+                    <Typography
+                                style={{ margin: 4 }}
+                                variant="h6"
+                                gutterBottom align='left'>
+                                Workout For: {moment(workout.date).format('LL')}
+                            </Typography>
+                {/* <h3>Workout For: {moment(workout.date).format('LL')}</h3> */}
                 <TableHead>
 
                 

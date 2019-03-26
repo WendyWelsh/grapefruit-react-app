@@ -8,18 +8,22 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { withRouter } from "react-router-dom";
-import moment from 'moment'
-import axios from 'axios'
+import moment from 'moment';
+import axios from 'axios';
+import Typography from "@material-ui/core/Typography";
+
+
 
 const styles = theme => ({
     root: {
         width: "100%",
         marginTop: theme.spacing.unit * 3,
         overflowX: "auto",
-        opacity: 0.9
+
     },
     table: {
-        minWidth: 700
+        minWidth: 700,
+        alignItems: "center"
     }
 
 });
@@ -54,17 +58,19 @@ class clientMacroView extends React.Component {
 
         return (
             <div className="clientMacroView">
-
-                <Table className={classes.table}>
-
+ 
+                <Table>
+                
                     {this.state.fullMacros.map(macro => (
-                        <Paper>
-
-                            <h3>Week : {moment(macro.date).format('LL')}</h3>
+                        <Paper style={{ opacity: 0.8, padding: 20, }}>
+                            <Typography
+                                style={{ margin: 4 }}
+                                variant="h6"
+                                gutterBottom align='left'>
+                                Week : {moment(macro.date).format('LL')}
+                            </Typography>
 
                             <TableHead>
-
-
 
                                 <TableCell align="right">Protein</TableCell>
                                 <TableCell align="right">Carbs</TableCell>
