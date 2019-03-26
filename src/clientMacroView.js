@@ -10,6 +10,10 @@ import Paper from "@material-ui/core/Paper";
 import { withRouter } from "react-router-dom";
 import moment from 'moment'
 import axios from 'axios'
+let host;
+if (process.env.NODE_ENV === 'production') {
+    host = 'https://grapefruit-server.herokuapp.com/'
+} else { host = 'http://localhost:3000' }
 
 const styles = theme => ({
     root: {
@@ -35,7 +39,7 @@ class clientMacroView extends React.Component {
 
     componentDidMount() {
 
-        axios.get('/macros',
+        axios.get(`${host}/macros`,
             {
                 headers: {
                     Authorization: localStorage.getItem('grapefruit-jwt')

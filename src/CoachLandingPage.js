@@ -2,8 +2,12 @@ import React from "react";
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
-import axios from "axios";
 import MessageBoard from "./MessageBoard";
+import axios from "axios";
+let host;
+if (process.env.NODE_ENV === 'production') {
+    host = 'https://grapefruit-server.herokuapp.com/'
+} else { host = 'http://localhost:3000' }
 
 const styles = theme => ({
   button: {
@@ -69,7 +73,7 @@ class CoachLandingPage extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/coach/clients/' + this.props.match.params.id,
+    axios.get(`${host}/coach/clients/` + this.props.match.params.id,
       {
         headers: {
           Authorization: localStorage.getItem('grapefruit-jwt')

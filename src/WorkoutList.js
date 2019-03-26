@@ -10,10 +10,14 @@ import Button from '@material-ui/core/Button';
 import { workoutMuscleGroup, workoutSets, workoutReps, workoutRPE, allWorkouts } from './WorkoutStorage'
 import WorkoutForm from './WorkoutForm'
 import Grid from '@material-ui/core/Grid';
-import axios from 'axios';
 import Typography from '@material-ui/core/Typography';
 import DateSelector from './DateSelector';
 import moment from 'moment';
+import axios from 'axios';
+let host;
+if (process.env.NODE_ENV === 'production') {
+    host = 'https://grapefruit-server.herokuapp.com/'
+} else { host = 'http://localhost:3000' }
 
 const styles = theme => ({
     root: {
@@ -80,7 +84,7 @@ class WorkoutList extends React.Component {
 
     componentDidMount() {
 
-        axios.get('/coach/clients/' + this.props.match.params.id,
+        axios.get(`${host}/coach/clients/` + this.props.match.params.id,
             {
                 headers: {
                     Authorization: localStorage.getItem('grapefruit-jwt')
@@ -115,7 +119,7 @@ class WorkoutList extends React.Component {
         let clientId = this.props.match.params.id
         let exercises = this.state.clientWorkouts
        axios
-         .post("/workouts", {date: this.state.date, clientId, exercises},
+         .post(`${host}/workouts`, {date: this.state.date, clientId, exercises},
            
           {
            headers: {
