@@ -67,7 +67,7 @@ class Register extends React.Component {
       username: null,
       password: null,
       email: null,
-      role: '1',
+      role: 'client',
       formErrors: {
         username: "",
         password: "",
