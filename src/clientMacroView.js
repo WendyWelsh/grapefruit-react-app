@@ -12,9 +12,6 @@ import moment from 'moment';
 import axios from 'axios';
 import Typography from "@material-ui/core/Typography";
 
-
-import moment from 'moment'
-import axios from 'axios'
 let host;
 if (process.env.NODE_ENV === 'production') {
     host = 'https://grapefruit-server.herokuapp.com/'
