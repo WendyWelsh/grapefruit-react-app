@@ -113,7 +113,7 @@ class MacroList extends React.Component {
            }
          })
          .then(response => {
-           //this.props.history.push('/coach/client/' + this.props.match.params.id)
+           this.props.history.push('/coach/clientlist')
          });
      };
 

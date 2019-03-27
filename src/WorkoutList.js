@@ -127,7 +127,7 @@ class WorkoutList extends React.Component {
            }
          })
          .then(response => {
-           //this.props.history.push('/coach/client/' + this.props.match.params.id)
+           this.props.history.push('/coach/clientlist')
          });
      };
 
@@ -252,16 +252,9 @@ class WorkoutList extends React.Component {
                 </Grid>
              
                 <Grid container>
+                
                     <Grid item sm>
-                  
-                        <WorkoutForm 
-                        workouts={this.state.clientWorkouts} 
-                        clientId={this.props.match.params.id}/>
-                         
-                        </Grid>
-                        
-                        </Grid>
-                        <Button
+                    <Button
                         onClick={this.submitWorkoutForm}
                         variant="outlined"
                         size="large"
@@ -270,6 +263,14 @@ class WorkoutList extends React.Component {
                       >
                         Submit Workout
                       </Button>
+                        <WorkoutForm 
+                        workouts={this.state.clientWorkouts} 
+                        clientId={this.props.match.params.id}/>
+                         
+                        </Grid>
+                        
+                        </Grid>
+                   
             </div>
         );
     }
