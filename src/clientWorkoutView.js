@@ -9,11 +9,15 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { withRouter } from "react-router-dom";
 import moment from 'moment';
-import 'moment-timezone';
+// import 'moment-timezone';
 import axios from 'axios'
 import Typography from "@material-ui/core/Typography";
 
 
+let host;
+if (process.env.NODE_ENV === 'production') {
+    host = 'https://grapefruit-server.herokuapp.com/'
+} else { host = 'http://localhost:3000' }
 
 const styles = theme => ({
   root: {
@@ -28,6 +32,10 @@ const styles = theme => ({
 
 });
 
+const paper= {
+  opacity: "0.85",
+}
+
 class clientWorkoutView extends React.Component {
   constructor(props) {
     super(props);
@@ -39,7 +47,7 @@ class clientWorkoutView extends React.Component {
 
   componentDidMount() {
 
-    axios.get('/workouts',
+    axios.get(`${host}/workouts`,
       {
         headers: {
           Authorization: localStorage.getItem('grapefruit-jwt')
@@ -58,7 +66,7 @@ class clientWorkoutView extends React.Component {
 
     return (
       <div className="clientWorkoutView">
-         
+  
           <Table className={classes.table}>
            
 
@@ -102,7 +110,7 @@ class clientWorkoutView extends React.Component {
                       </TableCell>
 
                       <TableCell align="right">
-                        {exercise.repititions}
+                        {exercise.repetitions}
                       </TableCell>
 
                       <TableCell align="right">

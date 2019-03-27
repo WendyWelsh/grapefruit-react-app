@@ -5,6 +5,13 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import { withRouter } from 'react-router-dom';
 import axios from "axios"
+// import RaisedButton from '@material-ui/core/RaisedButton';
+import Button from '@material-ui/core/Button';
+let host;
+if (process.env.NODE_ENV === 'production') {
+ host = 'https://grapefruit-server.herokuapp.com/'
+}else {host = 'http://localhost:3000'}
+
 
 
 const styles = theme => ({
@@ -26,13 +33,13 @@ const styles = theme => ({
 
 },
   image: {
-
     position: 'relative',
     height: 200,
     [theme.breakpoints.down('xs')]: {
       width: '100% !important', // Overrides inline-style
       height: 100,
     },
+    
     '&:hover, &$focusVisible': {
       zIndex: 1,
       '& $imageBackdrop': {
@@ -111,7 +118,7 @@ class ButtonBases extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("/coach/clients",
+    axios.get(`${host}/coach/clients`,
       {
         headers: {
           Authorization: localStorage.getItem('grapefruit-jwt')

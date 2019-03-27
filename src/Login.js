@@ -1,17 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import FormControl from '@material-ui/core/FormControl';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import Paper from '@material-ui/core/Paper';
-import withStyles from '@material-ui/core/styles/withStyles';
-import { withRouter } from 'react-router-dom';
-import axios from "axios"
-import Avatar from '@material-ui/core/Avatar';
-import ButtonNavigation from './ButtonNavigation';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import React from "react";
+import PropTypes from "prop-types";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import FormControl from "@material-ui/core/FormControl";
+import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
+import Paper from "@material-ui/core/Paper";
+import withStyles from "@material-ui/core/styles/withStyles";
+import { withRouter } from "react-router-dom";
+import Avatar from "@material-ui/core/Avatar";
+import ButtonNavigation from "./ButtonNavigation";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import { Grid } from "@material-ui/core";
+import axios from "axios";
+let host;
+if (process.env.NODE_ENV === 'production') {
+    host = 'https://grapefruit-server.herokuapp.com/'
+} else { host = 'http://localhost:3000' }
 
 const styles = theme => ({
   main: {
@@ -46,8 +51,7 @@ const styles = theme => ({
   },
   submit: {
     marginTop: theme.spacing.unit * 5,
-  },
-
+  }
 });
 
 
@@ -91,25 +95,26 @@ class Login extends React.Component {
 
     //{username, password})
 
-    axios.post("/login",
+    axios
+      .post(
+        `${host}/login`,
 
-      {
-        email: this.state.email,
-        password: this.state.password,
-
-      }
-    ).then((response) => {
-      localStorage.setItem("grapefruit-jwt", `Bearer ${response.data.data.token}`);
-      if (response.data.role === 0) {
-        this.props.history.push('/coach/clientlist')
-      } else {
-        this.props.history.push('/client')
-      }
-
-
-    })
-
-
+        {
+          email: this.state.email,
+          password: this.state.password
+        }
+      )
+      .then(response => {
+        localStorage.setItem(
+          "grapefruit-jwt",
+          `Bearer ${response.data.data.token}`
+        );
+        if (response.data.role === 'coach') {
+          this.props.history.push("/coach/clientlist");
+        } else {
+          this.props.history.push("/client");
+        }
+      });
   }
 
 

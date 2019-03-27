@@ -2,13 +2,17 @@ import React from "react";
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
-import axios from "axios";
 import MessageBoard from "./MessageBoard";
+import axios from "axios";
+let host;
+if (process.env.NODE_ENV === 'production') {
+    host = 'https://grapefruit-server.herokuapp.com/'
+} else { host = 'http://localhost:3000' }
 
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
-    transition: theme.transitions.create('opacity'),
+    // transition: theme.transitions.create('opacity'),
     fontFamily:'Poiret One'
   },
 
@@ -17,6 +21,40 @@ const styles = theme => ({
   },
   
 });
+
+const buttonStyle = {
+  borderRadius: '10em',
+  // boxShadow: '2px 2px 0.5px white',
+  fontSize: '26px',
+  fontFamily: "Poiret One",
+  border: '9px',
+  color: 'red'
+}
+const nameStyle = {
+  borderRadius: '10em',
+  // boxShadow: '2px 2px 0.5px white',
+  fontSize: '26px',
+  fontFamily: "Poiret One",
+  border: '9px',
+  color: 'green'
+}
+
+
+
+const paper = {
+  padding: 180, 
+  marginLeft: '10px', 
+  opacity: '0.85',
+  maxWidth: '150px',
+  textAlign: 'center',
+  margin: 'auto',
+  borderRadius: '8px',
+  height: 'auto',
+  backgroundColor: 'lightgray',
+  // boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+}
+
+
 
 
 class CoachLandingPage extends React.Component {
@@ -35,7 +73,7 @@ class CoachLandingPage extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/coach/clients/' + this.props.match.params.id,
+    axios.get(`${host}/coach/clients/` + this.props.match.params.id,
       {
         headers: {
           Authorization: localStorage.getItem('grapefruit-jwt')
@@ -63,42 +101,33 @@ class CoachLandingPage extends React.Component {
   directToWorkoutList() {
     this.props.history.push("/coach/client/" + this.props.match.params.id + "/workout");
   }
+  
   render() {
     return (
       <div className="CoachLandingPage">
       
-      
         <Grid container>
           <Grid item md>
-            <Paper style={{ padding: 20, margin: 100, textAlign: 'center', opacity: 0.8 }}>
+            <Paper style={{ padding: 20, margin: 0,paddingBottom: 80, paddingTop: 80, textAlign: 'center', opacity: 0.8 }}>
               
-              <Button  variant="outlined" color="inherit">
+              <Button style={nameStyle} color="inherit">
               <div>{this.state.client.username}</div>
               </Button>
             </Paper>
           </Grid>
         </Grid>
 
-        <Grid container>
-          <Grid item sm>
-
-            <Paper style={{ padding: 20, margin: 100, textAlign: 'center',  opacity: 0.8 }}>
-              <Button onClick={this.directToMacroList} variant="outlined" color="inherit">
+      
+            <Paper style={paper}>
+              <Button style={buttonStyle} onClick={this.directToMacroList}  color="inherit">
                 Macros
               </Button>
-            </Paper>
-          </Grid>
-          <Grid item sm>
-
-            <Paper style={{ padding: 20, margin: 100, textAlign: 'center',  opacity: 0.8 }}>
-          
-              <Button onClick={this.directToWorkoutList} variant="outlined" color="inherit" >
+              
+              <Button style={buttonStyle} onClick={this.directToWorkoutList} color="inherit" >
                 Workouts
               </Button>
-            </Paper>
-          </Grid>
-        </Grid>
-        <MessageBoard sender="lincoln" receiver="bob"/>
+          </Paper>
+        <MessageBoard sender="Michael" receiver="Ange"/>
       </div>
     )
   }

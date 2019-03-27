@@ -17,6 +17,7 @@
   background-size: cover;
   margin: 0;
   padding: 0;
+  filter: brightness(150%);
   height: 100vh;
 }
 
@@ -66,22 +67,14 @@
   background: url("images/grapefruitlogored.svg")  no-repeat ;
 }
 
-.clientMacroView {
-background: url(images/carrotscucumber.jpg) no-repeat center center fixed; 
-background-size: cover;
-margin: 0;
-padding: 0;
-height: 100vh;
-background-attachment: fixed; 
+.clientWorkoutView {
+  background: url("images/handstand.jpg") no-repeat center center fixed; 
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
 }
-.clientWorkoutView{
-background: url(images/barbells.jpg) no-repeat center center fixed; 
-background-size: cover;
-margin: 0;
-padding: 0;
-height: 100vh;
-background-attachment: fixed; 
-}
+
 
 /* .Login{
   background: url(images/ropeclimbresize.jpg) no-repeat center center fixed; 
