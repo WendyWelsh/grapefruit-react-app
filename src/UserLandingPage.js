@@ -7,7 +7,9 @@ import { Z_BLOCK } from "zlib";
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
-    fontFamily: "Poiret One"
+    fontFamily: "Poiret One",
+    
+
   },
   input: {
     display: "none"
@@ -20,7 +22,7 @@ const buttonStyle = {
   border: "black solid 1px",
   fontSize: "20px",
   fontFamily: "Poiret One",
-  color: "red"
+  color: "slate gray"
 };
 
 const paper = {
@@ -34,7 +36,7 @@ const paper = {
   textAlign: "center",
   margin: "auto",
   borderRadius: "20px",
-  backgroundColor: "lightgray",
+  backgroundColor: "white",
 
   // boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
 };
@@ -43,14 +45,16 @@ class UserLandingPage extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      anchorEl: null
+    };
+
     this.directToMessageBoard = this.directToMessageBoard.bind(this);
     this.directToMacroForm = this.directToMacroForm.bind(this);
     this.directToWorkoutForm = this.directToWorkoutForm.bind(this);
   }
 
-  state = {
-    anchorel: null
-  };
+  
 
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });

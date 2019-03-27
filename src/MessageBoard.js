@@ -20,7 +20,7 @@ import {
 import axios from "axios";
 let host;
 if (process.env.NODE_ENV === 'production') {
-    host = 'https://grapefruit-server.herokuapp.com/'
+    host = 'https://grapefruit-server.herokuapp.com'
 } else { host = 'http://localhost:3000' }
 
 const themes = {
@@ -261,7 +261,7 @@ const Minimized = ({ maximize }) => (
       justifyContent: "center",
       width: "60px",
       height: "60px",
-      background: "mediumSeaGreen",
+      background: "red",
       color: "#fff",
       borderRadius: "50%",
       borderStyle: 'solid',

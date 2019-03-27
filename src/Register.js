@@ -17,7 +17,7 @@ import Avatar from '@material-ui/core/Avatar';
 import axios from "axios"
 let host;
 if (process.env.NODE_ENV === 'production') {
-    host = 'https://grapefruit-server.herokuapp.com/'
+    host = 'https://grapefruit-server.herokuapp.com'
 } else { host = 'http://localhost:3000' }
 
 const styles = theme => ({
@@ -67,7 +67,7 @@ class Register extends React.Component {
       username: null,
       password: null,
       email: null,
-      role: '1',
+      role: 'client',
       formErrors: {
         username: "",
         password: "",
