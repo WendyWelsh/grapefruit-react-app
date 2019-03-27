@@ -9,7 +9,7 @@ import axios from "axios"
 import Button from '@material-ui/core/Button';
 let host;
 if (process.env.NODE_ENV === 'production') {
- host = 'https://grapefruit-server.herokuapp.com/'
+ host = 'https://grapefruit-server.herokuapp.com'
 }else {host = 'http://localhost:3000'}
 
 

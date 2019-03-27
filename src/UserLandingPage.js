@@ -45,14 +45,16 @@ class UserLandingPage extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      anchorEl: null
+    };
+
     this.directToMessageBoard = this.directToMessageBoard.bind(this);
     this.directToMacroForm = this.directToMacroForm.bind(this);
     this.directToWorkoutForm = this.directToWorkoutForm.bind(this);
   }
 
-  state = {
-    anchorel: null
-  };
+  
 
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
