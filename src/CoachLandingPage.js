@@ -13,7 +13,7 @@ const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
     // transition: theme.transitions.create('opacity'),
-    fontFamily:'Poiret One'
+    fontFamily:'Ubuntu'
   },
 
   input: {
@@ -26,7 +26,7 @@ const buttonStyle = {
   borderRadius: '20px',
   // boxShadow: '2px 2px 0.5px white',
   fontSize: '22px',
-  fontFamily: "Poiret One",
+  fontFamily: 'Ubuntu',
   border: "gray solid 1px",  
   color: 'gray'
 }
@@ -34,7 +34,7 @@ const nameStyle = {
   borderRadius: '20px',
   // boxShadow: '2px 2px 0.5px white',
   fontSize: '40px',
-  fontFamily: "Poiret One",
+  fontFamily: 'Ubuntu',
   // border: '9px',
   color: 'gray'
 }
@@ -124,7 +124,7 @@ class CoachLandingPage extends React.Component {
                 Workouts
               </Button>
           </Paper>
-        <MessageBoard sender="Michael" receiver="Ange"/>
+        <MessageBoard sender="Ange" receiver="Wendy"/>
       </div>
     )
   }

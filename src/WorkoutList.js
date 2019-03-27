@@ -129,7 +129,24 @@ class WorkoutList extends React.Component {
          .then(response => {
            this.props.history.push('/coach/clientlist')
          });
-     };
+
+         this.setState({ 
+            date: moment().format('YYYY-MM-DD'),
+            workoutMuscleGroup: '',
+            exerciseName: '',
+            sets: '1',
+            reps: '1',
+            rpe: '1',
+            allWorkouts: allWorkouts,
+            filteredWorkOuts: [],
+            client: {
+                username: "",
+                date: []
+            },
+            clientWorkouts: []
+        });
+        alert("You submitted a workout!")
+    };
 
 
 
@@ -263,6 +280,7 @@ class WorkoutList extends React.Component {
                       >
                         Submit Workout
                       </Button>
+                  
                         <WorkoutForm 
                         workouts={this.state.clientWorkouts} 
                         clientId={this.props.match.params.id}/>
@@ -270,7 +288,7 @@ class WorkoutList extends React.Component {
                         </Grid>
                         
                         </Grid>
-                   
+                        
             </div>
         );
     }

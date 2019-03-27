@@ -101,7 +101,7 @@ class UserLandingPage extends React.Component {
               Macro Track Log
             </Button>
           </Paper>
-          <MessageBoard sender="Wendy" receiver="Matt" />
+          <MessageBoard sender="Wendy" receiver="Ange" />
         </div>
       </div>
     );

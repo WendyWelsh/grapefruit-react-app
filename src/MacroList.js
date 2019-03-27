@@ -113,8 +113,22 @@ class MacroList extends React.Component {
            }
          })
          .then(response => {
-           this.props.history.push('/coach/clientlist')
-         });
+           //this.props.history.push('/coach/client/' + this.props.match.params.id)
+        });
+
+         this.setState({
+            date: moment().format('YYYY-MM-DD'),
+            carbohydrates: '',
+            protein: '',
+            fat: '',
+            totalDailyCalories: 1000,
+            client: {
+                username: "",
+                date: []
+            },
+            clientMacros: []
+        });
+        alert("You submitted a Macro Form!")
      };
 
 
