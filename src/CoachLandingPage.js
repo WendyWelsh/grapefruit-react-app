@@ -124,7 +124,7 @@ class CoachLandingPage extends React.Component {
                 Workouts
               </Button>
           </Paper>
-        <MessageBoard sender="Michael" receiver="Ange"/>
+        <MessageBoard sender="Ange" receiver="Wendy"/>
       </div>
     )
   }
