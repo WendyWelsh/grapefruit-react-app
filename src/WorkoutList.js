@@ -13,7 +13,10 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import DateSelector from './DateSelector';
 import moment from 'moment';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 import axios from 'axios';
+
 let host;
 if (process.env.NODE_ENV === 'production') {
     host = 'https://grapefruit-server.herokuapp.com'
@@ -51,13 +54,21 @@ class WorkoutList extends React.Component {
                 username: "",
                 date: []
             },
-            clientWorkouts: []
-
+            clientWorkouts: [],
         };
+
+        // deleteRow = i => {
+        //     this.setState(state => ({
+        //       data: state.data.filter((row, j) => j !== i)
+        //     }));
+        //   };
 // this.handleSubmit=this.handleSubmit.bind(this)
 // this.updateDate=this.updateDate.bind(this)
+this.deleteWorkout=this.deleteWorkout.bind(this)
 
     };
+
+    
 
 
     updateDate = (newDate) => {
@@ -80,6 +91,11 @@ class WorkoutList extends React.Component {
 
 
     }
+    deleteWorkout(item){
+        let oldArray = this.state.clientWorkouts
+        oldArray.splice(item,1)
+        this.setState({clientWorkouts:oldArray})
+      }
 
 
     componentDidMount() {
@@ -137,7 +153,7 @@ class WorkoutList extends React.Component {
 
     render() {
 
-
+        
         const { classes } = this.props;
 
         return (
@@ -256,8 +272,9 @@ class WorkoutList extends React.Component {
                   
                         <WorkoutForm 
                         workouts={this.state.clientWorkouts} 
-                        clientId={this.props.match.params.id}/>
-                         
+                        clientId={this.props.match.params.id}
+                         deleteWorkout={this.deleteWorkout}
+                         />
                         </Grid>
                         
                         </Grid>
