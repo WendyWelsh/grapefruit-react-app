@@ -54,7 +54,7 @@ class MacroList extends React.Component {
             carbohydrates: '',
             protein: '',
             fat: '',
-            totalDailyCalories: 1000,
+            // totalDailyCalories: 1000,
             client: {
                 username: "",
                 date: []
@@ -62,6 +62,8 @@ class MacroList extends React.Component {
             clientMacros: [],
             open: false,
         };
+        this.deleteMacro = this.deleteMacro.bind(this);
+
     }
 
     componentDidMount() {
@@ -92,7 +94,7 @@ class MacroList extends React.Component {
             carbsSelected: this.state.carbohydrates,
             proteinSelected: this.state.protein,
             fatSelected: this.state.fat,
-            totalDailyCalories: 1000
+            // totalDailyCalories: 1000
         }
         let newMacroArray = this.state.clientMacros.slice();
         newMacroArray.push(selectedMacros);
@@ -101,6 +103,11 @@ class MacroList extends React.Component {
 
     }
 
+    deleteMacro(item) {
+        let oldArray = this.state.clientMacros;
+        oldArray.splice(item, 1);
+        this.setState({ clientMacros: oldArray });
+    }
 
     handleChange = name => event => {
         this.setState({
@@ -135,7 +142,7 @@ class MacroList extends React.Component {
             carbohydrates: '',
             protein: '',
             fat: '',
-            totalDailyCalories: 1000,
+            // totalDailyCalories: 1000,
             client: {
                 username: "",
                 date: []
@@ -222,7 +229,9 @@ class MacroList extends React.Component {
                     </Grid>
                     <Grid container>
                         <Grid item sm>
-                            <MacroForm macrosToSend={this.state.clientMacros} />
+                            <MacroForm macrosToSend={this.state.clientMacros} 
+                            deleteMacro={this.deleteMacro}/>
+                            
                         </Grid>
                         </Grid>
                         <Button
