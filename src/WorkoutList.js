@@ -12,6 +12,11 @@ import WorkoutForm from './WorkoutForm'
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import DateSelector from './DateSelector';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import moment from 'moment';
 import axios from 'axios';
 let host;
@@ -51,8 +56,8 @@ class WorkoutList extends React.Component {
                 username: "",
                 date: []
             },
-            clientWorkouts: []
-
+            clientWorkouts: [],
+            open: false,
         };
 // this.handleSubmit=this.handleSubmit.bind(this)
 // this.updateDate=this.updateDate.bind(this)
@@ -115,6 +120,14 @@ class WorkoutList extends React.Component {
 
     }
 
+    handleClickOpen = () => {
+        this.setState({ open: true });
+    };
+    
+    handleClose = () => {
+        this.setState({ open: false });
+    };
+
     submitWorkoutForm = () => {
         let clientId = this.props.match.params.id
         let exercises = this.state.clientWorkouts
@@ -145,7 +158,7 @@ class WorkoutList extends React.Component {
             },
             clientWorkouts: []
         });
-        alert("You submitted a workout!")
+        
     };
 
 
@@ -271,22 +284,40 @@ class WorkoutList extends React.Component {
                 <Grid container>
                     <Grid item sm>
                     <Button
-                        onClick={this.submitWorkoutForm}
+                        onClick={()=>{this.submitWorkoutForm(); this.handleClickOpen()}}
                         variant="outlined"
                         size="large"
                         color="primary"
                         className={classes.margin}
-                      >
+                    >
                         Submit Workout
-                      </Button>
-                  
-                        <WorkoutForm 
+                    </Button>
+                    <Dialog
+                        open={this.state.open}
+                        onClose={this.handleClose}
+                        aria-labelledby="alert-dialog-title"
+                        aria-describedby="alert-dialog-description"
+                    >
+                    <DialogTitle>Good Work!</DialogTitle>
+                     <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        You have submitted a new workout for your client.
+                    </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                    <Button onClick={this.handleClose} color="primary" autoFocus>
+                        Right On!
+                    </Button>
+                    </DialogActions>
+                    </Dialog>
+                    <WorkoutForm 
                         workouts={this.state.clientWorkouts} 
-                        clientId={this.props.match.params.id}/>
+                        clientId={this.props.match.params.id}
+                    />
                          
-                        </Grid>
+                    </Grid>
                         
-                        </Grid>
+                </Grid>
                         
             </div>
         );

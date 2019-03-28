@@ -10,6 +10,11 @@ import DateSelector from './DateSelector';
 import Paper from '@material-ui/core/Paper';
 import moment from 'moment';
 import Typography from '@material-ui/core/Typography';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import axios from 'axios';
 let host;
 if (process.env.NODE_ENV === 'production') {
@@ -54,7 +59,8 @@ class MacroList extends React.Component {
                 username: "",
                 date: []
             },
-            clientMacros: []
+            clientMacros: [],
+            open: false,
         };
     }
 
@@ -102,6 +108,14 @@ class MacroList extends React.Component {
         });
     };
 
+    handleClickOpen = () => {
+        this.setState({ open: true });
+    };
+    
+    handleClose = () => {
+        this.setState({ open: false });
+    };
+
     submitMacroForm = () => {
         let clientId = this.props.match.params.id
        axios
@@ -128,7 +142,7 @@ class MacroList extends React.Component {
             },
             clientMacros: []
         });
-        alert("You submitted a Macro Form!")
+        
      };
 
 
@@ -212,7 +226,7 @@ class MacroList extends React.Component {
                         </Grid>
                         </Grid>
                         <Button
-                        onClick={this.submitMacroForm}
+                        onClick={()=>{this.submitMacroForm(); this.handleClickOpen()}}
                         variant="outlined"
                         size="large"
                         color="primary"
@@ -220,6 +234,24 @@ class MacroList extends React.Component {
                       >
                         Submit Macros
                       </Button>
+                      <Dialog
+                        open={this.state.open}
+                        onClose={this.handleClose}
+                        aria-labelledby="alert-dialog-title"
+                        aria-describedby="alert-dialog-description"
+                        >
+                        <DialogTitle>Good Work!</DialogTitle>
+                        <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            You have submitted a new macro form for your client.
+                        </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                        <Button onClick={this.handleClose} color="primary" autoFocus>
+                            Right On!
+                        </Button>
+                        </DialogActions>
+                        </Dialog>
                 </Paper>
             </div>
             </div>
