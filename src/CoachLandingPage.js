@@ -26,7 +26,7 @@ const buttonStyle = {
   borderRadius: '20px',
   // boxShadow: '2px 2px 0.5px white',
   fontSize: '22px',
-  fontFamily: 'Ubuntu',
+  fontFamily: "Ubuntu",
   border: "gray solid 1px",  
   color: 'gray'
 }
@@ -34,7 +34,7 @@ const nameStyle = {
   borderRadius: '20px',
   // boxShadow: '2px 2px 0.5px white',
   fontSize: '40px',
-  fontFamily: 'Ubuntu',
+  fontFamily: "Ubuntu",
   // border: '9px',
   color: 'gray'
 }

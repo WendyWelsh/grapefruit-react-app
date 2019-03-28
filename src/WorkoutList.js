@@ -61,6 +61,7 @@ class WorkoutList extends React.Component {
         };
 // this.handleSubmit=this.handleSubmit.bind(this)
 // this.updateDate=this.updateDate.bind(this)
+this.deleteWorkout = this.deleteWorkout.bind(this);
 
     };
 
@@ -85,7 +86,11 @@ class WorkoutList extends React.Component {
 
 
     }
-
+    deleteWorkout(item) {
+        let oldArray = this.state.clientWorkouts;
+        oldArray.splice(item, 1);
+        this.setState({ clientWorkouts: oldArray });
+      }
 
     componentDidMount() {
 
@@ -283,6 +288,7 @@ class WorkoutList extends React.Component {
              
                 <Grid container>
                     <Grid item sm>
+                    
                     <Button
                         onClick={()=>{this.submitWorkoutForm(); this.handleClickOpen()}}
                         variant="outlined"
@@ -310,9 +316,10 @@ class WorkoutList extends React.Component {
                     </Button>
                     </DialogActions>
                     </Dialog>
-                    <WorkoutForm 
-                        workouts={this.state.clientWorkouts} 
+                    <WorkoutForm
+                        workouts={this.state.clientWorkouts}
                         clientId={this.props.match.params.id}
+                        deleteWorkout={this.deleteWorkout}
                     />
                          
                     </Grid>
