@@ -78,7 +78,7 @@ class clientMacroView extends React.Component {
                                 <TableCell align="right">Protein</TableCell>
                                 <TableCell align="right">Carbs</TableCell>
                                 <TableCell align="right">Fats</TableCell>
-                                <TableCell align="right">Total Calories</TableCell>
+                                {/* <TableCell align="right">Total Calories</TableCell> */}
                             </TableHead>
                             <TableBody>
                                 <TableRow>
@@ -94,9 +94,9 @@ class clientMacroView extends React.Component {
                                         {macro.fats}
                                     </TableCell>
 
-                                    <TableCell align="right">
+                                    {/* <TableCell align="right">
                                         {macro.total_daily_calories}
-                                    </TableCell>
+                                    </TableCell> */}
                                 </TableRow>
                             </TableBody>
                         </Paper>
