@@ -2,19 +2,6 @@ import React from "react";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import MessageBoard from "./MessageBoard";
-import { Z_BLOCK } from "zlib";
-
-const styles = theme => ({
-  button: {
-    margin: theme.spacing.unit,
-    fontFamily: "Poiret One",
-    
-
-  },
-  input: {
-    display: "none"
-  }
-});
 
 const buttonStyle = {
   borderRadius: "20px",
@@ -26,7 +13,7 @@ const buttonStyle = {
 };
 
 const paper = {
-  filter: 'brightness(75%)',
+  filter: "brightness(75%)",
   paddingTop: 90,
   paddingLeft: 120,
   paddingBottom: 90,
@@ -36,7 +23,7 @@ const paper = {
   textAlign: "center",
   margin: "auto",
   borderRadius: "20px",
-  backgroundColor: "white",
+  backgroundColor: "white"
 
   // boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
 };
@@ -53,8 +40,6 @@ class UserLandingPage extends React.Component {
     this.directToMacroForm = this.directToMacroForm.bind(this);
     this.directToWorkoutForm = this.directToWorkoutForm.bind(this);
   }
-
-  
 
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -90,7 +75,7 @@ class UserLandingPage extends React.Component {
             >
               Workout Log
             </Button>
-            <div style={{paddingBottom:'50px'}}></div>
+            <div style={{ paddingBottom: "50px" }} />
             <Button
               style={buttonStyle}
               onClick={this.directToMacroForm}

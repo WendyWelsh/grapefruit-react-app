@@ -7,8 +7,8 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
 import { withRouter } from "react-router-dom";
 
 const styles = theme => ({
@@ -21,26 +21,9 @@ const styles = theme => ({
   table: {
     minWidth: 700
   }
-  
 });
 
 class WorkoutForm extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
-  // deleteRow = (item) => {
-  //   console.log("Helllls yes")
-  //   console.log(item)
-      
-  // }
-  // deleteRow = i => {
-  //   this.setState(state => ({
-  //     data: state.data.filter((row, j) => j !== i)
-  //   }));
-  // };
-  
-
   render() {
     const { classes } = this.props;
 
@@ -60,7 +43,7 @@ class WorkoutForm extends React.Component {
             </TableHead>
 
             <TableBody>
-              {this.props.workouts.map((workout,i) => (
+              {this.props.workouts.map((workout, i) => (
                 <TableRow key={i}>
                   <TableCell component="th" scope="row">
                     {workout.date}
@@ -70,16 +53,18 @@ class WorkoutForm extends React.Component {
                   <TableCell align="right">{workout.sets}</TableCell>
                   <TableCell align="right">{workout.reps}</TableCell>
                   <TableCell align="right">{workout.rpe}</TableCell>
-                  <IconButton onClick={()=>this.props.deleteWorkout(i)} className={classes.button} aria-label="Delete">
-                  <DeleteIcon />
-                 </IconButton>
+                  <IconButton
+                    onClick={() => this.props.deleteWorkout(i)}
+                    className={classes.button}
+                    aria-label="Delete"
+                  >
+                    <DeleteIcon />
+                  </IconButton>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
-         
         </Paper>
-     
       </div>
     );
   }

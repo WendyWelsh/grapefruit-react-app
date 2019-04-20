@@ -7,8 +7,8 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
 import { withRouter } from "react-router-dom";
 
 const styles = theme => ({
@@ -24,10 +24,6 @@ const styles = theme => ({
 });
 
 class MacroForm extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { classes } = this.props;
     return (
@@ -52,13 +48,13 @@ class MacroForm extends React.Component {
                   <TableCell align="right">{macros.carbsSelected}</TableCell>
                   <TableCell align="right">{macros.proteinSelected}</TableCell>
                   <TableCell align="right">{macros.fatSelected}</TableCell>
-                  
+
                   <IconButton
                     onClick={() => this.props.deleteMacro(i)}
                     className={classes.button}
-                    aria-label="Delete">
+                    aria-label="Delete"
+                  >
                     <DeleteIcon />
-
                   </IconButton>
                 </TableRow>
               ))}
